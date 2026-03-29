@@ -1,82 +1,31 @@
-/* Home page — aligned to Figma Portfolio (node 2607:3036 / 1920w light) */
+/* Home page, aligned to Figma Portfolio (node 2607:3036 / 1920w light) */
 
 .figma-home {
+  --landing-section-gap: 100px;
   background: #0d0d0d;
   color: #fff;
   overflow-x: hidden;
-}
-
-.figma-hero {
-  position: relative;
-  min-height: min(82vh, 900px);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6rem 1.5rem 4rem;
+  flex-direction: column;
+  gap: var(--landing-section-gap);
+  padding-top: var(--landing-section-gap);
+  padding-bottom: var(--landing-section-gap);
 }
 
-.figma-hero-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center top;
-  opacity: 0.95;
-}
-
-.figma-hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(13, 13, 13, 0.15) 0%,
-    rgba(13, 13, 13, 0.55) 100%
-  );
-}
-
-.figma-hero-content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  max-width: 58rem;
-}
-
-.figma-hero-greeting {
-  margin: 0 0 0.75rem;
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
-  letter-spacing: 0.02em;
-}
-
-.figma-hero-title {
-  margin: 0 0 1.25rem;
-  font-family: 'Josefin Sans', system-ui, sans-serif;
-  font-weight: 400;
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: #fff;
-}
-
-.figma-hero-intro {
-  margin: 0 auto;
-  max-width: 42ch;
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: clamp(0.95rem, 1.8vw, 1.125rem);
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.6);
-  font-weight: 400;
-}
+/* Legacy .figma-hero* (Saturn background hero) removed, landing uses MinimalistHero + Tailwind. */
 
 .figma-work-meta {
-  margin: -0.25rem 0 0.5rem;
+  margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.4);
-  letter-spacing: 0.02em;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
+.figma-work-meta--footer {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .figma-home .about-text {
@@ -94,43 +43,11 @@
   font-weight: 600;
 }
 
-.figma-home .writings-item {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.figma-home .writings-item-title {
-  color: #fff;
-}
-
-.figma-home .writings-item-summary {
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.figma-home .writings-intro {
-  color: rgba(255, 255, 255, 0.55);
-}
-
 .figma-works {
-  padding: 2rem 1.5rem 4rem;
+  /* Horizontal padding only; vertical spacing vs hero / next section from .figma-home gap */
+  padding: 0 1.5rem;
   max-width: 1060px;
   margin: 0 auto;
-}
-
-.figma-works-head {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  margin-bottom: 2.5rem;
-}
-
-.figma-works-head h2 {
-  margin: 0;
-  font-family: 'Josefin Sans', system-ui, sans-serif;
-  font-weight: 400;
-  font-size: clamp(2rem, 4vw, 2.5rem);
-  letter-spacing: -0.02em;
-  color: #fff;
 }
 
 .figma-works-line {
@@ -141,7 +58,7 @@
 }
 
 .figma-works-eyebrow {
-  margin: 0 0 0.5rem;
+  margin: 0 0 40px;
   font-family: 'Inter', system-ui, sans-serif;
   color: rgba(255, 255, 255, 0.4);
   font-size: 0.95rem;
@@ -150,240 +67,595 @@
 }
 
 .figma-work-card {
-  display: block;
-  position: relative;
-  margin-bottom: 2.5rem;
-  padding: 1.875rem;
-  border-radius: 16px;
-  border: 1px solid #3b3b3b;
-  background: #0f0f0f;
-  box-shadow:
-    16px 24px 20px 8px rgba(0, 0, 0, 0.4),
-    inset 0 2px 0 0 rgba(184, 180, 180, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  height: auto;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+  padding: 1.25rem 1.375rem;
+  border-radius: 24px;
+  /* 2px stroke, transparent at rest so layout doesn’t shift */
+  border: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.02);
   text-decoration: none;
   color: inherit;
+  overflow: hidden;
   transition:
     border-color 0.2s ease,
-    transform 0.2s ease;
+    background 0.2s ease,
+    box-shadow 0.22s ease;
 }
 
 .figma-work-card:hover {
-  border-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .figma-work-card:last-of-type {
   margin-bottom: 0;
 }
 
-.figma-work-lock {
-  width: 30px;
-  height: 30px;
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.figma-work-step {
-  position: absolute;
-  top: 10px;
-  right: 14px;
-  min-width: 34px;
-  height: 38px;
-  padding: 0 10px;
+/* Row: copy column (title, desc, meta, CTA) + thumbnail; stacks on mobile */
+.figma-work-card-row {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100px;
-  background: #0d0d0d;
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  color: #fff;
-  box-shadow: inset 0 2px 0 0 rgba(184, 180, 180, 0.14);
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  min-height: 0;
+  width: 100%;
 }
 
-.figma-work-card h3 {
+.figma-work-card-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.figma-work-card-copy .figma-work-desc {
+  margin: 0;
+}
+
+/* 40px between description and meta; then space before CTA */
+.figma-work-card-copy .figma-work-meta--footer {
+  margin: 40px 0 0.75rem;
+}
+
+.figma-work-card-copy .figma-work-cta {
+  margin: 0;
+}
+
+.figma-work-card-copy:not(:has(.figma-work-meta--footer)) .figma-work-cta {
+  margin-top: 0.75rem;
+}
+
+.figma-work-card-copy h3 {
   margin: 0 0 0.5rem;
   font-family: 'Josefin Sans', system-ui, sans-serif;
   font-weight: 400;
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
   letter-spacing: -0.02em;
   color: #fff;
+  line-height: 1.25;
 }
 
 .figma-work-desc {
-  margin: 0 0 1.25rem;
+  margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.9375rem;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.7);
-  max-width: 56rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+  flex-shrink: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  min-height: calc(0.875rem * 1.55 * 2);
 }
 
-.figma-work-rule {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.1);
-  margin: 0 0 1.25rem;
-  border: none;
-}
-
-.figma-work-shots {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-  min-height: 200px;
-  align-items: start;
-}
-
-.figma-work-shots img {
+/* Thumbnail never sets row height from image intrinsic size, see desktop + mobile rules */
+.figma-work-preview {
+  position: relative;
   width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
-  object-fit: cover;
-  max-height: 320px;
-}
-
-.figma-work-shots--single {
-  grid-template-columns: 1fr;
-}
-
-.figma-work-shots--single img {
-  max-height: 400px;
-  object-fit: contain;
-}
-
-.figma-work-footer {
+  min-height: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.2);
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem;
-  justify-content: space-between;
+  align-items: stretch;
+  flex-shrink: 0;
 }
 
-.figma-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 1rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #0f0f0f;
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.9375rem;
-  color: rgba(255, 255, 255, 0.7);
+.figma-work-preview::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.22s ease;
 }
 
-.figma-read {
+.figma-work-card:hover .figma-work-preview::after,
+.figma-work-card:focus-visible .figma-work-preview::after {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .figma-work-preview::after {
+    transition: none;
+  }
+}
+
+/* Stacked: fixed band height so image doesn’t size the card from its pixels */
+@media (max-width: 639px) {
+  .figma-work-preview {
+    height: 11rem;
+    flex: 0 0 auto;
+  }
+}
+
+.figma-work-preview img {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top;
+}
+
+.figma-work-cta {
+  display: block;
+  flex-shrink: 0;
   font-family: 'Inter', system-ui, sans-serif;
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 500;
   color: var(--accent);
 }
 
-.figma-work-card:hover .figma-read {
+/* Hide CTA until hover/focus on devices with hover; keep visible on touch */
+@media (hover: hover) {
+  .figma-work-cta {
+    opacity: 0;
+    transform: translateY(4px);
+    transition:
+      opacity 0.22s ease,
+      transform 0.22s ease;
+  }
+
+  .figma-work-card:hover .figma-work-cta,
+  .figma-work-card:focus-visible .figma-work-cta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.figma-work-card:hover .figma-work-cta {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .figma-work-cta {
+    transition: none;
+  }
+
+  @media (hover: hover) {
+    .figma-work-cta {
+      transform: none;
+    }
+
+    .figma-work-card:hover .figma-work-cta,
+    .figma-work-card:focus-visible .figma-work-cta {
+      transform: none;
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  /*
+   * Row height must come from in-flow copy only. A flex row with align-items:stretch
+   * lets a tall image set the row height and stretches the copy column (dead space).
+   * Preview is out of flow; top/bottom match the copy block height; image crops.
+   */
+  .figma-work-card-row {
+    display: block;
+    position: relative;
+    padding-right: calc(140px + 1.25rem);
+    min-height: 0;
+  }
+
+  .figma-work-card-row:not(:has(.figma-work-preview)) {
+    padding-right: 0;
+  }
+
+  .figma-work-card-copy {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .figma-work-preview {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 140px;
+    max-width: 40%;
+    flex: none;
+    min-height: 0;
+  }
+
+  .figma-work-preview img {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: cover;
+    object-position: top;
+  }
+}
+
+/* ── Shared sections below hero (work cards style) ── */
+
+.figma-home-block {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 2.5rem;
+  margin-top: 0;
+}
+
 .figma-testimonials-wrap {
-  background: #080808;
-  padding: 4rem 1.5rem;
-  margin-top: 2rem;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .figma-testimonials-inner {
-  max-width: 1440px;
+  max-width: 1060px;
   margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-.figma-testimonials-head {
+.figma-testimonials-viewport {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 0.5rem 0 0.25rem;
+}
+
+/* Black fade so cards disappear into the edges while scrolling */
+.figma-testimonials-viewport::before,
+.figma-testimonials-viewport::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 72px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.figma-testimonials-viewport::before {
+  left: 0;
+  background: linear-gradient(to right, #0d0d0d 0%, transparent 100%);
+}
+
+.figma-testimonials-viewport::after {
+  right: 0;
+  background: linear-gradient(to left, #0d0d0d 0%, transparent 100%);
+}
+
+.figma-testimonials-track {
+  --figma-t-marquee-gap: 1rem;
   display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  margin-bottom: 2.5rem;
+  flex-direction: row;
+  gap: var(--figma-t-marquee-gap);
+  width: max-content;
+  will-change: transform;
+  animation: figma-testimonials-marquee 50s linear infinite;
 }
 
-.figma-testimonials-head h2 {
-  margin: 0;
-  font-family: 'Josefin Sans', system-ui, sans-serif;
-  font-weight: 400;
-  font-size: clamp(2rem, 4vw, 2.5rem);
-  color: #fff;
+@keyframes figma-testimonials-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* -50% alone assumes no gap between the two duplicate rows; subtract half the gap so the loop stays seamless */
+    transform: translateX(calc(-50% - var(--figma-t-marquee-gap) / 2));
+  }
 }
 
-.figma-testimonial-grid {
+.figma-testimonials-viewport:hover .figma-testimonials-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .figma-testimonials-track {
+    animation: none;
+  }
+
+  .figma-testimonials-viewport:hover .figma-testimonials-track {
+    animation-play-state: running;
+  }
+}
+
+.figma-testimonials-row {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.25rem;
 }
 
 .figma-t-card {
-  background: #111;
-  border-radius: 12px;
-  padding: 1.25rem;
-  box-shadow:
-    inset 0 1px 1px -1px #999,
-    inset 0 -3px 2px -1px #000;
+  flex: 0 0 auto;
+  width: min(78vw, 340px);
+  box-sizing: border-box;
+  padding: 1rem 1.125rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .figma-t-stars {
   display: flex;
-  gap: 4px;
-  margin-bottom: 1rem;
+  gap: 3px;
+  margin-bottom: 0.65rem;
+  opacity: 0.65;
 }
 
 .figma-t-stars img {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
 }
 
 .figma-t-quote {
-  margin: 0 0 1rem;
+  margin: 0 0 0.75rem;
   font-family: 'Inter', system-ui, sans-serif;
-  font-weight: 500;
-  font-size: 0.93rem;
-  line-height: 1.65;
-  color: #999;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .figma-t-name {
   margin: 0;
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-size: 1.5rem;
-  line-height: 1.2;
-  color: #fff;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.figma-t-role {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Other than work, compact cards (below testimonials) */
+.figma-outside-work-wrap {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.figma-outside-work-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.figma-outside-work-inner .figma-works-eyebrow {
+  margin-bottom: 1.5rem;
+}
+
+.figma-outside-work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.875rem 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.figma-outside-work-card {
+  margin: 0;
+}
+
+.figma-outside-work-card article {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 1rem 1.125rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.figma-outside-work-title {
+  margin: 0 0 0.5rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.figma-outside-work-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.65rem;
+}
+
+.figma-outside-work-thumb {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+  transition:
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.figma-outside-work-thumb:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: scale(1.04);
+}
+
+.figma-outside-work-thumb:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.figma-outside-work-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.figma-outside-work-thumb-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.42);
+  pointer-events: none;
+  transition: background 0.18s ease;
+}
+
+.figma-outside-work-thumb:hover .figma-outside-work-thumb-overlay {
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.figma-outside-work-desc {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+@media (max-width: 640px) {
+  .figma-outside-work-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Awards, laurel badges (inherits .figma-home background) */
+.figma-awards-wrap {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.figma-awards-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.figma-awards-inner .figma-works-eyebrow {
+  margin-bottom: 2rem;
+}
+
+.figma-awards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem 1.25rem;
+  align-items: start;
+}
+
+.figma-award {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  min-width: 0;
+}
+
+.figma-award-laurel-img {
+  flex-shrink: 0;
+  width: min(173px, 40.32vw);
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin-top: -10px;
+  position: relative;
+  z-index: 0;
+}
+
+.figma-award-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.15em;
+  min-width: 0;
+  max-width: 11.5rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+.figma-award-copy span {
+  display: block;
+}
+
+/* Award headline, size/weight aligned with “Other than work” card titles */
+.figma-award-copy span:first-child {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.figma-award-copy span:not(:first-child) {
+  color: rgba(255, 255, 255, 0.52);
+}
+
+@media (max-width: 900px) {
+  .figma-awards-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    max-width: 22rem;
+    margin: 0 auto;
+  }
 }
 
 .figma-section {
-  padding: 3.5rem 1.5rem;
+  padding: 0 1.5rem 3rem;
   max-width: 720px;
   margin: 0 auto;
 }
 
-.figma-section h2 {
-  font-family: 'Josefin Sans', system-ui, sans-serif;
-  font-size: 1.75rem;
-  color: #fff;
-}
-
-.figma-section p,
-.figma-section .writings-list {
-  color: rgba(255, 255, 255, 0.75);
-}
-
-@media (max-width: 640px) {
-  .figma-work-shots {
-    grid-template-columns: 1fr;
-  }
-
-  .figma-work-step {
-    position: static;
-    margin-bottom: 0.5rem;
-  }
+.figma-section p {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.9375rem;
+  line-height: 1.65;
 }
 
 /* Figma-aligned header / footer (see Layout) */
@@ -400,12 +672,18 @@
   letter-spacing: 0;
 }
 
-.site-nav--figma a {
+/* Header nav pill: no stroke; radius matches Figma (24px), not 12px + 1px border */
+.theme-figma .site-nav--figma a {
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 0.975rem;
+  display: inline-block;
+  border-radius: 24px;
+  border: 0;
+  border-width: 0;
+  box-shadow: none;
 }
 
-.site-nav--figma a:first-child {
+.theme-figma .site-nav--figma a:first-child {
   font-weight: 700;
 }
 

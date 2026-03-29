@@ -1,6 +1,6 @@
 /**
  * Figma MCP asset URLs for frame 2607:1321 (MagicDiary case study).
- * These URLs expire after ~7 days — re-export from Figma MCP if images break.
+ * These URLs expire after ~7 days, re-export from Figma MCP if images break.
  * File: https://www.figma.com/design/5BXKUo563G7chsvPVxTpxy/Portfolio?node-id=2607-1321
  */
 export const magicDiaryAssets = {
@@ -19,7 +19,6 @@ export const magicDiaryAssets = {
   frequencyChart: 'https://www.figma.com/api/mcp/asset/1f15a7e6-febf-4449-a2a2-b40b742ee9e7',
   pairwiseChart: 'https://www.figma.com/api/mcp/asset/b6a97c37-acd2-45be-a97f-e557c0115663',
   weightedChart: 'https://www.figma.com/api/mcp/asset/873dca16-67c7-4b20-9571-e91aaf416efe',
-  systemFlow: 'https://www.figma.com/api/mcp/asset/20b944c9-5a9a-48bb-9a5e-5ca778ba917f',
   systemFlowSecondary: 'https://www.figma.com/api/mcp/asset/0a68fa98-c884-4c5b-bc93-c28531885999',
   impactPhoto: 'https://www.figma.com/api/mcp/asset/29c6640d-f2eb-4368-940e-dab58a2a227c',
   impactSecondary: 'https://www.figma.com/api/mcp/asset/cce063ed-51ee-43e7-9d57-aa43e1000115',

@@ -1,13 +1,13 @@
 import type { CaseStudyDetail } from '../types'
 import { testingFlowsAssets as A } from '../figma/testingFlowsAssets'
 
-/** Testing of Flows — MoEngage journey testing. Copy, structure, and assets aligned to Figma frame 2607:1785. */
+/** Testing of Flows, MoEngage journey testing. Copy, structure, and assets aligned to Figma frame 2607:1785. */
 export const testingFlows: CaseStudyDetail = {
   id: 'testing-of-flows',
   title: 'Testing of Flows',
   description:
     'Designing a testing experience from scratch, for marketers to test the customer orchestration journey in a customer engagement platform.',
-  tag: 'First in industry.',
+  tag: 'Industry First',
   company: 'MoEngage',
   year: '2024',
   figmaDesignUrl:
@@ -17,16 +17,16 @@ export const testingFlows: CaseStudyDetail = {
   heroArt: [
     {
       src: A.heroFlowUi,
-      alt: 'MoEngage Flows canvas — event check branch and staged journey sidebar',
+      alt: 'MoEngage Flows canvas, event check branch and staged journey sidebar',
     },
   ],
   summary:
-    'MoEngage Flows lets marketers orchestrate omnichannel journeys. Marketers need to validate logic before publish—but manual self-testing breaks down for heavy events (KYC, purchase). I led research synthesis, problem validation, and UI for in-product testing: test users, simulated events, stage-by-stage checks, and readable results so teams could ship journeys with confidence.',
+    'MoEngage Flows lets marketers orchestrate omnichannel journeys. Marketers need to validate logic before publish, but manual self-testing breaks down for heavy events (KYC, purchase). I led research synthesis, problem validation, and UI for in-product testing: test users, simulated events, stage-by-stage checks, and readable results so teams could ship journeys with confidence.',
   context: [],
   role:
     'Analysing research data, Secondary research, Problem validation, Problem definition, UI design, Prototyping, Developer Handoff',
   meta: {
-    industry: 'B2B SaaS — customer engagement / journey orchestration (MoEngage)',
+    industry: 'B2B SaaS, customer engagement / journey orchestration (MoEngage)',
     timeline: '3 months',
     scope:
       'End-to-end testing experience: validation research, competitor analogies, flows for stage-wise and full-flow testing, usability iterations',
@@ -50,7 +50,7 @@ export const testingFlows: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.omnichannelDiagram,
-          alt: 'Omnichannel Flows diagram — analyse, engage, and measure across channels',
+          alt: 'Omnichannel Flows diagram, analyse, engage, and measure across channels',
         },
       ],
     },
@@ -64,7 +64,7 @@ export const testingFlows: CaseStudyDetail = {
           type: 'figureRow',
           items: [
             { src: A.kickoffWorkspace, alt: 'Marketer testing a flow on laptop in a café setting' },
-            { src: A.kickoffScreenOverlay, alt: 'Flow builder UI overlay — test journey on canvas' },
+            { src: A.kickoffScreenOverlay, alt: 'Flow builder UI overlay, test journey on canvas' },
           ],
         },
       ],
@@ -105,19 +105,19 @@ export const testingFlows: CaseStudyDetail = {
               title: '88%',
               body: 'marketers test flows before publishing',
               imageSrc: A.surveyDonut88,
-              imageAlt: 'Survey — 88% of marketers test flows before publishing',
+              imageAlt: 'Survey, 88% of marketers test flows before publishing',
             },
             {
               title: '62.5%',
               body: 'marketers test all stages while remaining 37.5% test just communications',
               imageSrc: A.surveyDonut625,
-              imageAlt: 'Survey — 62.5% test all stages',
+              imageAlt: 'Survey, 62.5% test all stages',
             },
             {
               title: '65%',
               body: 'marketers spend more than 60 mins in testing',
               imageSrc: A.surveyDonut65,
-              imageAlt: 'Survey — 65% spend over 60 minutes testing',
+              imageAlt: 'Survey, 65% spend over 60 minutes testing',
             },
           ],
         },
@@ -132,7 +132,7 @@ export const testingFlows: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.affinityMapping,
-          alt: 'Affinity mapping — logic creation, understanding, confidence, and information themes',
+          alt: 'Affinity mapping, logic creation, understanding, confidence, and information themes',
         },
         {
           type: 'figure',
@@ -157,7 +157,7 @@ export const testingFlows: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.journeyMap,
-          alt: 'Journey map — marketer flow from goals through implementation and analysis',
+          alt: 'Journey map, marketer flow from goals through implementation and analysis',
         },
       ],
     },
@@ -245,7 +245,7 @@ export const testingFlows: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.competitorAnalogyPhoto,
-          alt: 'Electrical systems analogy — complex circuits tested element by element',
+          alt: 'Electrical systems analogy, complex circuits tested element by element',
         },
         {
           type: 'table',
@@ -261,7 +261,7 @@ export const testingFlows: CaseStudyDetail = {
           rows: [
             [
               'Easy EDA',
-              '3 Panel layout — Flow in centre, left panel for adding elements from inventory, right panel for editing characteristics of selected elements',
+              '3 Panel layout, Flow in centre, left panel for adding elements from inventory, right panel for editing characteristics of selected elements',
               'Manual Only',
               'Tests single stage at a time. The errors of the tested stage has to be corrected for knowing the errors in further stages.',
               'Test run data not stored',
@@ -277,20 +277,20 @@ export const testingFlows: CaseStudyDetail = {
             ],
             [
               'Microsoft Flows',
-              '3 Panel layout — Flow in centre, left panel for dashboard menu, right panel for test results',
+              '3 Panel layout, Flow in centre, left panel for dashboard menu, right panel for test results',
               'Manual + Automated (based on data from previous test runs)',
               'Tests single stage at a time. Data not available (supports testing of multiple users or not)',
-              'Test run history present — Testing of each stages shown realtime',
-              'Reports issues in detail as well as shows ways of fixing them — Provides link to help docs',
+              'Test run history present, Testing of each stages shown realtime',
+              'Reports issues in detail as well as shows ways of fixing them, Provides link to help docs',
             ],
           ],
         },
         {
           type: 'figureRow',
           items: [
-            { src: A.competitorEasyEda, alt: 'Easy EDA — schematic layout with inventory and properties panels' },
-            { src: A.competitorMatlab, alt: 'MATLAB — block diagram testing windows' },
-            { src: A.competitorMicrosoftFlows, alt: 'Microsoft Power Automate — flow run and test UI' },
+            { src: A.competitorEasyEda, alt: 'Easy EDA, schematic layout with inventory and properties panels' },
+            { src: A.competitorMatlab, alt: 'MATLAB, block diagram testing windows' },
+            { src: A.competitorMicrosoftFlows, alt: 'Microsoft Power Automate, flow run and test UI' },
           ],
           caption: 'Reference UIs that informed layout, run history, and diagnostics patterns.',
         },
@@ -311,7 +311,7 @@ export const testingFlows: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.userFlowDiagram,
-          alt: 'User flow — flow creation through staging, simulation, and satisfaction loops',
+          alt: 'User flow, flow creation through staging, simulation, and satisfaction loops',
         },
       ],
     },
@@ -321,10 +321,10 @@ export const testingFlows: CaseStudyDetail = {
         {
           type: 'figureRow',
           items: [
-            { src: A.brainstormA, alt: 'Brainstorm — test info and simulative configuration' },
-            { src: A.brainstormB, alt: 'Brainstorm — canvas entry conditions and audience' },
-            { src: A.brainstormC, alt: 'Brainstorm — user path timeline and condition editor' },
-            { src: A.brainstormD, alt: 'Brainstorm — stacked exploration screens' },
+            { src: A.brainstormA, alt: 'Brainstorm, test info and simulative configuration' },
+            { src: A.brainstormB, alt: 'Brainstorm, canvas entry conditions and audience' },
+            { src: A.brainstormC, alt: 'Brainstorm, user path timeline and condition editor' },
+            { src: A.brainstormD, alt: 'Brainstorm, stacked exploration screens' },
           ],
           caption: 'Explorations across test setup, canvas context, and path visualisation.',
         },
@@ -352,7 +352,7 @@ export const testingFlows: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.uiTestUser,
-          alt: 'UI — add test user, channels, and reachability before running tests',
+          alt: 'UI, add test user, channels, and reachability before running tests',
         },
       ],
     },
@@ -366,7 +366,7 @@ export const testingFlows: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.uiSimulateEvents,
-          alt: 'UI — simulate events and target audience configuration on the flow canvas',
+          alt: 'UI, simulate events and target audience configuration on the flow canvas',
         },
       ],
     },
@@ -379,7 +379,7 @@ export const testingFlows: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.uiStageResults,
-          alt: 'UI — stage test results after simulated events',
+          alt: 'UI, stage test results after simulated events',
         },
       ],
     },
@@ -392,7 +392,7 @@ export const testingFlows: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.uiUserPathMovement,
-          alt: 'UI — user path playback and movement through flow stages',
+          alt: 'UI, user path playback and movement through flow stages',
         },
       ],
     },
@@ -458,12 +458,12 @@ export const testingFlows: CaseStudyDetail = {
             'Issue 1: Users unintentionally clicking on ‘Test’ though they wanted to simulate events before testing',
           before: {
             src: A.improveIssue1Before,
-            alt: 'Before — simulate events vs test affordances',
+            alt: 'Before, simulate events vs test affordances',
             label: 'Before testing',
           },
           after: {
             src: A.improveIssue1After,
-            alt: 'After — explicit choice to simulate events or test without simulating',
+            alt: 'After, explicit choice to simulate events or test without simulating',
             label: 'After Improvement',
           },
         },
@@ -473,12 +473,12 @@ export const testingFlows: CaseStudyDetail = {
             'Issue 2: Some users found it difficulty in understanding the stage for which the condition was defined.',
           before: {
             src: A.improveIssue2Before,
-            alt: 'Before — current stage copy for conditions',
+            alt: 'Before, current stage copy for conditions',
             label: 'Before testing',
           },
           after: {
             src: A.improveIssue2After,
-            alt: 'After — stage chip clarifying which step conditions belong to',
+            alt: 'After, stage chip clarifying which step conditions belong to',
             label: 'After Improvement',
           },
         },
@@ -487,12 +487,12 @@ export const testingFlows: CaseStudyDetail = {
           title: 'Issue 3: Users found it difficult to understand the ‘Execute this event’ field.',
           before: {
             src: A.improveIssue3Before,
-            alt: 'Before — execute this event label',
+            alt: 'Before, execute this event label',
             label: 'Before testing',
           },
           after: {
             src: A.improveIssue3After,
-            alt: 'After — time to execute event with helper copy',
+            alt: 'After, time to execute event with helper copy',
             label: 'After Improvement',
           },
         },
@@ -507,7 +507,7 @@ export const testingFlows: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.closingThanks,
-          alt: 'Thanks card — closing the case study narrative',
+          alt: 'Thanks card, closing the case study narrative',
         },
       ],
     },

@@ -1,13 +1,12 @@
 import type { CaseStudyDetail } from '../types'
 import { flowAnalyticsAssets as A } from '../figma/flowAnalyticsAssets'
 
-/** Flow Analytics Revamp — MoEngage. Copy, structure, and assets aligned to Figma frame 2607:2048. */
+/** Flow Analytics Revamp, MoEngage. Copy, structure, and assets aligned to Figma frame 2607:2048. */
 export const flowAnalytics: CaseStudyDetail = {
   id: 'flow-analytics',
   title: 'Flow Analytics Revamp',
   description:
     'Redesigning Flow analytics to reduce time to insights and bring analysis users were doing outside the dashboard into the product.',
-  tag: 'First of its kind in Industry.',
   company: 'MoEngage',
   year: '2024',
   figmaDesignUrl:
@@ -17,16 +16,16 @@ export const flowAnalytics: CaseStudyDetail = {
   heroArt: [
     {
       src: A.heroDashboard,
-      alt: 'Flow Analytics — bar chart comparing trips, conversions, and revenue across flow stages',
+      alt: 'Flow Analytics, bar chart comparing trips, conversions, and revenue across flow stages',
     },
   ],
   summary:
-    'MoEngage Flows is an omni-channel journey builder: once a flow is live, marketers need analytics that match how they think about journeys—not just channel stats. I led research synthesis, problem validation, and UI for a Flow Analytics revamp: clearer performance, comparisons, retention, and cohort views so teams could get to answers without exporting to spreadsheets or third-party tools.',
+    'MoEngage Flows is an omni-channel journey builder: once a flow is live, marketers need analytics that match how they think about journeys, not just channel stats. I led research synthesis, problem validation, and UI for a Flow Analytics revamp: clearer performance, comparisons, retention, and cohort views so teams could get to answers without exporting to spreadsheets or third-party tools.',
   context: [],
   role:
     'Analysing research data, Secondary research, Problem validation, Problem definition, UI design, Prototyping, Developer Handoff',
   meta: {
-    industry: 'B2B SaaS — customer engagement (MoEngage)',
+    industry: 'B2B SaaS, customer engagement (MoEngage)',
     timeline: '2 months',
     scope:
       'End-to-end Flow Analytics experience: research, ticket mapping, ideation, and high-fidelity dashboard UX',
@@ -49,7 +48,7 @@ export const flowAnalytics: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.overviewGif,
-          alt: 'Flow Analytics interface walkthrough — stats and journey performance',
+          alt: 'Flow Analytics interface walkthrough, stats and journey performance',
         },
       ],
     },
@@ -62,7 +61,7 @@ export const flowAnalytics: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.kickOffPhoto,
-          alt: 'Customer discovery call — two people discussing analytics at a desk',
+          alt: 'Customer discovery call, two people discussing analytics at a desk',
         },
       ],
     },
@@ -82,7 +81,7 @@ export const flowAnalytics: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.affinityMapping,
-          alt: 'Affinity mapping — marketer user journey when analysing flows',
+          alt: 'Affinity mapping, marketer user journey when analysing flows',
         },
       ],
     },
@@ -96,7 +95,7 @@ export const flowAnalytics: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.flowPerformanceDashboard,
-          alt: 'MoEngage Flow Analytics — flow performance metrics and time series',
+          alt: 'MoEngage Flow Analytics, flow performance metrics and time series',
         },
         {
           type: 'figure',
@@ -200,9 +199,9 @@ export const flowAnalytics: CaseStudyDetail = {
         {
           type: 'figureRow',
           items: [
-            { src: A.whiteboardA, alt: 'Whiteboarding session — notes and diagrams on a whiteboard' },
-            { src: A.whiteboardB, alt: 'Whiteboarding session — flow and metrics sketch' },
-            { src: A.whiteboardC, alt: 'Whiteboarding session — problem framing and ideas' },
+            { src: A.whiteboardA, alt: 'Whiteboarding session, notes and diagrams on a whiteboard' },
+            { src: A.whiteboardB, alt: 'Whiteboarding session, flow and metrics sketch' },
+            { src: A.whiteboardC, alt: 'Whiteboarding session, problem framing and ideas' },
           ],
           caption: 'Whiteboarding session with Senior Product Designer and PM.',
         },
@@ -216,15 +215,15 @@ export const flowAnalytics: CaseStudyDetail = {
           items: [
             {
               src: A.ideationCollageA,
-              alt: 'Ideation — dashboard metrics and flow performance concepts',
+              alt: 'Ideation, dashboard metrics and flow performance concepts',
             },
             {
               src: A.ideationCollageB,
-              alt: 'Ideation — bar charts and goal tracking explorations',
+              alt: 'Ideation, bar charts and goal tracking explorations',
             },
             {
               src: A.ideationCollageC,
-              alt: 'Ideation — date range and filter interactions',
+              alt: 'Ideation, date range and filter interactions',
             },
           ],
           caption: 'Exploring charts, filters, and layout directions before high fidelity.',
@@ -232,7 +231,7 @@ export const flowAnalytics: CaseStudyDetail = {
       ],
     },
     {
-      title: 'Highlighting stages (First of its kind in Industry)',
+      title: 'Highlighting stages',
       paragraphs: [
         'Marketers can now highlight the stages based on their metrics such as CVR, CTR, Drop offs and also see the most common path that their users traverse. This helps them to identify patterns of good/poor performance.',
       ],
@@ -240,7 +239,7 @@ export const flowAnalytics: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.hiFiHighlightingStages,
-          alt: 'High fidelity — highlighting stages and common paths in Flow Analytics',
+          alt: 'High fidelity, highlighting stages and common paths in Flow Analytics',
         },
       ],
     },
@@ -253,7 +252,7 @@ export const flowAnalytics: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.hiFiFlowPerformance,
-          alt: 'High fidelity — flow performance charts and comparison',
+          alt: 'High fidelity, flow performance charts and comparison',
         },
       ],
     },
@@ -266,7 +265,7 @@ export const flowAnalytics: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.hiFiCampaignPerformance,
-          alt: 'High fidelity — campaign performance across channels',
+          alt: 'High fidelity, campaign performance across channels',
         },
       ],
     },
@@ -279,7 +278,7 @@ export const flowAnalytics: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.hiFiRetention,
-          alt: 'High fidelity — retention analysis and cohort-style retention view',
+          alt: 'High fidelity, retention analysis and cohort-style retention view',
         },
       ],
     },
@@ -293,7 +292,7 @@ export const flowAnalytics: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.hiFiCohort,
-          alt: 'High fidelity — cohort analysis and segment breakdown',
+          alt: 'High fidelity, cohort analysis and segment breakdown',
         },
       ],
     },
@@ -306,7 +305,7 @@ export const flowAnalytics: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.usabilityClosing,
-          alt: 'Closing visual — thanks note on desk after usability sessions',
+          alt: 'Closing visual, thanks note on desk after usability sessions',
         },
       ],
     },

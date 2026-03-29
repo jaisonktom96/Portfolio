@@ -24,11 +24,20 @@ export type CaseStudyBlock =
       cropTopPercent?: number
       /** Border radius in px; with crop, applied via clip-path `round` */
       radius?: number
+      /** When true, render in grayscale (opt-in; site default is full color) */
+      grayscale?: boolean
     }
-  | { type: 'figureRow'; items: { src: string; alt: string; caption?: string }[]; caption?: string }
+  | {
+      type: 'figureRow'
+      items: { src: string; alt: string; caption?: string; grayscale?: boolean }[]
+      caption?: string
+    }
   | { type: 'table'; caption?: string; headers: string[]; rows: string[][] }
   | { type: 'callout'; title: string; intro?: string; bullets?: string[] }
-  | { type: 'cardRow'; cards: { title: string; body: string; imageSrc?: string; imageAlt?: string }[] }
+  | {
+      type: 'cardRow'
+      cards: { title: string; body: string; imageSrc?: string; imageAlt?: string; grayscale?: boolean }[]
+    }
   | {
       type: 'researchCardRow'
       cards: {
@@ -41,18 +50,27 @@ export type CaseStudyBlock =
       type: 'insightPhases'
       phases: { label: string; cards: { title: string; body: string }[] }[]
     }
-  | { type: 'personaPair'; personas: { name: string; imageSrc: string; alt: string }[] }
+  | {
+      type: 'personaPair'
+      personas: { name: string; imageSrc: string; alt: string; grayscale?: boolean }[]
+    }
   | {
       type: 'solutionFeature'
       title: string
       bullet: string
-      images: { src: string; alt: string }[]
+      images: { src: string; alt: string; grayscale?: boolean }[]
     }
   | {
       type: 'beforeAfter'
       title?: string
-      before: { src: string; alt: string; label?: string }
-      after: { src: string; alt: string; label?: string }
+      before: { src: string; alt: string; label?: string; grayscale?: boolean }
+      after: { src: string; alt: string; label?: string; grayscale?: boolean }
+    }
+  | {
+      type: 'linkList'
+      title?: string
+      intro?: string
+      items: { label: string; href: string }[]
     }
 
 export type CaseStudyMeta = {
@@ -69,11 +87,13 @@ export type CaseStudySection = {
   paragraphs?: string[]
   bullets?: string[]
   blocks?: CaseStudyBlock[]
+  /** When true, render blocks after paragraphs and before bullets (default: bullets before blocks). */
+  blocksBeforeBullets?: boolean
 }
 
 export type CaseStudyDetail = Project & {
   summary: string
-  /** Opening context—multiple short paragraphs */
+  /** Opening context, multiple short paragraphs */
   context: string[]
   role: string
   meta: CaseStudyMeta
@@ -96,6 +116,18 @@ export type Testimonial = {
   quote: string
   name: string
   role: string
+}
+
+export type OutsideWorkImage = {
+  src: string
+  alt: string
+}
+
+export type OutsideWorkItem = {
+  title: string
+  description: string
+  /** Circular thumbnails; lightbox navigates within this list */
+  images: OutsideWorkImage[]
 }
 
 export type WritingEntry = {

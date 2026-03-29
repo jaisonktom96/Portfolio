@@ -7,9 +7,9 @@ import App from './App.tsx'
 
 if (import.meta.env.DEV) {
   console.info(
-    '[portfolio] dev bundle loaded — content revision:',
+    '[portfolio] dev bundle, minimalist hero landing, revision:',
     CONTENT_REVISION,
-    '(if this mismatches the page, the browser cached an old module)',
+    '(LandingPage.tsx, if revision mismatches or you see the old Figma Saturn hero, run npm run dev:clean)',
   )
 }
 

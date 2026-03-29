@@ -1,6 +1,6 @@
 /**
  * Figma MCP asset URLs for frame 2607:2048 (Flow Analytics Revamp case study).
- * These URLs expire after ~7 days — re-export from Figma MCP if images break.
+ * These URLs expire after ~7 days, re-export from Figma MCP if images break.
  * File: https://www.figma.com/design/5BXKUo563G7chsvPVxTpxy/Portfolio?node-id=2607-2048
  */
 export const flowAnalyticsAssets = {

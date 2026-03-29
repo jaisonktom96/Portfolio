@@ -145,7 +145,7 @@ export function useScrollReveal(): void {
     requestAnimationFrame(() => {
       document
         .querySelectorAll(
-          '.cs-section, .cs-intro, .case-blocks > *, .cs-metric, .cs-hero-art, .cs-cta-section',
+          '.cs-section, .cs-intro, .case-blocks > *, .cs-metric, .cs-hero-art, .cs-more-work',
         )
         .forEach((el) => observer.observe(el))
     })

@@ -4,10 +4,12 @@ import { createPortal } from 'react-dom'
 type Props = {
   src: string
   alt: string
+  /** Match in-page treatment when asset is marked grayscale in case study data */
+  grayscale?: boolean
   onClose: () => void
 }
 
-export function ImageLightbox({ src, alt, onClose }: Props) {
+export function ImageLightbox({ src, alt, grayscale, onClose }: Props) {
   const handleKey = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -30,7 +32,7 @@ export function ImageLightbox({ src, alt, onClose }: Props) {
         &times;
       </button>
       <img
-        className="lightbox-img"
+        className={`lightbox-img${grayscale ? ' case-media--grayscale' : ''}`}
         src={src}
         alt={alt}
         onClick={(e) => e.stopPropagation()}

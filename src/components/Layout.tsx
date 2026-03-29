@@ -1,7 +1,11 @@
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useLocation } from 'react-router-dom'
 import { CONTENT_REVISION } from '../data/content'
+import '../styles/home-figma.css'
 
 export function Layout() {
+  const location = useLocation()
+  const hideChromeOnLanding = location.pathname === '/'
+
   return (
     <div
       className="site theme-figma"
@@ -13,8 +17,11 @@ export function Layout() {
           <span className="dev-build-banner__label">Local dev</span>
           <span className="dev-build-banner__rev">{CONTENT_REVISION}</span>
           <span className="dev-build-banner__hint">
-            Nav first link must say “Portfolio”; MagicDiary summary must mention Magicbricks. If
-            not, empty cache or use a private window.
+            Home loads <code className="dev-build-banner__code">LandingPage.tsx</code> +{' '}
+            <code className="dev-build-banner__code">MinimalistHero</code> (black bg, yellow circle, white type).
+            The old Saturn hero was removed from the repo. If you still see it, the browser is
+            serving a stale bundle, run <code className="dev-build-banner__code">npm run dev:clean</code>{' '}
+            and reload. Footer revision must match this banner.
           </span>
         </div>
       ) : null}
@@ -22,16 +29,16 @@ export function Layout() {
         Skip to content
       </a>
 
-      <header className="site-header site-header--figma">
-        <Link className="wordmark wordmark--figma" to="/">
-          Jaison Thomas
-        </Link>
-        <nav className="site-nav site-nav--figma" aria-label="Primary">
-          <Link to="/#work">Portfolio</Link>
-          <Link to="/#writings">Writings</Link>
-          <Link to="/#about">About</Link>
-        </nav>
-      </header>
+      {!hideChromeOnLanding ? (
+        <header className="site-header site-header--figma">
+          <Link className="wordmark wordmark--figma" to="/">
+            Jaison Thomas
+          </Link>
+          <nav className="site-nav site-nav--figma" aria-label="Primary">
+            <Link to="/#work">All works</Link>
+          </nav>
+        </header>
+      ) : null}
 
       <Outlet />
 

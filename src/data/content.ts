@@ -2,6 +2,7 @@ import { caseStudies } from './caseStudies/index'
 import type {
   AboutContent,
   CaseStudyDetail,
+  OutsideWorkItem,
   Project,
   Testimonial,
   WritingEntry,
@@ -10,6 +11,8 @@ import type {
 export type {
   AboutContent,
   CaseStudyDetail,
+  OutsideWorkImage,
+  OutsideWorkItem,
   Project,
   Testimonial,
   WritingEntry,
@@ -20,9 +23,9 @@ export { caseStudies }
 export const CONTACT_EMAIL = 'jaisonktom@gmail.com'
 
 /** Bump when case study copy changes materially (helps verify the loaded bundle in devtools). */
-export const CONTENT_REVISION = '2026-03-29-testing-flows-figma-2607-1785'
+export const CONTENT_REVISION = '2026-03-29-minimalist-hero-dark'
 
-/** Card list on home — same order as case studies */
+/** Card list on home, same order as case studies */
 export const projects: Project[] = caseStudies.map(
   ({ id, title, description, tag, company, year }) => ({ id, title, description, tag, company, year }),
 )
@@ -31,11 +34,18 @@ export function getCaseStudyBySlug(slug: string): CaseStudyDetail | undefined {
   return caseStudies.find((c) => c.id === slug)
 }
 
+/** Home, Awards row (laurel badges below testimonials) */
+export const awards = [
+  { lines: ['Rockstar, Product', 'MoEngage', '(2025)'] },
+  { lines: ['Best performer', 'Magicbricks', '(2024)'] },
+  { lines: ['Pre-seed funding', 'Khoj Hackathon', 'IIITDMJ (2021)'] },
+] as const
+
 export const aboutContent: AboutContent = {
   headline: 'About',
   paragraphs: [
     'I am Jaison Thomas, a product designer who works at the intersection of research, systems thinking, and craft. My practice is built around clarity: making complex domains legible, aligning teams on what to build next, and shipping interfaces that respect real-world constraints.',
-    'I have led end-to-end work across consumer and B2B products—habit formation and retention, orchestration tooling, analytics, and multi-stakeholder research. I partner closely with product, engineering, and data to connect design decisions to measurable outcomes without turning people into metrics.',
+    'I have led end-to-end work across consumer and B2B products, habit formation and retention, orchestration tooling, analytics, and multi-stakeholder research. I partner closely with product, engineering, and data to connect design decisions to measurable outcomes without turning people into metrics.',
     'This site is meant to grow with case studies, writing, and artifacts. If you are exploring collaboration, research partnerships, or product design leadership, I would love to hear from you.',
   ],
 }
@@ -47,21 +57,21 @@ export const writingsContent: WritingEntry[] = [
     title: 'Designing for trust in analytics surfaces',
     date: 'Draft',
     summary:
-      'Why definition transparency, latency honesty, and progressive depth matter as much as chart polish—especially in B2B workflows where numbers drive decisions.',
+      'Why definition transparency, latency honesty, and progressive depth matter as much as chart polish, especially in B2B workflows where numbers drive decisions.',
     note: 'Add a public URL when published.',
   },
   {
     title: 'Habit loops without dark patterns',
     date: 'Draft',
     summary:
-      'A practical framework for retention work that improves weekly active usage while protecting user autonomy—reminders, milestones, and paywalls that align with intent.',
+      'A practical framework for retention work that improves weekly active usage while protecting user autonomy, reminders, milestones, and paywalls that align with intent.',
     note: 'Add a public URL when published.',
   },
   {
     title: 'Orchestration as a systems design problem',
     date: 'Draft',
     summary:
-      'How journey builders, testing, and analytics interlock—and why UX must model graphs, branches, and failure modes across teams.',
+      'How journey builders, testing, and analytics interlock, and why UX must model graphs, branches, and failure modes across teams.',
     note: 'Add a public URL when published.',
   },
 ]
@@ -96,5 +106,64 @@ export const testimonials: Testimonial[] = [
       'We discovered Jaison while looking for a person to help us design an app. He was totally invested in the project and worked in the true spirit of collaboration with our team. He was meticulous in his approach and completed the prototype within the planned timeline.',
     name: 'Kaushik',
     role: 'Senior Consultant, Cloudcraftz Solutions',
+  },
+]
+
+/** Shared assets in /public/outside-work/ */
+const ow = (filename: string) => `/outside-work/${filename}` as const
+
+/** Home, interests beyond day-to-day product work */
+export const outsideWork: OutsideWorkItem[] = [
+  {
+    title: 'Organise design competitions',
+    description:
+      'I help run design competitions, clear briefs, fair judging, and critique that actually helps people grow. It keeps me grounded in what “good” means when the stakes are human, not just business.',
+    images: [
+      {
+        src: ow('image-8b5b97c0-41dd-46a0-bee0-f4ea5690523f.png'),
+        alt: 'Dark portfolio UI with testimonial cards',
+      },
+    ],
+  },
+  {
+    title: 'Organise workshops',
+    description:
+      'I facilitate workshops on research, tools, and collaboration: structured enough to ship outcomes, open enough for messy questions. The goal is always something people can use on Monday.',
+    images: [
+      {
+        src: ow('image-f54bcd4d-4f7b-47f6-8812-d6fa752149ff.png'),
+        alt: 'Workshop graphic, Claude and Figma MCP session',
+      },
+    ],
+  },
+  {
+    title: 'Photography',
+    description:
+      'Off-screen I reach for a camera, light, composition, and patience. It sharpens the same instincts I use in product: frame what matters, cut what doesn’t, and know when to wait for the moment.',
+    images: [
+      {
+        src: ow('image-8b5b97c0-41dd-46a0-bee0-f4ea5690523f.png'),
+        alt: 'Dark portfolio UI with testimonial cards',
+      },
+      {
+        src: ow('image-f54bcd4d-4f7b-47f6-8812-d6fa752149ff.png'),
+        alt: 'Workshop graphic, Claude and Figma MCP session',
+      },
+    ],
+  },
+  {
+    title: 'Guitar',
+    description:
+      'Playing guitar is my reset, patterns, rhythm, and repetition without a roadmap. It’s a reminder that craft is mostly showing up: small sessions that compound into something fluid over time.',
+    images: [
+      {
+        src: ow('image-f54bcd4d-4f7b-47f6-8812-d6fa752149ff.png'),
+        alt: 'Workshop graphic, Claude and Figma MCP session',
+      },
+      {
+        src: ow('image-8b5b97c0-41dd-46a0-bee0-f4ea5690523f.png'),
+        alt: 'Dark portfolio UI with testimonial cards',
+      },
+    ],
   },
 ]

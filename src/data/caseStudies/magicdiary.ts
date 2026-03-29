@@ -1,22 +1,21 @@
 import type { CaseStudyDetail } from '../types'
 import { magicDiaryAssets as A } from '../figma/magicDiaryAssets'
 
-/** MagicDiary — Magicbricks site-visit experience. Copy, structure, and assets aligned to Figma frame 2607:1321. */
+/** MagicDiary, Magicbricks site-visit experience. Copy, structure, and assets aligned to Figma frame 2607:1321. */
 export const magicdiary: CaseStudyDetail = {
   id: 'magicdiary',
   title: 'MagicDiary',
   description:
     'From 15% to 70% Retention: A User-Centric Redesign that Unlocked 10x Revenue',
-  tag: 'First in industry.',
   company: 'Magicbricks',
-  year: '2023',
+  year: '2024',
   figmaDesignUrl:
     'https://www.figma.com/design/5BXKUo563G7chsvPVxTpxy/Portfolio?node-id=2607-1321&m=dev',
   metaLayout: 'strip3',
   heroArt: [
     {
       src: A.heroIsometric,
-      alt: 'MagicDiary hero illustration — property search and site visits',
+      alt: 'MagicDiary hero illustration, property search and site visits',
     },
     {
       src: A.heroDevice,
@@ -24,12 +23,12 @@ export const magicdiary: CaseStudyDetail = {
     },
   ],
   summary:
-    'Magicbricks ran a premium site-visit service—managed cabs to properties and back—but roughly 85% of buyers dropped off after the first visit. I led research, synthesis, prioritization, and UI for MagicDiary: a mini-app inside Magicbricks that gave buyers structure, checklists, comparisons, and confidence. Retention rose from 15% to 70%; the service later scaled to 7+ cities with 75,000+ visits, 7,500+ buyers, and roughly 50% faster decision-making for buyers.',
+    'Magicbricks ran a premium site-visit service, managed cabs to properties and back, but roughly 85% of buyers dropped off after the first visit. I led research, synthesis, prioritization, and UI for MagicDiary: a mini-app inside Magicbricks that gave buyers structure, checklists, comparisons, and confidence. Retention rose from 15% to 70%; the service later scaled to 7+ cities with 75,000+ visits, 7,500+ buyers, and roughly 50% faster decision-making for buyers.',
   context: [],
   role:
     'Primary research (shadowing, user interviews), synthesis, analysis, persona creation, journey mapping, problem definition, feature prioritization, UI design, prototyping, and usability testing.',
   meta: {
-    industry: 'Real estate / proptech — Magicbricks (India)',
+    industry: 'Real estate / proptech, Magicbricks (India)',
     timeline: '3 months',
     scope:
       'End-to-end site-visit experience: research, prioritization, mini-app UX/UI embedded in Magicbricks',
@@ -54,9 +53,10 @@ export const magicdiary: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.overviewCabPhoto,
-          alt: 'Managed cab site-visit service — buyer and vehicle at a property',
+          alt: 'Managed cab site-visit service, buyer and vehicle at a property',
           cropTopPercent: 25,
           radius: 9,
+          grayscale: true,
         },
         {
           type: 'callout',
@@ -104,7 +104,8 @@ export const magicdiary: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.fieldResearchWide,
-          alt: 'Field research — observing real site visits and buyer behavior',
+          alt: 'Field research, observing real site visits and buyer behavior',
+          grayscale: true,
         },
         {
           type: 'researchCardRow',
@@ -143,7 +144,7 @@ export const magicdiary: CaseStudyDetail = {
     {
       title: 'Major insights',
       paragraphs: [
-        'Issues clustered into pre-visit, during visit, and after visit—spanning communication, accuracy, waits, knowledge gaps, and emotional barriers to telling the relationship manager the truth.',
+        'Issues clustered into pre-visit, during visit, and after visit, spanning communication, accuracy, waits, knowledge gaps, and emotional barriers to telling the relationship manager the truth.',
       ],
       blocks: [
         {
@@ -228,7 +229,7 @@ export const magicdiary: CaseStudyDetail = {
       title: 'Contextual inquiry & quick concepts',
       paragraphs: [
         'On long cab rides between sites (Bengaluru traffic helped), we built rapport and gathered richer detail. We did not reveal our full identity to builders where needed, to observe how buyers were treated.',
-        'To validate direction fast, I printed a simple checklist and gave it to buyers in the cab. People read it carefully, brought it on-site, and marked opinions—strong evidence that structured guidance was the right anchor for the product.',
+        'To validate direction fast, I printed a simple checklist and gave it to buyers in the cab. People read it carefully, brought it on-site, and marked opinions, strong evidence that structured guidance was the right anchor for the product.',
       ],
       blocks: [
         {
@@ -256,7 +257,7 @@ export const magicdiary: CaseStudyDetail = {
               title: 'Stated preference',
               body: 'What users said they wanted (MoSCoW-style validation).',
               imageSrc: A.statedPreference,
-              imageAlt: 'What users said they wanted — stated preference (MoSCoW-style validation)',
+              imageAlt: 'What users said they wanted, stated preference (MoSCoW-style validation)',
             },
             {
               title: 'Frequency analysis',
@@ -292,12 +293,12 @@ export const magicdiary: CaseStudyDetail = {
             {
               name: 'Explorer Rohit',
               imageSrc: A.personaRohit,
-              alt: 'Explorer Rohit — anxious, first-time buyer persona',
+              alt: 'Explorer Rohit, anxious, first-time buyer persona',
             },
             {
               name: 'Decisive Rajan',
               imageSrc: A.personaRajan,
-              alt: 'Decisive Rajan — efficient, experienced buyer persona',
+              alt: 'Decisive Rajan, efficient, experienced buyer persona',
             },
           ],
         },
@@ -312,11 +313,6 @@ export const magicdiary: CaseStudyDetail = {
     {
       title: 'System flow',
       blocks: [
-        {
-          type: 'figure',
-          src: A.systemFlow,
-          alt: 'End-to-end system flow for MagicDiary within Magicbricks',
-        },
         {
           type: 'figure',
           src: A.systemFlowSecondary,
@@ -335,8 +331,8 @@ export const magicdiary: CaseStudyDetail = {
           title: 'Embedded mini-app',
           bullet: 'User opens a mini-app inside Magicbricks called MagicDiary.',
           images: [
-            { src: A.miniAppHomeA, alt: 'MagicDiary home — scheduled visits' },
-            { src: A.miniAppHomeB, alt: 'MagicDiary home — completed visits' },
+            { src: A.miniAppHomeA, alt: 'MagicDiary home, scheduled visits' },
+            { src: A.miniAppHomeB, alt: 'MagicDiary home, completed visits' },
           ],
         },
         {
@@ -363,9 +359,9 @@ export const magicdiary: CaseStudyDetail = {
           title: 'Compare properties',
           bullet: 'Users compare multiple properties to decide what to pursue next.',
           images: [
-            { src: A.compareA, alt: 'Compare properties — screen 1' },
-            { src: A.compareB, alt: 'Compare properties — screen 2' },
-            { src: A.compareC, alt: 'Compare properties — screen 3' },
+            { src: A.compareA, alt: 'Compare properties, screen 1' },
+            { src: A.compareB, alt: 'Compare properties, screen 2' },
+            { src: A.compareC, alt: 'Compare properties, screen 3' },
           ],
         },
         {
@@ -374,9 +370,9 @@ export const magicdiary: CaseStudyDetail = {
           bullet:
             'RERA, pricing, amenities, builder information, payment plans, and more.',
           images: [
-            { src: A.detailsA, alt: 'Project dossier — overview' },
-            { src: A.detailsB, alt: 'Project dossier — details' },
-            { src: A.detailsC, alt: 'Project dossier — plans' },
+            { src: A.detailsA, alt: 'Project dossier, overview' },
+            { src: A.detailsB, alt: 'Project dossier, details' },
+            { src: A.detailsC, alt: 'Project dossier, plans' },
           ],
         },
       ],
@@ -384,18 +380,20 @@ export const magicdiary: CaseStudyDetail = {
     {
       title: 'Impact',
       paragraphs: [
-        'The work coincided with substantial operational scale and buyer outcomes: 75,000+ site visits completed, expansion to 7+ cities, 7,500+ buyers served, and a reported ~50% reduction in buyer decision-making time—alongside the retention lift from 15% to 70% that made the service viable to grow.',
+        'The work coincided with substantial operational scale and buyer outcomes: 75,000+ site visits completed, expansion to 7+ cities, 7,500+ buyers served, and a reported ~50% reduction in buyer decision-making time, alongside the retention lift from 15% to 70% that made the service viable to grow.',
       ],
       blocks: [
         {
           type: 'figure',
           src: A.impactPhoto,
-          alt: 'Impact summary — scale and outcomes',
+          alt: 'Impact summary, scale and outcomes',
+          grayscale: true,
         },
         {
           type: 'figure',
           src: A.impactSecondary,
           alt: 'Service growth and buyer outcomes',
+          grayscale: true,
         },
       ],
     },

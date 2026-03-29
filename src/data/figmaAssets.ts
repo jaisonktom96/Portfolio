@@ -1,10 +1,7 @@
-/** Figma MCP asset URLs (refresh from Figma if expired ~7 days). File: Portfolio — 5BXKUo563G7chsvPVxTpxy */
+/** Figma MCP asset URLs (refresh from Figma if expired ~7 days). File: Portfolio, 5BXKUo563G7chsvPVxTpxy */
 
 export const FIGMA_FILE =
   'https://www.figma.com/design/5BXKUo563G7chsvPVxTpxy/Portfolio'
-
-export const figmaHeroBg =
-  'https://www.figma.com/api/mcp/asset/7c30b930-7e03-47b1-847b-555cde8e3a27'
 
 export const figmaLockIcon =
   'https://www.figma.com/api/mcp/asset/58a43951-fa28-4d25-80ec-8fbdaa9aae15'

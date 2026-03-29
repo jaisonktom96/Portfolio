@@ -1,8 +1,9 @@
 import { Fragment, useEffect, useMemo } from 'react'
 import { createPortal } from 'react-dom'
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import { CaseStudyBlocks } from '../components/CaseStudyBlocks'
-import { CONTACT_EMAIL, CONTENT_REVISION, getCaseStudyBySlug } from '../data/content'
+import { SuggestedWorkCards } from '../components/SuggestedWorkCards'
+import { CONTENT_REVISION, getCaseStudyBySlug } from '../data/content'
 import {
   useScrollProgress,
   useActiveSection,
@@ -18,10 +19,10 @@ export function CaseStudyPage() {
 
   useEffect(() => {
     document.title = study
-      ? `${study.title} — Jaison Thomas`
-      : 'Not found — Jaison Thomas'
+      ? `${study.title}, Jaison Thomas`
+      : 'Not found, Jaison Thomas'
     return () => {
-      document.title = 'Jaison Thomas — Portfolio'
+      document.title = 'Jaison Thomas, Portfolio'
     }
   }, [study])
 
@@ -93,10 +94,10 @@ function CaseStudyContent({ study }: { study: NonNullable<ReturnType<typeof getC
     if (!ogTitle) {
       const m = document.createElement('meta')
       m.setAttribute('property', 'og:title')
-      m.content = `${study.title} — Jaison Thomas`
+      m.content = `${study.title}, Jaison Thomas`
       document.head.appendChild(m)
     } else {
-      ogTitle.setAttribute('content', `${study.title} — Jaison Thomas`)
+      ogTitle.setAttribute('content', `${study.title}, Jaison Thomas`)
     }
     if (!ogDesc) {
       const m = document.createElement('meta')
@@ -147,14 +148,6 @@ function CaseStudyContent({ study }: { study: NonNullable<ReturnType<typeof getC
           <div className="cs-main">
             {/* Hero (no TOC) */}
             <header className="cs-hero">
-              <nav className="cs-breadcrumb" aria-label="Breadcrumb">
-                <Link to="/">Home</Link>
-                <span aria-hidden="true"> / </span>
-                <Link to="/#work">Work</Link>
-                <span aria-hidden="true"> / </span>
-                <span>{study.title}</span>
-              </nav>
-
               {study.tag ? <span className="cs-eyebrow">{study.tag}</span> : null}
               <h1 className="cs-title">{study.title}</h1>
               <p className="cs-subtitle">{study.description}</p>
@@ -244,6 +237,9 @@ function CaseStudyContent({ study }: { study: NonNullable<ReturnType<typeof getC
                   {(sec.paragraphs ?? []).map((para, j) => (
                     <p key={`${sec.title}-p-${j}`} className="cs-prose">{para}</p>
                   ))}
+                  {sec.blocksBeforeBullets && sec.blocks && sec.blocks.length > 0 ? (
+                    <CaseStudyBlocks blocks={sec.blocks} />
+                  ) : null}
                   {sec.bullets && sec.bullets.length > 0 ? (
                     <ul className="cs-list">
                       {sec.bullets.map((item) => (
@@ -254,7 +250,7 @@ function CaseStudyContent({ study }: { study: NonNullable<ReturnType<typeof getC
                   {sec.title === 'Project Overview' || sec.title === 'MoEngage Flow Analytics'
                     ? keyOutcomes
                     : null}
-                  {sec.blocks && sec.blocks.length > 0 ? (
+                  {!sec.blocksBeforeBullets && sec.blocks && sec.blocks.length > 0 ? (
                     <CaseStudyBlocks blocks={sec.blocks} />
                   ) : null}
                 </section>
@@ -262,38 +258,7 @@ function CaseStudyContent({ study }: { study: NonNullable<ReturnType<typeof getC
               </Fragment>
             ))}
 
-            {/* Footer links */}
-            {study.figmaDesignUrl || study.referenceUrl ? (
-              <div className="cs-footer-links">
-                {study.figmaDesignUrl ? (
-                  <a href={study.figmaDesignUrl} className="cs-btn" target="_blank" rel="noreferrer">
-                    Open in Figma
-                  </a>
-                ) : null}
-                {study.referenceUrl ? (
-                  <a href={study.referenceUrl} className="cs-btn cs-btn--outline" target="_blank" rel="noreferrer">
-                    {study.referenceLabel ?? 'External write-up'}
-                  </a>
-                ) : null}
-              </div>
-            ) : null}
-
-            {/* CTA Section */}
-            <section className="cs-cta-section">
-              <h2 className="cs-cta-heading">Interested in working together?</h2>
-              <p className="cs-cta-body">
-                I am always open to discussing product design, research partnerships, or new opportunities.
-              </p>
-              <a className="cs-cta-btn" href={`mailto:${CONTACT_EMAIL}`}>
-                Get in touch
-              </a>
-            </section>
-
-            <div className="cs-back">
-              <Link className="cs-back-link" to="/#work">
-                ← Back to all work
-              </Link>
-            </div>
+            <SuggestedWorkCards excludeId={study.id} />
           </div>
         </div>
       </main>

@@ -17,7 +17,7 @@
   }
 }
 
-/* Only in import.meta.env.DEV — proves which JS bundle is executing */
+/* Only in import.meta.env.DEV, proves which JS bundle is executing */
 .dev-build-banner {
   flex-shrink: 0;
   display: flex;
@@ -47,6 +47,14 @@
   flex: 1 1 100%;
   opacity: 0.85;
   font-weight: 500;
+}
+
+.dev-build-banner__code {
+  font-family: ui-monospace, monospace;
+  font-size: 0.85em;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.08);
 }
 
 .skip-link {
@@ -151,7 +159,7 @@ a.work-card {
 }
 
 /* ═══════════════════════════════════════════════════════
-   CASE STUDY PAGE — Rachel How–inspired, dark theme
+   CASE STUDY PAGE, Rachel How–inspired, dark theme
    ═══════════════════════════════════════════════════════ */
 
 /* ── Reading progress bar ── */
@@ -171,7 +179,7 @@ a.work-card {
 }
 
 .cs {
-  padding: 2rem 1.5rem 0;
+  padding: 120px 1.5rem 0;
   max-width: none;
   margin: 0 auto;
 }
@@ -212,27 +220,6 @@ a.work-card {
 .cs-main {
   min-width: 0;
   width: 100%;
-}
-
-/* ── Breadcrumb ── */
-
-.cs-breadcrumb {
-  font-size: 0.8125rem;
-  color: var(--muted);
-  margin-bottom: 3rem;
-}
-
-.cs-breadcrumb a {
-  color: var(--text);
-  text-decoration: none;
-}
-
-.cs-breadcrumb a:hover {
-  color: var(--accent);
-}
-
-.cs-breadcrumb span:last-child {
-  color: var(--muted);
 }
 
 /* ── Hero ── */
@@ -343,6 +330,11 @@ a.work-card {
   clip-path: inset(0.5% 0);
 }
 
+/* Hero art, rounded image corners (matches Figma / browser preview) */
+.cs-phone-frame--hero .cs-phone-frame-img {
+  border-radius: 9px;
+}
+
 @media (max-width: 640px) {
   .cs-phone-frame--hero {
     width: clamp(130px, 40vw, 170px);
@@ -441,8 +433,8 @@ a.work-card {
   white-space: normal;
 }
 
-/* Only hide TOC on small phones — at 1024px the sidebar was hidden in narrow IDE / split previews */
-@media (max-width: 640px) {
+/* Hide TOC at tablet width and below (incl. ~800–1000px IDE split / Simple Browser); full-width desktop shows it when reveal logic allows */
+@media (max-width: 1024px) {
   .cs-sidebar {
     display: none;
   }
@@ -577,6 +569,131 @@ a.work-card {
   color: var(--accent);
 }
 
+/* ── Suggested work (case study bottom), compact rows ── */
+
+.cs-more-work {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  max-width: 1060px;
+}
+
+.cs-more-work-heading {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+.cs-more-work-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.cs-suggest-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0.875rem;
+  min-width: 0;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.02);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.18s ease;
+}
+
+.cs-suggest-card:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.cs-suggest-card-thumb {
+  position: relative;
+  flex: 0 0 88px;
+  width: 88px;
+  height: 72px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.35);
+  align-self: center;
+}
+
+.cs-suggest-card-thumb:not(.cs-suggest-card-thumb--empty)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(0, 0, 0, 0.42);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.22s ease;
+}
+
+.cs-suggest-card:hover .cs-suggest-card-thumb:not(.cs-suggest-card-thumb--empty)::after,
+.cs-suggest-card:focus-visible .cs-suggest-card-thumb:not(.cs-suggest-card-thumb--empty)::after {
+  opacity: 0;
+}
+
+.cs-suggest-card-thumb--empty {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.cs-suggest-card-thumb img {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top;
+}
+
+.cs-suggest-card-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.cs-suggest-card-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--text-strong);
+  letter-spacing: -0.01em;
+}
+
+.cs-suggest-card-meta {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+@media (min-width: 640px) {
+  .cs-suggest-card-thumb {
+    flex-basis: 104px;
+    width: 104px;
+    height: 80px;
+  }
+}
+
 /* ── Footer links ── */
 
 .cs-footer-links {
@@ -618,24 +735,8 @@ a.work-card {
   filter: none;
 }
 
-.cs-back {
-  padding: 0 0 2rem;
-}
-
-.cs-back-link {
-  font-weight: 600;
-  font-size: 0.9375rem;
-  text-decoration: none;
-  color: var(--text);
-  transition: color 0.15s;
-}
-
-.cs-back-link:hover {
-  color: var(--accent);
-}
-
 /* ═══════════════════════════════════════════════════════
-   BLOCKS — rich content blocks inside sections
+   BLOCKS, rich content blocks inside sections
    ═══════════════════════════════════════════════════════ */
 
 .case-blocks {
@@ -1098,6 +1199,51 @@ a.work-card {
   cursor: zoom-in;
 }
 
+.case-link-list {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.case-link-list-title {
+  margin: 0 0 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.case-link-list-intro {
+  margin: 0 0 0.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.case-link-list-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.case-link-list-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+}
+
+.case-link-list-link:hover {
+  border-bottom-color: var(--accent-line);
+}
+
 /* ═══════════════════════════════════════════════════════
    SCROLL REVEAL ANIMATIONS
    ═══════════════════════════════════════════════════════ */
@@ -1106,7 +1252,7 @@ a.work-card {
 .cs-intro,
 .cs-metric,
 .cs-hero-art,
-.cs-cta-section,
+.cs-more-work,
 .case-blocks > * {
   opacity: 0;
   transform: translateY(24px);
@@ -1117,7 +1263,7 @@ a.work-card {
 .cs-intro.in-view,
 .cs-metric.in-view,
 .cs-hero-art.in-view,
-.cs-cta-section.in-view,
+.cs-more-work.in-view,
 .case-blocks > .in-view {
   opacity: 1;
   transform: translateY(0);
@@ -1140,6 +1286,11 @@ a.work-card {
 }
 
 .case-figure-img--clickable:hover {
+  filter: brightness(1.06);
+  transform: scale(1.01);
+}
+
+.case-figure-img--clickable.case-media--grayscale:hover {
   filter: grayscale(1) brightness(1.08);
   transform: scale(1.01);
 }
@@ -1171,6 +1322,10 @@ a.work-card {
   cursor: default;
 }
 
+.lightbox-img.case-media--grayscale {
+  filter: grayscale(1);
+}
+
 .lightbox-close {
   position: absolute;
   top: 1.25rem;
@@ -1194,8 +1349,62 @@ a.work-card {
   background: rgba(255, 255, 255, 0.2);
 }
 
+.gallery-lightbox .lightbox-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 101;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.85rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 2px;
+  transition:
+    background 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.gallery-lightbox .lightbox-nav:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.gallery-lightbox .lightbox-nav:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+}
+
+.gallery-lightbox .lightbox-nav--prev {
+  left: max(0.75rem, env(safe-area-inset-left));
+}
+
+.gallery-lightbox .lightbox-nav--next {
+  right: max(0.75rem, env(safe-area-inset-right));
+}
+
+.gallery-lightbox .lightbox-counter {
+  position: fixed;
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 101;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 0.08em;
+}
+
 /* ═══════════════════════════════════════════════════════
-   CASE STUDY — FOOTER CTA
+   CASE STUDY, FOOTER CTA
    ═══════════════════════════════════════════════════════ */
 
 .cs-cta-section {
@@ -1622,18 +1831,11 @@ a.work-card {
   }
 }
 
-/* ═══════════════════════════════════════════════════════
-   GLOBAL B&W IMAGE FILTER
-   ═══════════════════════════════════════════════════════ */
-
-img {
+/* Opt-in grayscale for specific case study assets (default: full color) */
+.case-media--grayscale {
   filter: grayscale(1);
 }
 
-.cs-phone-frame-img {
-  filter: none;
-}
-
-.cs-phone-frame-img:hover {
-  filter: none;
+.cs-phone-frame-img.case-media--grayscale {
+  filter: grayscale(1);
 }

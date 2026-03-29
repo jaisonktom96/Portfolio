@@ -9,8 +9,10 @@ const statIconSrc: Record<'user' | 'city' | 'site', string> = {
   site: magicDiaryAssets.iconSite,
 }
 
+type LightboxPayload = { src: string; alt: string; grayscale?: boolean }
+
 export function CaseStudyBlocks({ blocks }: { blocks: CaseStudyBlock[] }) {
-  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null)
+  const [lightbox, setLightbox] = useState<LightboxPayload | null>(null)
 
   return (
     <div className="case-blocks">
@@ -18,7 +20,12 @@ export function CaseStudyBlocks({ blocks }: { blocks: CaseStudyBlock[] }) {
         <CaseStudyBlockView key={`b-${i}`} block={block} onImageClick={setLightbox} />
       ))}
       {lightbox ? (
-        <ImageLightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />
+        <ImageLightbox
+          src={lightbox.src}
+          alt={lightbox.alt}
+          grayscale={lightbox.grayscale}
+          onClose={() => setLightbox(null)}
+        />
       ) : null}
     </div>
   )
@@ -26,17 +33,21 @@ export function CaseStudyBlocks({ blocks }: { blocks: CaseStudyBlock[] }) {
 
 type BlockProps = {
   block: CaseStudyBlock
-  onImageClick: (img: { src: string; alt: string }) => void
+  onImageClick: (img: LightboxPayload) => void
 }
 
 type FigureBlock = Extract<CaseStudyBlock, { type: 'figure' }>
+
+function figureImgClass(grayscale?: boolean): string {
+  return `case-figure-img case-figure-img--clickable${grayscale ? ' case-media--grayscale' : ''}`
+}
 
 function CaseStudyFigureBlock({
   block,
   onImageClick,
 }: {
   block: FigureBlock
-  onImageClick: (img: { src: string; alt: string }) => void
+  onImageClick: (img: LightboxPayload) => void
 }) {
   const crop = block.cropTopPercent
   const r = block.radius ?? 9
@@ -83,12 +94,12 @@ function CaseStudyFigureBlock({
             ref={imgRef}
             src={block.src}
             alt={block.alt}
-            className="case-figure-img case-figure-img--clickable"
+            className={figureImgClass(block.grayscale)}
             style={imgStyle}
             loading="lazy"
             decoding="async"
             onLoad={(e) => applyCropAspect(e.currentTarget)}
-            onClick={() => onImageClick({ src: block.src, alt: block.alt })}
+            onClick={() => onImageClick({ src: block.src, alt: block.alt, grayscale: block.grayscale })}
           />
         </div>
         {block.caption ? (
@@ -104,11 +115,11 @@ function CaseStudyFigureBlock({
       <img
         src={block.src}
         alt={block.alt}
-        className="case-figure-img case-figure-img--clickable"
+        className={figureImgClass(block.grayscale)}
         style={Object.keys(plainStyle).length ? plainStyle : undefined}
         loading="lazy"
         decoding="async"
-        onClick={() => onImageClick({ src: block.src, alt: block.alt })}
+        onClick={() => onImageClick({ src: block.src, alt: block.alt, grayscale: block.grayscale })}
       />
       {block.caption ? (
         <figcaption className="case-figure-caption">{block.caption}</figcaption>
@@ -130,10 +141,12 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
                 <img
                   src={item.src}
                   alt={item.alt}
-                  className="case-figure-img case-figure-img--clickable"
+                  className={figureImgClass(item.grayscale)}
                   loading="lazy"
                   decoding="async"
-                  onClick={() => onImageClick({ src: item.src, alt: item.alt })}
+                  onClick={() =>
+                    onImageClick({ src: item.src, alt: item.alt, grayscale: item.grayscale })
+                  }
                 />
               </div>
             ))}
@@ -190,10 +203,16 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
                 <img
                   src={c.imageSrc}
                   alt={c.imageAlt ?? c.title}
-                  className="case-card-tile-img case-figure-img--clickable"
+                  className={`case-card-tile-img case-figure-img--clickable${c.grayscale ? ' case-media--grayscale' : ''}`}
                   loading="lazy"
                   decoding="async"
-                  onClick={() => onImageClick({ src: c.imageSrc!, alt: c.imageAlt ?? c.title })}
+                  onClick={() =>
+                    onImageClick({
+                      src: c.imageSrc!,
+                      alt: c.imageAlt ?? c.title,
+                      grayscale: c.grayscale,
+                    })
+                  }
                 />
               ) : null}
               <h3 className="case-card-tile-title">{c.title}</h3>
@@ -249,10 +268,10 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
               <img
                 src={p.imageSrc}
                 alt={p.alt}
-                className="case-persona-img case-figure-img--clickable"
+                className={`case-persona-img case-figure-img--clickable${p.grayscale ? ' case-media--grayscale' : ''}`}
                 loading="lazy"
                 decoding="async"
-                onClick={() => onImageClick({ src: p.imageSrc, alt: p.alt })}
+                onClick={() => onImageClick({ src: p.imageSrc, alt: p.alt, grayscale: p.grayscale })}
               />
               <figcaption className="case-persona-caption">{p.name}</figcaption>
             </figure>
@@ -271,10 +290,16 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
               <img
                 src={block.before.src}
                 alt={block.before.alt}
-                className="case-before-after-img"
+                className={`case-before-after-img${block.before.grayscale ? ' case-media--grayscale' : ''}`}
                 loading="lazy"
                 decoding="async"
-                onClick={() => onImageClick({ src: block.before.src, alt: block.before.alt })}
+                onClick={() =>
+                  onImageClick({
+                    src: block.before.src,
+                    alt: block.before.alt,
+                    grayscale: block.before.grayscale,
+                  })
+                }
               />
             </figure>
             <figure className="case-before-after-item">
@@ -284,10 +309,16 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
               <img
                 src={block.after.src}
                 alt={block.after.alt}
-                className="case-before-after-img"
+                className={`case-before-after-img${block.after.grayscale ? ' case-media--grayscale' : ''}`}
                 loading="lazy"
                 decoding="async"
-                onClick={() => onImageClick({ src: block.after.src, alt: block.after.alt })}
+                onClick={() =>
+                  onImageClick({
+                    src: block.after.src,
+                    alt: block.after.alt,
+                    grayscale: block.after.grayscale,
+                  })
+                }
               />
             </figure>
           </div>
@@ -301,10 +332,32 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
           <div className="case-solution-feature-phones">
             {block.images.map((im) => (
               <div key={im.src} className="cs-phone-frame">
-                <img src={im.src} alt={im.alt} className="cs-phone-frame-img" loading="lazy" decoding="async" />
+                <img
+                  src={im.src}
+                  alt={im.alt}
+                  className={`cs-phone-frame-img${im.grayscale ? ' case-media--grayscale' : ''}`}
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             ))}
           </div>
+        </div>
+      )
+    case 'linkList':
+      return (
+        <div className="case-link-list">
+          {block.title ? <h3 className="case-link-list-title">{block.title}</h3> : null}
+          {block.intro ? <p className="case-link-list-intro">{block.intro}</p> : null}
+          <ul className="case-link-list-items">
+            {block.items.map((item) => (
+              <li key={item.href}>
+                <a href={item.href} className="case-link-list-link" target="_blank" rel="noreferrer">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       )
     default:
