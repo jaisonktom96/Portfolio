@@ -1,0 +1,432 @@
+/* Home page — aligned to Figma Portfolio (node 2607:3036 / 1920w light) */
+
+.figma-home {
+  background: #0d0d0d;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.figma-hero {
+  position: relative;
+  min-height: min(82vh, 900px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 1.5rem 4rem;
+}
+
+.figma-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  opacity: 0.95;
+}
+
+.figma-hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 13, 13, 0.15) 0%,
+    rgba(13, 13, 13, 0.55) 100%
+  );
+}
+
+.figma-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 58rem;
+}
+
+.figma-hero-greeting {
+  margin: 0 0 0.75rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.02em;
+}
+
+.figma-hero-title {
+  margin: 0 0 1.25rem;
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.figma-hero-intro {
+  margin: 0 auto;
+  max-width: 42ch;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.125rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}
+
+.figma-work-meta {
+  margin: -0.25rem 0 0.5rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.02em;
+}
+
+.figma-home .about-text {
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.65;
+  margin: 0 0 1rem;
+}
+
+.figma-home .about-figma {
+  margin: 1.25rem 0 0;
+  font-size: 0.9rem;
+}
+
+.figma-home .about-figma-link {
+  font-weight: 600;
+}
+
+.figma-home .writings-item {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.figma-home .writings-item-title {
+  color: #fff;
+}
+
+.figma-home .writings-item-summary {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.figma-home .writings-intro {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.figma-works {
+  padding: 2rem 1.5rem 4rem;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+.figma-works-head {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.figma-works-head h2 {
+  margin: 0;
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.figma-works-line {
+  flex: 1;
+  height: 2px;
+  background: rgba(153, 153, 153, 0.2);
+  min-width: 2rem;
+}
+
+.figma-works-eyebrow {
+  margin: 0 0 0.5rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.95rem;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.figma-work-card {
+  display: block;
+  position: relative;
+  margin-bottom: 2.5rem;
+  padding: 1.875rem;
+  border-radius: 16px;
+  border: 1px solid #3b3b3b;
+  background: #0f0f0f;
+  box-shadow:
+    16px 24px 20px 8px rgba(0, 0, 0, 0.4),
+    inset 0 2px 0 0 rgba(184, 180, 180, 0.08);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.figma-work-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.figma-work-card:last-of-type {
+  margin-bottom: 0;
+}
+
+.figma-work-lock {
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.figma-work-step {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  min-width: 34px;
+  height: 38px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  background: #0d0d0d;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #fff;
+  box-shadow: inset 0 2px 0 0 rgba(184, 180, 180, 0.14);
+}
+
+.figma-work-card h3 {
+  margin: 0 0 0.5rem;
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.figma-work-desc {
+  margin: 0 0 1.25rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 56rem;
+}
+
+.figma-work-rule {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 0 1.25rem;
+  border: none;
+}
+
+.figma-work-shots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  min-height: 200px;
+  align-items: start;
+}
+
+.figma-work-shots img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+  max-height: 320px;
+}
+
+.figma-work-shots--single {
+  grid-template-columns: 1fr;
+}
+
+.figma-work-shots--single img {
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.figma-work-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.figma-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0f0f0f;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.figma-read {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+.figma-work-card:hover .figma-read {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.figma-testimonials-wrap {
+  background: #080808;
+  padding: 4rem 1.5rem;
+  margin-top: 2rem;
+}
+
+.figma-testimonials-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.figma-testimonials-head {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.figma-testimonials-head h2 {
+  margin: 0;
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  color: #fff;
+}
+
+.figma-testimonial-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.figma-t-card {
+  background: #111;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow:
+    inset 0 1px 1px -1px #999,
+    inset 0 -3px 2px -1px #000;
+}
+
+.figma-t-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 1rem;
+}
+
+.figma-t-stars img {
+  width: 20px;
+  height: 20px;
+}
+
+.figma-t-quote {
+  margin: 0 0 1rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: #999;
+}
+
+.figma-t-name {
+  margin: 0;
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.figma-section {
+  padding: 3.5rem 1.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.figma-section h2 {
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  font-size: 1.75rem;
+  color: #fff;
+}
+
+.figma-section p,
+.figma-section .writings-list {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+@media (max-width: 640px) {
+  .figma-work-shots {
+    grid-template-columns: 1fr;
+  }
+
+  .figma-work-step {
+    position: static;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Figma-aligned header / footer (see Layout) */
+.site-header--figma {
+  background: #121111;
+  box-shadow: 0 8px 16px rgba(45, 45, 45, 0.3);
+  border-bottom: none;
+}
+
+.wordmark--figma {
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: 0;
+}
+
+.site-nav--figma a {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.975rem;
+}
+
+.site-nav--figma a:first-child {
+  font-weight: 700;
+}
+
+.site-footer--figma {
+  border-top-color: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.site-footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  width: 100%;
+}
+
+.site-footer-revision {
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.65;
+  color: rgba(255, 255, 255, 0.5);
+}

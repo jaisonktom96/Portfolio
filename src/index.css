@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@100;400;500;600;700&family=Josefin+Sans:wght@400;500&family=Plus+Jakarta+Sans:wght@600&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg0: #0d0d0d;
+  --bg1: #0c0e14;
+  --text: #b8bcc8;
+  --text-strong: #e8eaf0;
+  --muted: #6b7280;
+  --accent: #5b7cf7;
+  --accent-dim: rgba(67, 97, 238, 0.12);
+  --accent-line: rgba(67, 97, 238, 0.35);
+  --gradient: linear-gradient(135deg, #6366f1, #3b82f6);
+  --border: rgba(255, 255, 255, 0.06);
+  --card: rgba(255, 255, 255, 0.03);
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Josefin Sans', Georgia, serif;
+  --radius: 14px;
+  --max: 1120px;
+  --header-h: 72px;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  /* Sticky site header + in-page anchors */
+  scroll-padding-top: calc(var(--header-h) + 12px);
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg0);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: #93b4ff;
+}
+
+code {
+  font-family: ui-monospace, 'Cascadia Code', monospace;
+  font-size: 0.9em;
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-strong);
+}
