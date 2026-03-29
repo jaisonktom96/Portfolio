@@ -74,6 +74,40 @@ export function useTocReveal(triggerSectionId: string | null, resetKey: string):
   return revealed
 }
 
+/**
+ * True while the case study hero is still in the upper viewport ("viewing hero").
+ * Used to fade the TOC out when the user scrolls back up to the hero.
+ */
+export function useHeroHidesCaseStudyToc(heroSelector: string, resetKey: string): boolean {
+  const [heroHidesToc, setHeroHidesToc] = useState(true)
+
+  useEffect(() => {
+    setHeroHidesToc(true)
+
+    const check = () => {
+      const hero = document.querySelector(heroSelector)
+      if (!hero) {
+        setHeroHidesToc(false)
+        return
+      }
+      const rect = hero.getBoundingClientRect()
+      const vh = window.innerHeight
+      const inHero = rect.bottom > 48 && rect.top < vh * 0.72
+      setHeroHidesToc(inHero)
+    }
+
+    check()
+    window.addEventListener('scroll', check, { passive: true })
+    window.addEventListener('resize', check, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', check)
+      window.removeEventListener('resize', check)
+    }
+  }, [heroSelector, resetKey])
+
+  return heroHidesToc
+}
+
 export function useActiveSection(sectionIds: string[]): string {
   const [active, setActive] = useState('')
   const ids = useMemo(() => sectionIds, [sectionIds.join(',')])

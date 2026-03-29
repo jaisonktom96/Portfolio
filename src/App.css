@@ -176,13 +176,6 @@ a.work-card {
   margin: 0 auto;
 }
 
-/* Portal mount: zero-height anchor so fixed TOC doesn’t affect main flow */
-.cs-toc-host {
-  height: 0;
-  overflow: visible;
-  line-height: 0;
-}
-
 /* Case study: main column stays centered; TOC is fixed left of the column (no layout shift) */
 .cs-layout {
   position: relative;
@@ -190,16 +183,18 @@ a.work-card {
   margin: 0 auto;
 }
 
-/* Portaled to document.body: fixed to viewport (below site header), never clipped by main */
+/* Portaled to document.body so position:fixed is always viewport-relative (not a transformed main ancestor) */
 .cs-sidebar {
+  --cs-sidebar-gap: 40px; /* min space between TOC and 820px main column */
   position: fixed;
   top: calc(var(--header-h) + 1rem);
+  /* Main column left edge ≈ 50vw - 410px; sidebar is 11rem wide; keep gap ≥ --cs-sidebar-gap */
+  left: max(0.75rem, calc(50vw - 410px - 11rem - var(--cs-sidebar-gap)));
+  right: auto;
   z-index: 9;
   width: 11rem;
   max-width: min(11rem, calc(50vw - 2rem));
   max-height: calc(100svh - var(--header-h) - 1.5rem);
-  /* Sits just left of the centered 820px column (half = 410px) with a small gap */
-  left: max(0.75rem, calc(50vw - 410px - 12rem));
   min-width: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -446,8 +441,8 @@ a.work-card {
   white-space: normal;
 }
 
-/* Narrow viewports: hide sidebar TOC (main column stays readable); revisit if mobile TOC is needed */
-@media (max-width: 1024px) {
+/* Only hide TOC on small phones — at 1024px the sidebar was hidden in narrow IDE / split previews */
+@media (max-width: 640px) {
   .cs-sidebar {
     display: none;
   }

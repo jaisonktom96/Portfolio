@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useMemo, useState } from 'react'
+import { Fragment, useEffect, useMemo } from 'react'
 import { createPortal } from 'react-dom'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { CaseStudyBlocks } from '../components/CaseStudyBlocks'
@@ -9,6 +9,7 @@ import {
   useScrollReveal,
   useReadingTime,
   useTocReveal,
+  useHeroHidesCaseStudyToc,
 } from '../hooks/useCaseStudyEffects'
 
 export function CaseStudyPage() {
@@ -66,6 +67,8 @@ function CaseStudyContent({ study }: { study: NonNullable<ReturnType<typeof getC
   }, [study.sections])
 
   const tocRevealed = useTocReveal(tocRevealId, study.id)
+  const heroHidesToc = useHeroHidesCaseStudyToc('header.cs-hero', study.id)
+  const tocShown = tocRevealed && !heroHidesToc
 
   const hasProjectOverview = study.sections.some(
     (s) => s.title === 'Project Overview' || s.title === 'MoEngage Flow Analytics',
@@ -105,13 +108,11 @@ function CaseStudyContent({ study }: { study: NonNullable<ReturnType<typeof getC
     }
   }, [study])
 
-  const [tocPortalHost, setTocPortalHost] = useState<HTMLElement | null>(null)
-
   const tocSidebar = (
     <aside
-      className={`cs-sidebar${tocRevealed ? ' cs-sidebar--visible' : ''}`}
-      aria-hidden={!tocRevealed}
-      inert={!tocRevealed}
+      className={`cs-sidebar${tocShown ? ' cs-sidebar--visible' : ''}`}
+      aria-hidden={!tocShown}
+      inert={!tocShown}
     >
       <div className="cs-toc-wrap">
         <nav className="cs-toc" aria-label="Jump to section">
@@ -139,9 +140,9 @@ function CaseStudyContent({ study }: { study: NonNullable<ReturnType<typeof getC
         aria-hidden="true"
       />
 
+      {createPortal(tocSidebar, document.body)}
+
       <main id="main" className="cs" data-content-revision={CONTENT_REVISION}>
-        <div ref={setTocPortalHost} className="cs-toc-host" />
-        {tocPortalHost ? createPortal(tocSidebar, tocPortalHost) : null}
         <div className="cs-layout">
           <div className="cs-main">
             {/* Hero (no TOC) */}
