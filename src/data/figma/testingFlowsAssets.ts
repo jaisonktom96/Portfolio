@@ -5,15 +5,11 @@
  */
 export const testingFlowsAssets = {
   heroFlowUi: 'https://www.figma.com/api/mcp/asset/488b9e4d-1a46-445a-8462-5462317eeb5b',
-  omnichannelDiagram: 'https://www.figma.com/api/mcp/asset/9c9ed30f-4484-4b74-a893-efd76e3cd9a9',
-  kickoffWorkspace: 'https://www.figma.com/api/mcp/asset/1ce144db-c837-4a1a-8e56-5f688557ef4d',
-  kickoffScreenOverlay: 'https://www.figma.com/api/mcp/asset/0c70e17a-8aad-4292-b536-ede160618091',
+  /** Local asset: sample journey (Enter → Push → branch → Exit) */
+  omnichannelDiagram: '/case-studies/testing-flows/omnichannel-flow-diagram.png',
   affinityMapping: 'https://www.figma.com/api/mcp/asset/8d8e6156-640c-4160-8d05-5f638dbdabae',
   analysingTicketsPhoto: 'https://www.figma.com/api/mcp/asset/c1a42c1d-52d7-4ad5-8133-a081caabdb99',
   journeyMap: 'https://www.figma.com/api/mcp/asset/3940d4d2-72c4-46ac-bff1-5d8286dc40a6',
-  surveyDonut88: 'https://www.figma.com/api/mcp/asset/638e79cc-f555-400d-a117-24a5bd0d55c6',
-  surveyDonut625: 'https://www.figma.com/api/mcp/asset/7b7d4379-73f5-4a9d-b578-c7016c065b04',
-  surveyDonut65: 'https://www.figma.com/api/mcp/asset/bb6d1ef8-4475-415a-a0ba-5c875b95fa27',
   competitorAnalogyPhoto: 'https://www.figma.com/api/mcp/asset/978eb7d6-fb97-404f-b71d-b291370d27d8',
   competitorEasyEda: 'https://www.figma.com/api/mcp/asset/a32e7251-57ed-42e3-b3c0-4dbea214b1db',
   competitorMatlab: 'https://www.figma.com/api/mcp/asset/f2c61c44-1b5b-41f3-99ca-1d10a85ab1da',

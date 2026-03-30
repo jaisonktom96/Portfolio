@@ -145,7 +145,7 @@ export function useScrollReveal(): void {
     requestAnimationFrame(() => {
       document
         .querySelectorAll(
-          '.cs-section, .cs-intro, .case-blocks > *, .cs-metric, .cs-hero-art, .cs-more-work',
+          '.cs-section, .case-blocks > *, .cs-hero-art, .cs-more-work',
         )
         .forEach((el) => observer.observe(el))
     })
@@ -160,7 +160,9 @@ export function useReadingTime(study: CaseStudyDetail): number {
     words += count(study.summary)
     for (const p of study.context) words += count(p)
     for (const sec of study.sections) {
-      for (const p of sec.paragraphs ?? []) words += count(p)
+      for (const p of sec.paragraphs ?? []) {
+        words += count(typeof p === 'string' ? p : p.text)
+      }
       for (const b of sec.bullets ?? []) words += count(b)
       for (const block of sec.blocks ?? []) {
         if (block.type === 'callout') {

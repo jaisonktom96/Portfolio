@@ -440,84 +440,6 @@ a.work-card {
   }
 }
 
-/* ── Introduction / summary ── */
-
-.cs-intro {
-  padding: 0 0 3.5rem;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 0;
-}
-
-/* Key outcomes embedded in a section (e.g. before first figure in Project Overview) */
-.cs-intro--key-outcomes {
-  padding-top: 0.25rem;
-  padding-bottom: 2rem;
-}
-
-.cs-intro-heading {
-  margin: 0 0 1.25rem;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.5rem;
-  color: var(--text-strong);
-}
-
-.cs-intro-body {
-  margin: 0 0 2.5rem;
-  font-size: 1.0625rem;
-  line-height: 1.75;
-  color: var(--text);
-  max-width: 68ch;
-}
-
-/* ── Key metrics ── */
-
-.cs-metrics {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  border-radius: 9px;
-}
-
-@media (min-width: 560px) {
-  .cs-metrics {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.cs-metric {
-  margin: 0;
-  padding: 2rem 1.75rem;
-  border-radius: 16px;
-  border: 1px solid rgba(67, 97, 238, 0.15);
-  background: linear-gradient(135deg, rgba(67, 97, 238, 0.06) 0%, rgba(67, 97, 238, 0.02) 100%);
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  text-align: center;
-}
-
-.cs-metric-value {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 700;
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-}
-
-.cs-metric-label {
-  font-size: 0.85rem;
-  color: var(--muted);
-  line-height: 1.45;
-}
-
 /* ── Sections ── */
 
 .cs-section {
@@ -902,6 +824,53 @@ a.work-card {
   grid-template-columns: repeat(2, 1fr);
 }
 
+/* Testing of Flows: survey stats row (three-up gradient metric tiles) */
+.case-card-row--metrics {
+  grid-template-columns: 1fr;
+  border-radius: 10px;
+}
+
+@media (min-width: 560px) {
+  .case-card-row--metrics {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.case-card-row--metrics .case-card-tile--metrics {
+  padding: 2rem 1.75rem;
+  border-radius: 16px;
+  border: 1px solid rgba(67, 97, 238, 0.15);
+  background: linear-gradient(135deg, rgba(67, 97, 238, 0.06) 0%, rgba(67, 97, 238, 0.02) 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: center;
+  align-items: center;
+}
+
+.case-card-row--metrics .case-card-tile--metrics:hover {
+  transform: none;
+  border-color: rgba(67, 97, 238, 0.28);
+}
+
+.case-card-row--metrics .case-card-tile--metrics .case-card-tile-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.case-card-row--metrics .case-card-tile--metrics .case-card-tile-body {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
 .case-card-tile {
   padding: 1.75rem 1.5rem;
   border-radius: 16px;
@@ -1249,8 +1218,6 @@ a.work-card {
    ═══════════════════════════════════════════════════════ */
 
 .cs-section,
-.cs-intro,
-.cs-metric,
 .cs-hero-art,
 .cs-more-work,
 .case-blocks > * {
@@ -1260,17 +1227,12 @@ a.work-card {
 }
 
 .cs-section.in-view,
-.cs-intro.in-view,
-.cs-metric.in-view,
 .cs-hero-art.in-view,
 .cs-more-work.in-view,
 .case-blocks > .in-view {
   opacity: 1;
   transform: translateY(0);
 }
-
-.cs-metric:nth-child(2) { transition-delay: 0.08s; }
-.cs-metric:nth-child(3) { transition-delay: 0.16s; }
 
 .case-blocks > *:nth-child(2) { transition-delay: 0.06s; }
 .case-blocks > *:nth-child(3) { transition-delay: 0.12s; }

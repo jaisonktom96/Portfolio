@@ -71,23 +71,6 @@ function CaseStudyContent({ study }: { study: NonNullable<ReturnType<typeof getC
   const heroHidesToc = useHeroHidesCaseStudyToc('header.cs-hero', study.id)
   const tocShown = tocRevealed && !heroHidesToc
 
-  const hasProjectOverview = study.sections.some(
-    (s) => s.title === 'Project Overview' || s.title === 'MoEngage Flow Analytics',
-  )
-
-  const keyOutcomes = (
-    <div className="cs-intro cs-intro--key-outcomes">
-      <ul className="cs-metrics" aria-label="Key outcomes">
-        {study.keyMetrics.map((m) => (
-          <li key={m.label} className="cs-metric">
-            <span className="cs-metric-value">{m.value}</span>
-            <span className="cs-metric-label">{m.label}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-
   useEffect(() => {
     const ogTitle = document.querySelector('meta[property="og:title"]')
     const ogDesc = document.querySelector('meta[property="og:description"]')
@@ -234,9 +217,19 @@ function CaseStudyContent({ study }: { study: NonNullable<ReturnType<typeof getC
               <Fragment key={sec.title}>
                 <section id={`section-${i}`} className="cs-section">
                   <h2 className="cs-section-title">{sec.title}</h2>
-                  {(sec.paragraphs ?? []).map((para, j) => (
-                    <p key={`${sec.title}-p-${j}`} className="cs-prose">{para}</p>
-                  ))}
+                  {(sec.paragraphs ?? []).map((para, j) => {
+                    const text = typeof para === 'string' ? para : para.text
+                    const proseClass =
+                      typeof para === 'string' ? undefined : para.className
+                    return (
+                      <p
+                        key={`${sec.title}-p-${j}`}
+                        className={['cs-prose', proseClass].filter(Boolean).join(' ')}
+                      >
+                        {text}
+                      </p>
+                    )
+                  })}
                   {sec.blocksBeforeBullets && sec.blocks && sec.blocks.length > 0 ? (
                     <CaseStudyBlocks blocks={sec.blocks} />
                   ) : null}
@@ -247,14 +240,10 @@ function CaseStudyContent({ study }: { study: NonNullable<ReturnType<typeof getC
                       ))}
                     </ul>
                   ) : null}
-                  {sec.title === 'Project Overview' || sec.title === 'MoEngage Flow Analytics'
-                    ? keyOutcomes
-                    : null}
                   {!sec.blocksBeforeBullets && sec.blocks && sec.blocks.length > 0 ? (
                     <CaseStudyBlocks blocks={sec.blocks} />
                   ) : null}
                 </section>
-                {!hasProjectOverview && i === 0 ? keyOutcomes : null}
               </Fragment>
             ))}
 

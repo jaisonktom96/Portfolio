@@ -196,9 +196,14 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
       )
     case 'cardRow':
       return (
-        <div className="case-card-row">
+        <div
+          className={`case-card-row${block.variant === 'metrics' ? ' case-card-row--metrics' : ''}`}
+        >
           {block.cards.map((c) => (
-            <div key={c.title} className="case-card-tile">
+            <div
+              key={c.title}
+              className={`case-card-tile${block.variant === 'metrics' ? ' case-card-tile--metrics' : ''}`}
+            >
               {c.imageSrc ? (
                 <img
                   src={c.imageSrc}

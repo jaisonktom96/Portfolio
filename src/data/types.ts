@@ -37,6 +37,8 @@ export type CaseStudyBlock =
   | {
       type: 'cardRow'
       cards: { title: string; body: string; imageSrc?: string; imageAlt?: string; grayscale?: boolean }[]
+      /** Three-up gradient metric tiles (survey stats row) */
+      variant?: 'metrics'
     }
   | {
       type: 'researchCardRow'
@@ -82,9 +84,12 @@ export type CaseStudyMeta = {
   team?: string
 }
 
+/** Plain string or `{ text, className }` for styled lead paragraphs (e.g. rounded panel). */
+export type CaseStudyParagraph = string | { text: string; className?: string }
+
 export type CaseStudySection = {
   title: string
-  paragraphs?: string[]
+  paragraphs?: CaseStudyParagraph[]
   bullets?: string[]
   blocks?: CaseStudyBlock[]
   /** When true, render blocks after paragraphs and before bullets (default: bullets before blocks). */

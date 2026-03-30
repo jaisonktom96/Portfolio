@@ -24,7 +24,7 @@ export const testingFlows: CaseStudyDetail = {
     'MoEngage Flows lets marketers orchestrate omnichannel journeys. Marketers need to validate logic before publish, but manual self-testing breaks down for heavy events (KYC, purchase). I led research synthesis, problem validation, and UI for in-product testing: test users, simulated events, stage-by-stage checks, and readable results so teams could ship journeys with confidence.',
   context: [],
   role:
-    'Analysing research data, Secondary research, Problem validation, Problem definition, UI design, Prototyping, Developer Handoff',
+    'Analysing research data, Secondary research, Problem validation, Problem definition, UI design, Prototyping, Usability Testing, Developer Handoff',
   meta: {
     industry: 'B2B SaaS, customer engagement / journey orchestration (MoEngage)',
     timeline: '3 months',
@@ -32,7 +32,7 @@ export const testingFlows: CaseStudyDetail = {
       'End-to-end testing experience: validation research, competitor analogies, flows for stage-wise and full-flow testing, usability iterations',
     collaboration:
       'Partnership with PM, engineering (execution semantics, traces), customer success, and design systems',
-    team: 'Myself, Senior Product Designer, PM and Developer',
+    team: 'Myself and Product Manager',
   },
   keyMetrics: [
     { value: '88%', label: 'Marketers test flows before publishing (survey)' },
@@ -43,81 +43,38 @@ export const testingFlows: CaseStudyDetail = {
     {
       title: 'Project Overview',
       paragraphs: [
-        'MoEngage Flows is a cross-platform omnichannel marketing tool (with channels like email, sms, push etc) that helps marketers provide a comprehensive customer experience for their end users and drive customer engagement. A flow is essentially a strategy with a set of communications (email, sms, push etc) that will be sent according to the behaviour/attribute of the end user.',
-        'With Flows, marketers can have an omnichannel marketing strategy instead of using multiple channels disjointly.',
+        'MoEngage Flows allows marketers to create automated, multi step communication strategies across multiple channels like Email, SMS, Push etc. Once a marketer finishes configuring a complex automation structure, they want to ensure the logic they have built actually functions as intended, before deploying to thousands of users. Without a dedicated solution, they rely on manually performing the events and ensuring that the automation setup works.',
       ],
       blocks: [
         {
           type: 'figure',
           src: A.omnichannelDiagram,
-          alt: 'Omnichannel Flows diagram, analyse, engage, and measure across channels',
+          alt: 'MoEngage Flow diagram: entry, Push 1, branch on push received, Yes/No paths to Exit or Push 2',
         },
       ],
     },
     {
       title: 'Kick off',
       paragraphs: [
-        'For a marketer, every single interaction with their customer is highly important, as conversion can happen at any step. It is also important not to spam their customers with repeated communications. Hence marketers are very keen on making every interaction right. After configuring a flow, the marketer tests the flow to make sure that everything works perfectly before publishing it.',
-      ],
-      blocks: [
-        {
-          type: 'figureRow',
-          items: [
-            { src: A.kickoffWorkspace, alt: 'Marketer testing a flow on laptop in a café setting' },
-            { src: A.kickoffScreenOverlay, alt: 'Flow builder UI overlay, test journey on canvas' },
-          ],
-        },
-      ],
-    },
-    {
-      title: 'Limits of manual testing',
-      paragraphs: [
-        'Many marketers were testing their flows manually, by entering themselves into the flow and performing events (eg. Opening App, Adding to cart etc). But performing events like completing KYC, purchasing a product etc was not practical.',
-      ],
-    },
-    {
-      title: 'Problem Validation',
-      paragraphs: [
-        'We validated the problem using multiple tools, such as Pendo upvotes, Customer tickets and Primary research.',
+        'I was tasked with designing a native testing feature to solve this. But in order to get a comprehensive view, I began my design process by analyzing the work the Product Manager had done to validate the problem. Product manager had validated the problem using Pendo upvotes (43 upvotes from customers with total MRR of $1,29,239), and Customer tickets (205).',
+        'I then co-ordinated with our customer success managers to float a survey and got the following insights.',
       ],
       blocks: [
         {
           type: 'cardRow',
-          cards: [
-            {
-              title: 'Pendo Upvotes',
-              body: '43 upvotes from clients with total MRR of $1,29,239 · PM',
-            },
-            {
-              title: 'Surveys & Interviews',
-              body: '8 Marketers; 11 Customer Success Managers handling 51 Clients · PM & Design',
-            },
-            {
-              title: 'Customer Tickets',
-              body: '200+ Customer Tickets · Design',
-            },
-          ],
-        },
-        {
-          type: 'cardRow',
+          variant: 'metrics',
           cards: [
             {
               title: '88%',
               body: 'marketers test flows before publishing',
-              imageSrc: A.surveyDonut88,
-              imageAlt: 'Survey, 88% of marketers test flows before publishing',
             },
             {
               title: '62.5%',
               body: 'marketers test all stages while remaining 37.5% test just communications',
-              imageSrc: A.surveyDonut625,
-              imageAlt: 'Survey, 62.5% test all stages',
             },
             {
               title: '65%',
               body: 'marketers spend more than 60 mins in testing',
-              imageSrc: A.surveyDonut65,
-              imageAlt: 'Survey, 65% spend over 60 minutes testing',
             },
           ],
         },

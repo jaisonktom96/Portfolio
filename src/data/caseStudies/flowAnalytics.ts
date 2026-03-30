@@ -23,14 +23,14 @@ export const flowAnalytics: CaseStudyDetail = {
     'MoEngage Flows is an omni-channel journey builder: once a flow is live, marketers need analytics that match how they think about journeys, not just channel stats. I led research synthesis, problem validation, and UI for a Flow Analytics revamp: clearer performance, comparisons, retention, and cohort views so teams could get to answers without exporting to spreadsheets or third-party tools.',
   context: [],
   role:
-    'Analysing research data, Secondary research, Problem validation, Problem definition, UI design, Prototyping, Developer Handoff',
+    'Analysing research data, Secondary research, Problem validation, Problem definition, UI design, Prototyping, Usability Testing, Developer Handoff',
   meta: {
     industry: 'B2B SaaS, customer engagement (MoEngage)',
     timeline: '2 months',
     scope:
       'End-to-end Flow Analytics experience: research, ticket mapping, ideation, and high-fidelity dashboard UX',
     collaboration: 'Senior Product Designer, PM, and engineering partners',
-    team: 'Myself, Senior Product Designer, PM and Developer',
+    team: 'Myself and Product Manager',
   },
   keyMetrics: [
     { value: '2.5/5', label: 'Internal survey rating (analytics)' },
