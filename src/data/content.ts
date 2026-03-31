@@ -23,7 +23,7 @@ export { caseStudies }
 export const CONTACT_EMAIL = 'jaisonktom@gmail.com'
 
 /** Bump when case study copy changes materially (helps verify the loaded bundle in devtools). */
-export const CONTENT_REVISION = '2026-03-29-minimalist-hero-dark'
+export const CONTENT_REVISION = '2026-03-31-outside-work-generic-thumbs'
 
 /** Card list on home, same order as case studies */
 export const projects: Project[] = caseStudies.map(
@@ -115,21 +115,18 @@ const ow = (filename: string) => `/outside-work/${filename}` as const
 /** Home, interests beyond day-to-day product work */
 export const outsideWork: OutsideWorkItem[] = [
   {
-    title: 'Organise design competitions',
+    title: 'Organise events and run communities',
     description:
-      'I help run design competitions, clear briefs, fair judging, and critique that actually helps people grow. It keeps me grounded in what “good” means when the stakes are human, not just business.',
+      'I help run two community-led groups for designers. Design FunDays (250+) focuses on bringing people together through offline and online events. Designers who Claude is a 100+ member group for peers who want to explore Claude and Figma together. I also host sessions on Claude Code, Figma MCP, and related topics.',
     images: [
       {
-        src: ow('image-8b5b97c0-41dd-46a0-bee0-f4ea5690523f.png'),
-        alt: 'Dark portfolio UI with testimonial cards',
+        src: ow('design-competition-rooftop-workshop.png'),
+        alt: 'In-person design session on a rooftop patio: presenters at a whiteboard with participants at tables.',
       },
-    ],
-  },
-  {
-    title: 'Organise workshops',
-    description:
-      'I facilitate workshops on research, tools, and collaboration: structured enough to ship outcomes, open enough for messy questions. The goal is always something people can use on Monday.',
-    images: [
+      {
+        src: ow('design-competition-remote-session.png'),
+        alt: 'Remote design session on a video call with participants in a grid.',
+      },
       {
         src: ow('image-f54bcd4d-4f7b-47f6-8812-d6fa752149ff.png'),
         alt: 'Workshop graphic, Claude and Figma MCP session',
@@ -142,19 +139,15 @@ export const outsideWork: OutsideWorkItem[] = [
       'Off-screen I reach for a camera, light, composition, and patience. It sharpens the same instincts I use in product: frame what matters, cut what doesn’t, and know when to wait for the moment.',
     images: [
       {
-        src: ow('image-8b5b97c0-41dd-46a0-bee0-f4ea5690523f.png'),
-        alt: 'Dark portfolio UI with testimonial cards',
-      },
-      {
         src: ow('image-f54bcd4d-4f7b-47f6-8812-d6fa752149ff.png'),
         alt: 'Workshop graphic, Claude and Figma MCP session',
       },
     ],
   },
   {
-    title: 'Guitar',
+    title: 'Music',
     description:
-      'Playing guitar is my reset, patterns, rhythm, and repetition without a roadmap. It’s a reminder that craft is mostly showing up: small sessions that compound into something fluid over time.',
+      'Playing guitar is my reset: patterns, rhythm, and repetition without a roadmap. It is a reminder that craft is mostly showing up, small sessions that compound into something fluid over time.',
     images: [
       {
         src: ow('image-f54bcd4d-4f7b-47f6-8812-d6fa752149ff.png'),
@@ -163,6 +156,17 @@ export const outsideWork: OutsideWorkItem[] = [
       {
         src: ow('image-8b5b97c0-41dd-46a0-bee0-f4ea5690523f.png'),
         alt: 'Dark portfolio UI with testimonial cards',
+      },
+    ],
+  },
+  {
+    title: 'Travel and ride',
+    description:
+      'Travel and long rides pull me away from the screen: new routes, unfamiliar roads, and the quiet focus that comes from moving through space. Whether it is a planned trip or a weekend ride, it is a reminder that direction matters as much as pace, the same instinct I try to bring to product work.',
+    images: [
+      {
+        src: ow('travel-and-ride.svg'),
+        alt: 'Stylized horizon and road',
       },
     ],
   },
