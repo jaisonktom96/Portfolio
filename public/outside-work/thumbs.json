@@ -1,0 +1,53 @@
+{
+  "revision": "2026-03-31-outside-work-title-events",
+  "thumbSets": [
+    {
+      "title": "Organise events and run communities",
+      "images": [
+        {
+          "src": "/outside-work/design-fundays-initiative.png",
+          "alt": "Design FunDays initiative: community overview with offline and online event imagery."
+        },
+        {
+          "src": "/outside-work/designers-who-claude-about.png",
+          "alt": "Designers who Claude: experimenting with Claude and Figma workflow."
+        },
+        {
+          "src": "/outside-work/claude-figma-mcp-session.png",
+          "alt": "Session on Claude Code, Figma MCP, and getting started."
+        }
+      ]
+    },
+    {
+      "title": "Photography",
+      "images": [
+        {
+          "src": "/outside-work/image-f54bcd4d-4f7b-47f6-8812-d6fa752149ff.png",
+          "alt": "Workshop graphic, Claude and Figma MCP session"
+        }
+      ]
+    },
+    {
+      "title": "Music",
+      "images": [
+        {
+          "src": "/outside-work/image-f54bcd4d-4f7b-47f6-8812-d6fa752149ff.png",
+          "alt": "Workshop graphic, Claude and Figma MCP session"
+        },
+        {
+          "src": "/outside-work/image-8b5b97c0-41dd-46a0-bee0-f4ea5690523f.png",
+          "alt": "Dark portfolio UI with testimonial cards"
+        }
+      ]
+    },
+    {
+      "title": "Travel and ride",
+      "images": [
+        {
+          "src": "/outside-work/travel-and-ride.svg",
+          "alt": "Stylized horizon and road"
+        }
+      ]
+    }
+  ]
+}
