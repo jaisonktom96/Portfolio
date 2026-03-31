@@ -1,20 +1,20 @@
 {
-  "revision": "2026-03-31-outside-work-generic-thumbs",
+  "revision": "2026-03-31-communities-thumbs-restored",
   "thumbSets": [
     {
       "title": "Organise events and run communities",
       "images": [
         {
-          "src": "/outside-work/design-competition-rooftop-workshop.png",
-          "alt": "In-person design session on a rooftop patio: presenters at a whiteboard with participants at tables."
+          "src": "/outside-work/design-fundays-initiative.png",
+          "alt": "Design FunDays initiative: offline and online community events."
         },
         {
-          "src": "/outside-work/design-competition-remote-session.png",
-          "alt": "Remote design session on a video call with participants in a grid."
+          "src": "/outside-work/designers-who-claude-about.png",
+          "alt": "Designers who Claude: Claude and Figma workflow community."
         },
         {
-          "src": "/outside-work/image-f54bcd4d-4f7b-47f6-8812-d6fa752149ff.png",
-          "alt": "Workshop graphic, Claude and Figma MCP session"
+          "src": "/outside-work/claude-figma-mcp-session.png",
+          "alt": "Session on Claude Code, Figma MCP, and getting started."
         }
       ]
     },

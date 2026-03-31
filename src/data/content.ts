@@ -23,7 +23,7 @@ export { caseStudies }
 export const CONTACT_EMAIL = 'jaisonktom@gmail.com'
 
 /** Bump when case study copy changes materially (helps verify the loaded bundle in devtools). */
-export const CONTENT_REVISION = '2026-03-31-outside-work-generic-thumbs'
+export const CONTENT_REVISION = '2026-03-31-communities-thumbs-restored'
 
 /** Card list on home, same order as case studies */
 export const projects: Project[] = caseStudies.map(
@@ -120,16 +120,16 @@ export const outsideWork: OutsideWorkItem[] = [
       'I help run two community-led groups for designers. Design FunDays (250+) focuses on bringing people together through offline and online events. Designers who Claude is a 100+ member group for peers who want to explore Claude and Figma together. I also host sessions on Claude Code, Figma MCP, and related topics.',
     images: [
       {
-        src: ow('design-competition-rooftop-workshop.png'),
-        alt: 'In-person design session on a rooftop patio: presenters at a whiteboard with participants at tables.',
+        src: ow('design-fundays-initiative.png'),
+        alt: 'Design FunDays initiative: offline and online community events.',
       },
       {
-        src: ow('design-competition-remote-session.png'),
-        alt: 'Remote design session on a video call with participants in a grid.',
+        src: ow('designers-who-claude-about.png'),
+        alt: 'Designers who Claude: Claude and Figma workflow community.',
       },
       {
-        src: ow('image-f54bcd4d-4f7b-47f6-8812-d6fa752149ff.png'),
-        alt: 'Workshop graphic, Claude and Figma MCP session',
+        src: ow('claude-figma-mcp-session.png'),
+        alt: 'Session on Claude Code, Figma MCP, and getting started.',
       },
     ],
   },
