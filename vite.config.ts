@@ -21,26 +21,16 @@ function readContentRevisionFromDisk(): string {
   }
 }
 
-/**
- * Injects revision from disk into:
- * - <meta name="portfolio-disk-revision">
- * - #portfolio-cursor-project-marker text (so you see it without JS — embedded previews often stall on entry)
- */
+/** Injects <meta name="portfolio-disk-revision"> from src/data/content.ts for cache / sanity checks. */
 function injectDiskRevisionMeta(): Plugin {
   return {
     name: 'inject-disk-revision-meta',
     transformIndexHtml(html) {
       const rev = readContentRevisionFromDisk()
-      let out = html.replace('</head>', `<meta name="portfolio-disk-revision" content="${rev}" />\n</head>`)
-      out = out.replace(
-        /PCP · portfolio-cursor-project · …/,
-        `PCP · portfolio-cursor-project · ${rev}`,
+      return html.replace(
+        '</head>',
+        `<meta name="portfolio-disk-revision" content="${rev}" />\n</head>`,
       )
-      out = out.replace(
-        /PCP · portfolio-cursor-project · \.\.\./,
-        `PCP · portfolio-cursor-project · ${rev}`,
-      )
-      return out
     },
   }
 }
