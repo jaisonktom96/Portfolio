@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { AwardsSection } from '@/components/AwardsSection'
 import { GalleryLightbox } from '@/components/GalleryLightbox'
 import { MinimalistHero } from '@/components/ui/minimalist-hero'
-import { outsideWork, projects, testimonials } from '../data/content'
+import { CONTENT_REVISION, outsideWork, projects, testimonials } from '../data/content'
 import { figmaStarIcon, projectCardImages } from '../data/figmaAssets'
 
 /** Portrait, background-removed version saved to public/case-studies/hero-portrait.png */
@@ -13,6 +13,9 @@ const HERO_PORTRAIT = '/case-studies/hero-portrait.png'
 const MotionLink = motion.create(Link)
 
 const workCardEase = [0.22, 1, 0.36, 1] as const
+
+/** Circular thumbnails in “Other than work” (52px → +50%). Inline size beats stale CSS / cascade issues. */
+const OUTSIDE_WORK_THUMB_PX = 78
 
 /** Home / landing, minimalist hero + scroll sections (no legacy Saturn/Figma hero). */
 type OutsideGalleryState = {
@@ -24,6 +27,9 @@ export function LandingPage() {
   const location = useLocation()
   const reduceMotion = useReducedMotion()
   const [outsideGallery, setOutsideGallery] = useState<OutsideGalleryState | null>(null)
+
+  /** Thumbs always come from bundled `outsideWork` so the UI matches the deployed JS bundle (no stale thumbs.json override). */
+  const thumbCacheKey = CONTENT_REVISION
 
   useEffect(() => {
     const id = location.hash.replace('#', '')
@@ -89,8 +95,8 @@ export function LandingPage() {
                     ? undefined
                     : {
                         y: -5,
-                        boxShadow:
-                          '0 18px 40px -12px rgba(0, 0, 0, 0.55), 0 0 0 2px rgba(91, 124, 247, 0.25)',
+                        /* Elevation only — accent stroke is 2px border in CSS (matches default border width) */
+                        boxShadow: '0 18px 40px -12px rgba(0, 0, 0, 0.55)',
                         transition: { duration: 0.22, ease: workCardEase },
                       }
                 }
@@ -193,49 +199,54 @@ export function LandingPage() {
               Other than work
             </h2>
             <ul className="figma-outside-work-grid" aria-labelledby="other-than-work-heading">
-              {outsideWork.map((item, i) => (
+              {outsideWork.map((item) => {
+                const thumbImages = item.images
+
+                return (
                 <li key={item.title} className="figma-outside-work-card">
-                  <motion.article
-                    initial={
-                      reduceMotion
-                        ? { opacity: 1, y: 0 }
-                        : { opacity: 0, y: 16 }
-                    }
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{
-                      duration: reduceMotion ? 0 : 0.45,
-                      delay: reduceMotion ? 0 : i * 0.06,
-                      ease: workCardEase,
-                    }}
-                  >
+                  <div className="figma-outside-work-card-anim">
+                    <article>
                     <h3 className="figma-outside-work-title">{item.title}</h3>
-                    {item.images.length > 0 ? (
+                    {thumbImages.length > 0 ? (
                       <div
                         className="figma-outside-work-thumbs"
                         role="group"
                         aria-label={`Photos for ${item.title}`}
+                        data-thumb-count={thumbImages.length}
                       >
-                        {item.images.map((img, j) => (
+                        {thumbImages.map((img, j) => (
                           <button
                             key={`${item.title}-${img.src}-${j}`}
                             type="button"
                             className="figma-outside-work-thumb"
+                            style={{
+                              width: OUTSIDE_WORK_THUMB_PX,
+                              height: OUTSIDE_WORK_THUMB_PX,
+                              minWidth: OUTSIDE_WORK_THUMB_PX,
+                              minHeight: OUTSIDE_WORK_THUMB_PX,
+                              flexShrink: 0,
+                              boxSizing: 'border-box',
+                            }}
                             onClick={() =>
-                              setOutsideGallery({ images: item.images, initialIndex: j })
+                              setOutsideGallery({ images: thumbImages, initialIndex: j })
                             }
-                            aria-label={`View image ${j + 1} of ${item.images.length}`}
+                            aria-label={`View image ${j + 1} of ${thumbImages.length}`}
                           >
-                            <img src={img.src} alt="" />
+                            <img
+                              src={`${img.src}${img.src.includes('?') ? '&' : '?'}v=${encodeURIComponent(thumbCacheKey)}`}
+                              alt=""
+                            />
                             <span className="figma-outside-work-thumb-overlay" aria-hidden />
                           </button>
                         ))}
                       </div>
                     ) : null}
                     <p className="figma-outside-work-desc">{item.description}</p>
-                  </motion.article>
+                    </article>
+                  </div>
                 </li>
-              ))}
+                )
+              })}
             </ul>
           </div>
         </div>

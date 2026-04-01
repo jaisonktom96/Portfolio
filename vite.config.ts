@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { Plugin, Connect } from 'vite'
@@ -6,10 +7,48 @@ import react from '@vitejs/plugin-react'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
+/** Dev server port (see `npm run dev` output for the exact URL). */
+export const VITE_DEV_PORT = 4000
+
+function readContentRevisionFromDisk(): string {
+  try {
+    const p = path.resolve(__dirname, 'src/data/content.ts')
+    const raw = readFileSync(p, 'utf-8')
+    const m = raw.match(/export const CONTENT_REVISION = '([^']+)'/)
+    return m?.[1] ?? 'unknown'
+  } catch {
+    return 'unknown'
+  }
+}
+
 /**
- * Nuclear anti-cache for dev: every request (HTML, JS modules, images, CSS)
- * gets cache-busting headers AND static assets get a unique query string so
- * the browser can never reuse a stale response.
+ * Injects revision from disk into:
+ * - <meta name="portfolio-disk-revision">
+ * - #portfolio-cursor-project-marker text (so you see it without JS — embedded previews often stall on entry)
+ */
+function injectDiskRevisionMeta(): Plugin {
+  return {
+    name: 'inject-disk-revision-meta',
+    transformIndexHtml(html) {
+      const rev = readContentRevisionFromDisk()
+      let out = html.replace('</head>', `<meta name="portfolio-disk-revision" content="${rev}" />\n</head>`)
+      out = out.replace(
+        /PCP · portfolio-cursor-project · …/,
+        `PCP · portfolio-cursor-project · ${rev}`,
+      )
+      out = out.replace(
+        /PCP · portfolio-cursor-project · \.\.\./,
+        `PCP · portfolio-cursor-project · ${rev}`,
+      )
+      return out
+    },
+  }
+}
+
+/**
+ * Dev cache-busting (no-store headers + entry query on each HTML request).
+ * You do not need to restart the server for normal edits — HMR handles that.
+ * Run `npm run dev:clean` only when the browser stubbornly shows an old bundle.
  */
 function devNukeCache(): Plugin {
   return {
@@ -20,8 +59,8 @@ function devNukeCache(): Plugin {
       order: 'pre',
       handler(html) {
         return html.replace(
-          /src="\/src\/main\.tsx[^"]*"/,
-          `src="/src/main.tsx?t=${Date.now()}"`,
+          /src="\/src\/portfolio-entry\.tsx[^"]*"/,
+          `src="/src/portfolio-entry.tsx?t=${Date.now()}"`,
         )
       },
     },
@@ -36,12 +75,23 @@ function devNukeCache(): Plugin {
         next()
       }
       server.middlewares.use(bust)
+
+      server.httpServer?.once('listening', () => {
+        const rev = readContentRevisionFromDisk()
+        const contentPath = path.resolve(__dirname, 'src/data/content.ts')
+        const port = server.config.server.port ?? VITE_DEV_PORT
+        console.log(`\n  [vite] Reading CONTENT_REVISION from:\n  ${contentPath}`)
+        console.log(`  [vite] Disk CONTENT_REVISION: ${rev}`)
+        console.log(`  [vite] Local URL: http://localhost:${port}/`)
+        console.log(`  [vite] If the yellow banner still shows an old date, View Source (⌘⌥U) and check`)
+        console.log(`        <meta name="portfolio-disk-revision" content="..."> matches disk above.\n`)
+      })
     },
   }
 }
 
 export default defineConfig({
-  plugins: [react(), devNukeCache()],
+  plugins: [react(), injectDiskRevisionMeta(), devNukeCache()],
   resolve: {
     dedupe: ['react', 'react-dom'],
     alias: {
@@ -49,12 +99,12 @@ export default defineConfig({
     },
   },
   server: {
-    port: 4000,
+    port: VITE_DEV_PORT,
     strictPort: true,
     headers: {
       'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
-      'Pragma': 'no-cache',
-      'Expires': '0',
+      Pragma: 'no-cache',
+      Expires: '0',
     },
   },
 })

@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { CONTENT_REVISION } from '../data/content'
+import { LightboxImagePane } from './LightboxImagePane'
 
 export type GalleryImage = { src: string; alt: string }
 
@@ -53,7 +55,7 @@ export function GalleryLightbox({ images, initialIndex, onClose }: Props) {
 
   return createPortal(
     <div
-      className="lightbox-overlay gallery-lightbox"
+      className="lightbox-overlay lightbox-overlay--pan gallery-lightbox"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -90,11 +92,9 @@ export function GalleryLightbox({ images, initialIndex, onClose }: Props) {
           </button>
         </>
       ) : null}
-      <img
-        className="lightbox-img"
-        src={current.src}
+      <LightboxImagePane
+        src={`${current.src}${current.src.includes('?') ? '&' : '?'}v=${encodeURIComponent(CONTENT_REVISION)}`}
         alt={current.alt}
-        onClick={(e) => e.stopPropagation()}
       />
       {multi ? (
         <p className="lightbox-counter" aria-live="polite">

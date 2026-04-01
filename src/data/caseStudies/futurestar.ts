@@ -1,102 +1,209 @@
+import { futurestarAssets } from '../figma/futurestarAssets'
 import type { CaseStudyDetail } from '../types'
 
+/** Copy, structure, and assets aligned to Figma frame 2607:2210 (Futurestar User Research). */
 export const futurestar: CaseStudyDetail = {
   id: 'futurestar',
-  title: 'Futurestar, User Research',
+  title: 'Futurestar User Research',
   description:
-    'Identifying the difficulties faced by students in identifying the career path of their interest, and understanding the perspective of students, parents & schools. Mapped out the journey and created personas involved in this problem.',
+    'Finding difficulties students face in choosing a career path, and understanding perspectives of students, parents, and schools—mapping journeys and personas.',
   company: 'Futurestar',
   year: '2023',
   figmaDesignUrl:
     'https://www.figma.com/design/5BXKUo563G7chsvPVxTpxy/Portfolio?node-id=2607-2210&m=dev',
   summary:
-    'Futurestar aimed to help young people navigate career discovery without reducing lives to algorithms. I led qualitative research across students, parents, and educators to understand motivations, constraints, trusted information sources, and the emotional texture of big decisions. The output was a shared map of journeys, personas, and tensions that grounded product strategy in real-world complexity.',
-  context: [
-    'Career discovery is not a single decision, it is a long arc shaped by identity, family expectations, academic pressure, peer influence, and uneven access to guidance.',
-    'The organization needed evidence, not assumptions, to decide what to build first and how to position the product ethically, especially when recommendations can shape young people’s futures.',
-  ],
-  role:
-    'Research lead, study design, recruitment, interviews, synthesis workshops, journey mapping, persona development, and stakeholder readouts.',
+    'Research plan with purpose and objectives; semi-structured interviews via Google Meet; thematic analysis and affinity mapping; student and parent personas, journey mapping, and focus scenarios.',
+  context: [],
+  role: 'User Researcher',
   meta: {
     industry: 'Edtech / career discovery',
-    timeline: 'Multi-stage qualitative study with iterative synthesis',
-    scope: 'Students (multiple age bands), parents/guardians, teachers and counselors',
-    collaboration:
-      'Product, leadership, and later design for concept directions informed by findings',
+    timeline: '2 months',
+    scope: 'Students, parents, educators, school management',
+    collaboration: 'Stakeholder readouts and design handoff',
+    team: 'Myself and a User Research Intern',
   },
   keyMetrics: [
-    { value: 'Multi-stakeholder', label: 'Triangulated views across roles' },
-    { value: 'Journey + persona', label: 'Behavioral segments, not demographics alone' },
-    { value: 'Actionable', label: 'Prioritized implications for roadmap' },
+    { value: '8', label: 'Semi-structured interviews' },
+    { value: '8', label: 'Participants (segmented)' },
+    { value: '3', label: 'Personas' },
   ],
+  metaLayout: 'strip3',
+  heroArt: [{ src: futurestarAssets.heroBanner, alt: 'Futurestar wordmark on purple gradient' }],
+  heroArtLayout: 'wide',
   sections: [
     {
-      title: 'Research questions',
+      title: 'Research Plan',
       paragraphs: [
-        'We started by clarifying what we needed to learn, not only “what students want,” but how decisions are negotiated across stakeholders, what trust looks like in guidance, and where digital tools help versus add noise.',
-        'Core questions included: What triggers active search? What makes advice credible? How do students balance passion vs practicality? How do parents express concern without shutting down exploration? What constraints do schools operate under?',
+        'The study began with preparing the research plan, in which the purpose, objectives, method, participant segmentation were planned out and allocating time for each activity.',
+      ],
+      subsections: [
+        {
+          title: 'Purpose',
+          paragraphs: [
+            'The purpose of this study was to find out the difficulties faced by students in identifying the career path of their interest. We also want to understand the perspective of students, parents, and schools and identify the journey and personas involved in this problem.',
+          ],
+        },
+        {
+          title: 'Research objectives',
+          blocks: [
+            {
+              type: 'cardRow',
+              cards: [
+                {
+                  title: 'Perspective on career decision',
+                  body:
+                    'Understanding the perspective of students and parents regarding the importance of career decisions, and why they think so. Understanding what students and parents are looking for, in a career (salary, scope, job satisfaction etc). Understanding the students and parents perspective regarding when to get a clarity on career choice (At what age?)',
+                },
+                {
+                  title: 'Career awareness:',
+                  body:
+                    'What all career choices are the students/ parents aware about? Understanding their perspective on importance to know various careers before making a choice. Understanding the type of information they’re looking for wrt various careers. Understanding the priority of career awareness if needed, in midst of their homeworks and classes',
+                },
+                {
+                  title: 'Clarity on career',
+                  body:
+                    'Does the student have a clarity on what to pursue as a career? If yes, when did they achieve this clarity and how? If no, their concerns. Understanding the perspective of parent if the student is having less clarity on career. Understanding if students/parents explore all possible career options/know the true story in industry, before making the career decision? If yes, how? If no, are they interested, and their concerns. Know the amount of understanding that students and parents have incase they have clarity on career. To check if they’re interested in knowing more, or their concerns',
+                },
+                {
+                  title: 'Identifying areas of interest:',
+                  body:
+                    'Understanding if the students and parents have a clarity on areas of interest of the student and if they think of careers related on the areas of interests',
+                },
+                {
+                  title: 'Identifying other factors',
+                  body:
+                    'Identifying whether academic performance is a factor. Time available for stakeholders. Information consumption in stakeholders',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          title: 'Method',
+          paragraphs: [
+            'Conducting semi-structured interviews with people from our target group, through online tool such as Google Meet',
+          ],
+        },
+        {
+          title: 'Participants',
+          paragraphs: [
+            'A total of 8 participants. Further divisions are mentioned in the table below:',
+          ],
+          blocks: [
+            {
+              type: 'table',
+              headers: ['Segmentation Criteria', 'No.of participants'],
+              rows: [
+                ['Urban Family', '3'],
+                ['Semi urban family', '3'],
+                ['Rural family', '2'],
+                ['Parent [Post graduate/Highly educated]', '3'],
+                ['Average educated Parent [Graduate]', '3'],
+                ['Very less educated parent [<10th]', '2'],
+                ['Student high academic performance', '3'],
+                ['Student medium academic performance', '3'],
+                ['Student low academic performance', '2'],
+              ],
+            },
+          ],
+        },
       ],
     },
     {
-      title: 'Methodology',
+      title: 'Interviews & Synthesis',
       paragraphs: [
-        'We used semi-structured interviews to allow stories to emerge while keeping comparability across participants. Sessions were adapted for age: younger students needed different prompts and pacing than older adolescents preparing for higher education decisions.',
-        'We triangulated with educators to understand institutional constraints, time, responsibility boundaries, and how guidance is delivered in reality versus policy documents.',
+        'We conducted 8 semi-structured interviews, each of around 45mins-1hour. In order to do this, we created discussion guides for students, school management, parents and educators, and went ahead with online interviews through Google Meet.',
+        'We then performed a thematic analysis on the data and tagged into relevant groups.',
       ],
-      bullets: [
-        'Recruitment criteria designed to reduce bias and capture diversity of context',
-        'Consent processes appropriate for minors and guardians',
-        'De-identified notes and thematic coding for synthesis',
+      blocks: [
+        {
+          type: 'figure',
+          src: futurestarAssets.interviewsSynthesis,
+          alt: 'Thematic synthesis table: observations, quotes, themes, and categories',
+          caption: 'Tool used: Optimal Workshop',
+          preserveImageQuality: true,
+        },
       ],
     },
     {
-      title: 'What we heard from students',
+      title: 'Analysis',
       paragraphs: [
-        'Students described a mix of excitement and anxiety. Many wanted autonomy but also reassurance. Social proof mattered, peers and online narratives strongly influenced what felt “realistic.” Fear of choosing wrong showed up as procrastination, not apathy.',
-        'Information overload was common, but the deeper issue was evaluation: students often did not know how to compare paths, what signals mattered, or how to sequence next steps.',
+        'We did an affinity mapping based on the synthesised data. Through this exercise we were able to bring out the influences, pain points and other important factors.',
+      ],
+      blocks: [
+        {
+          type: 'figure',
+          src: futurestarAssets.affinityMapping,
+          alt: 'Affinity mapping clusters from synthesised interview data',
+          preserveImageQuality: true,
+        },
+        {
+          type: 'figure',
+          src: futurestarAssets.analysisBoard,
+          alt: 'Organised affinity mapping board with grouped themes',
+          preserveImageQuality: true,
+        },
       ],
     },
     {
-      title: 'Parents and guardians',
+      title: 'User Persona and Journey Mapping',
       paragraphs: [
-        'Parents were not monolithic. Some prioritized stability; others emphasized passion, often the same parent oscillated between both depending on context. Trust was tied to transparency: parents responded better when tools clarified intent, data use, and outcomes rather than promising certainty.',
-        'A recurring tension was communication: students wanted independence; parents wanted visibility. Products that ignore this dynamic create adoption friction at home.',
+        'We identified 3 persona, of which 2 were of parents and one of student.',
       ],
-    },
-    {
-      title: 'Schools and counselors',
-      paragraphs: [
-        'Educators highlighted workload limits and the risk of overpromising individualized guidance. They wanted tools that complemented counseling, helping students prepare for conversations rather than replacing human judgment.',
-      ],
-    },
-    {
-      title: 'Synthesis: journeys and personas',
-      paragraphs: [
-        'We mapped journeys with emotional highs and lows, from first curiosity to narrowing options to decision milestones. Personas were built around behaviors and constraints: sources of trust, sensitivity to pressure, access to networks, and preferred learning modalities.',
-        'A key insight was that “career discovery” is often a family system problem. A student-only product narrative would miss critical blockers and enablers.',
-      ],
-      bullets: [
-        'Behavioral segments (e.g., explorers vs planners vs pressured deciders)',
-        'Tension map between aspiration, peer influence, and family expectations',
-        'Implications for onboarding, tone, and guardian-facing features',
-      ],
-    },
-    {
-      title: 'Implications for product',
-      paragraphs: [
-        'Research did not produce a feature list, it produced constraints and opportunities. We recommended sequencing that builds evaluation skills early, surfaces credible next steps, and designs guardian touchpoints as collaboration features rather than surveillance.',
-      ],
-    },
-    {
-      title: 'Deliverables and handoff',
-      paragraphs: [
-        'Deliverables included journey maps, persona cards, a prioritized opportunity backlog, and workshop facilitation so design and engineering could align on problem framing before solutioning accelerated.',
-      ],
-    },
-    {
-      title: 'Reflection',
-      paragraphs: [
-        'Career discovery is deeply human work. The best research outputs respect nuance, helping teams build with empathy while avoiding simplistic narratives about “what Gen Z wants.”',
+      subsections: [
+        {
+          title: 'Student persona & Journey',
+          blocks: [
+            {
+              type: 'figure',
+              src: futurestarAssets.studentPersona,
+              alt: 'Student persona overview',
+              preserveImageQuality: true,
+            },
+            {
+              type: 'figure',
+              src: futurestarAssets.studentJourney,
+              alt: 'Student journey map',
+              preserveImageQuality: true,
+            },
+          ],
+        },
+        {
+          title: 'Parent personas',
+          blocks: [
+            {
+              type: 'figure',
+              src: futurestarAssets.parentPersonaOne,
+              alt: 'First parent persona',
+              preserveImageQuality: true,
+            },
+            {
+              type: 'figure',
+              src: futurestarAssets.parentPersonaTwo,
+              alt: 'Second parent persona',
+              preserveImageQuality: true,
+            },
+          ],
+        },
+        {
+          title: 'Type of combinations & Focus',
+          paragraphs: [
+            'We identified the various combinations of scenarios and the ideal scenario to target.',
+          ],
+          blocks: [
+            {
+              type: 'figure',
+              src: futurestarAssets.combinationsFocus,
+              alt: 'Scenario combinations and focus areas',
+              preserveImageQuality: true,
+            },
+            {
+              type: 'figure',
+              src: futurestarAssets.closingPhoto,
+              alt: 'Closing visual',
+            },
+          ],
+        },
       ],
     },
   ],

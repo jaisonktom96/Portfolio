@@ -1,5 +1,11 @@
-import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
-import type { CaseStudyBlock } from '../data/types'
+import {
+  useLayoutEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from 'react'
+import type { CaseStudyBlock, CaseStudyTableCell } from '../data/types'
 import { magicDiaryAssets } from '../data/figma/magicDiaryAssets'
 import { ImageLightbox } from './ImageLightbox'
 
@@ -38,8 +44,10 @@ type BlockProps = {
 
 type FigureBlock = Extract<CaseStudyBlock, { type: 'figure' }>
 
-function figureImgClass(grayscale?: boolean): string {
-  return `case-figure-img case-figure-img--clickable${grayscale ? ' case-media--grayscale' : ''}`
+function figureImgClass(grayscale?: boolean, preserveImageQuality?: boolean): string {
+  return `case-figure-img case-figure-img--clickable${grayscale ? ' case-media--grayscale' : ''}${
+    preserveImageQuality ? ' case-figure-img--hq' : ''
+  }`
 }
 
 function CaseStudyFigureBlock({
@@ -67,6 +75,11 @@ function CaseStudyFigureBlock({
 
   const figureClass = `case-figure${block.size ? ` case-figure--${block.size}` : ''}`
 
+  const captionClass =
+    block.captionTone === 'prose'
+      ? 'case-figure-caption case-figure-caption--prose'
+      : 'case-figure-caption'
+
   if (crop != null) {
     /* Placeholder ratio until natural dimensions load (avoids clip-path empty top gap). */
     const aspect = cropAspect ?? '3 / 2'
@@ -89,12 +102,15 @@ function CaseStudyFigureBlock({
     }
     return (
       <figure className={figureClass}>
+        {block.caption ? (
+          <figcaption className={captionClass}>{block.caption}</figcaption>
+        ) : null}
         <div className="case-figure-crop" style={wrapStyle}>
           <img
             ref={imgRef}
             src={block.src}
             alt={block.alt}
-            className={figureImgClass(block.grayscale)}
+            className={figureImgClass(block.grayscale, block.preserveImageQuality)}
             style={imgStyle}
             loading="lazy"
             decoding="async"
@@ -102,9 +118,6 @@ function CaseStudyFigureBlock({
             onClick={() => onImageClick({ src: block.src, alt: block.alt, grayscale: block.grayscale })}
           />
         </div>
-        {block.caption ? (
-          <figcaption className="case-figure-caption">{block.caption}</figcaption>
-        ) : null}
       </figure>
     )
   }
@@ -112,20 +125,55 @@ function CaseStudyFigureBlock({
   const plainStyle: CSSProperties = block.radius != null ? { borderRadius: block.radius } : {}
   return (
     <figure className={figureClass}>
+      {block.caption ? (
+        <figcaption className={captionClass}>{block.caption}</figcaption>
+      ) : null}
       <img
         src={block.src}
         alt={block.alt}
-        className={figureImgClass(block.grayscale)}
+        className={figureImgClass(block.grayscale, block.preserveImageQuality)}
         style={Object.keys(plainStyle).length ? plainStyle : undefined}
         loading="lazy"
         decoding="async"
         onClick={() => onImageClick({ src: block.src, alt: block.alt, grayscale: block.grayscale })}
       />
-      {block.caption ? (
-        <figcaption className="case-figure-caption">{block.caption}</figcaption>
-      ) : null}
     </figure>
   )
+}
+
+function renderTableCellContent(
+  cell: CaseStudyTableCell,
+  onImageClick: (img: LightboxPayload) => void,
+): ReactNode {
+  if (typeof cell === 'string') return cell
+  if (cell.kind === 'toolThumb') {
+    return (
+      <div className="case-table-tool-thumb">
+        <span>{cell.label}</span>
+        <button
+          type="button"
+          className="case-table-tool-thumb-hit"
+          onClick={() =>
+            onImageClick({
+              src: cell.src,
+              alt: cell.alt,
+              grayscale: cell.grayscale,
+            })
+          }
+          aria-label={`Open full size: ${cell.label}`}
+        >
+          <img
+            src={cell.src}
+            alt=""
+            className={`case-table-tool-thumb-img${cell.grayscale ? ' case-media--grayscale' : ''}`}
+            loading="lazy"
+            decoding="async"
+          />
+        </button>
+      </div>
+    )
+  }
+  return null
 }
 
 function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
@@ -156,6 +204,18 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
           ) : null}
         </figure>
       )
+    case 'proseBlock':
+      return (
+        <p className={['cs-prose', block.className].filter(Boolean).join(' ')}>{block.text}</p>
+      )
+    case 'orderedList':
+      return (
+        <ol className="cs-list cs-list--ordered">
+          {block.items.map((item, i) => (
+            <li key={`${i}-${item.slice(0, 24)}`}>{item}</li>
+          ))}
+        </ol>
+      )
     case 'table':
       return (
         <div className="case-table-wrap">
@@ -172,7 +232,16 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
               {block.rows.map((row, ri) => (
                 <tr key={`r-${ri}`}>
                   {row.map((cell, ci) => (
-                    <td key={`c-${ri}-${ci}`}>{cell}</td>
+                    <td
+                      key={`c-${ri}-${ci}`}
+                      className={
+                        typeof cell === 'object' && cell !== null && 'kind' in cell && cell.kind === 'toolThumb'
+                          ? 'case-table-cell--thumb'
+                          : undefined
+                      }
+                    >
+                      {renderTableCellContent(cell, onImageClick)}
+                    </td>
                   ))}
                 </tr>
               ))}
@@ -220,7 +289,7 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
                   }
                 />
               ) : null}
-              <h3 className="case-card-tile-title">{c.title}</h3>
+              {!block.hideTitles ? <h3 className="case-card-tile-title">{c.title}</h3> : null}
               {c.body.trim() ? <p className="case-card-tile-body">{c.body}</p> : null}
             </div>
           ))}
@@ -286,45 +355,59 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
     case 'beforeAfter':
       return (
         <div className="case-before-after">
-          {block.title ? <h3 className="case-before-after-title">{block.title}</h3> : null}
+          {block.title ? (
+            <h3
+              className={
+                block.titleTone === 'prose'
+                  ? 'case-before-after-title case-before-after-title--prose'
+                  : 'case-before-after-title'
+              }
+            >
+              {block.title}
+            </h3>
+          ) : null}
           <div className="case-before-after-row">
             <figure className="case-before-after-item">
               <span className="case-before-after-badge case-before-after-badge--before">
                 {block.before.label ?? 'Before'}
               </span>
-              <img
-                src={block.before.src}
-                alt={block.before.alt}
-                className={`case-before-after-img${block.before.grayscale ? ' case-media--grayscale' : ''}`}
-                loading="lazy"
-                decoding="async"
-                onClick={() =>
-                  onImageClick({
-                    src: block.before.src,
-                    alt: block.before.alt,
-                    grayscale: block.before.grayscale,
-                  })
-                }
-              />
+              <div className="case-before-after-frame">
+                <img
+                  src={block.before.src}
+                  alt={block.before.alt}
+                  className={`case-before-after-img case-figure-img--clickable${block.before.grayscale ? ' case-media--grayscale' : ''}`}
+                  loading="lazy"
+                  decoding="async"
+                  onClick={() =>
+                    onImageClick({
+                      src: block.before.src,
+                      alt: block.before.alt,
+                      grayscale: block.before.grayscale,
+                    })
+                  }
+                />
+              </div>
             </figure>
             <figure className="case-before-after-item">
               <span className="case-before-after-badge case-before-after-badge--after">
                 {block.after.label ?? 'After'}
               </span>
-              <img
-                src={block.after.src}
-                alt={block.after.alt}
-                className={`case-before-after-img${block.after.grayscale ? ' case-media--grayscale' : ''}`}
-                loading="lazy"
-                decoding="async"
-                onClick={() =>
-                  onImageClick({
-                    src: block.after.src,
-                    alt: block.after.alt,
-                    grayscale: block.after.grayscale,
-                  })
-                }
-              />
+              <div className="case-before-after-frame">
+                <img
+                  src={block.after.src}
+                  alt={block.after.alt}
+                  className={`case-before-after-img case-figure-img--clickable${block.after.grayscale ? ' case-media--grayscale' : ''}`}
+                  loading="lazy"
+                  decoding="async"
+                  onClick={() =>
+                    onImageClick({
+                      src: block.after.src,
+                      alt: block.after.alt,
+                      grayscale: block.after.grayscale,
+                    })
+                  }
+                />
+              </div>
             </figure>
           </div>
         </div>

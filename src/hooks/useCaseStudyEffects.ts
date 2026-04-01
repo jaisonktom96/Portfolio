@@ -159,12 +159,8 @@ export function useReadingTime(study: CaseStudyDetail): number {
     const count = (s: string) => s.split(/\s+/).filter(Boolean).length
     words += count(study.summary)
     for (const p of study.context) words += count(p)
-    for (const sec of study.sections) {
-      for (const p of sec.paragraphs ?? []) {
-        words += count(typeof p === 'string' ? p : p.text)
-      }
-      for (const b of sec.bullets ?? []) words += count(b)
-      for (const block of sec.blocks ?? []) {
+    const countSectionBlocks = (blocks: typeof study.sections[0]['blocks']) => {
+      for (const block of blocks ?? []) {
         if (block.type === 'callout') {
           if (block.intro) words += count(block.intro)
           for (const b of block.bullets ?? []) words += count(b)
@@ -178,6 +174,24 @@ export function useReadingTime(study: CaseStudyDetail): number {
             for (const c of ph.cards) words += count(c.title) + count(c.body)
         if (block.type === 'solutionFeature')
           words += count(block.title) + count(block.bullet)
+        if (block.type === 'orderedList')
+          for (const item of block.items) words += count(item)
+      }
+    }
+
+    for (const sec of study.sections) {
+      for (const p of sec.paragraphs ?? []) {
+        words += count(typeof p === 'string' ? p : p.text)
+      }
+      for (const b of sec.bullets ?? []) words += count(b)
+      countSectionBlocks(sec.blocks)
+      for (const sub of sec.subsections ?? []) {
+        words += count(sub.title)
+        for (const p of sub.paragraphs ?? []) {
+          words += count(typeof p === 'string' ? p : p.text)
+        }
+        for (const b of sub.bullets ?? []) words += count(b)
+        countSectionBlocks(sub.blocks)
       }
     }
     return Math.max(1, Math.ceil(words / 200))

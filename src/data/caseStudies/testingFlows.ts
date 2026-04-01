@@ -57,7 +57,7 @@ export const testingFlows: CaseStudyDetail = {
       title: 'Kick off',
       paragraphs: [
         'I was tasked with designing a native testing feature to solve this. But in order to get a comprehensive view, I began my design process by analyzing the work the Product Manager had done to validate the problem. Product manager had validated the problem using Pendo upvotes (43 upvotes from customers with total MRR of $1,29,239), and Customer tickets (205).',
-        'I then co-ordinated with our customer success managers to float a survey and got the following insights.',
+        'I then co-ordinated with customer success managers to float a survey and got the following insights.',
       ],
       blocks: [
         {
@@ -83,47 +83,36 @@ export const testingFlows: CaseStudyDetail = {
     {
       title: 'Analysing Customer Tickets',
       paragraphs: [
-        'We analysed 100+ customer tickets that our PM had shortlisted around testing feature, and performed affinity mapping them to get deeper insights.',
+        'I analysed 100+ customer tickets that the PM had shortlisted around testing feature, and performed affinity mapping them to get deeper insights.',
+        'Majority of issues were under logic creation and I understood that marketers had a hard time in configuring the right logic according to what they had in mind. There were also issues due to lack of understanding, lack of information and lack of self confidence.',
       ],
       blocks: [
         {
           type: 'figure',
           src: A.affinityMapping,
-          alt: 'Affinity mapping, logic creation, understanding, confidence, and information themes',
+          alt:
+            'Affinity mapping board: Logic creation, Lack of understanding, Lack of self confidence, Lack of information, and issues with current workaround',
+          preserveImageQuality: true,
         },
-        {
-          type: 'figure',
-          src: A.analysingTicketsPhoto,
-          alt: 'Focused work while reviewing customer issues and flow logic',
-        },
-      ],
-    },
-    {
-      title: 'What the tickets pointed to',
-      paragraphs: [
-        'Majority of issues were under logic creation and we understood that marketers had a hard time in configuring the right logic according to what they had in mind.',
-        'There were also issues due to lack of understanding, lack of information and lack of self confidence which helped us to give importance to these aspects and convince stakeholders while designing.',
       ],
     },
     {
       title: 'Mapping tickets to Customer Journey',
       paragraphs: [
-        'We mapped the customer tickets with respective to the stage at which the customer faced that problem.',
+        'I mapped the customer tickets with respective to the stage at which the customer faced that problem.',
+        'I discovered that a lot of issues occured while users implement a strategy. ie. While configuring a flow. Hence I identified the scope for a stage-wise testing which can quickly test each stage when the marketer configures the flow. Once the marketers finish configuring the flow, they can test the whole flow before publishing.',
       ],
       blocks: [
         {
           type: 'figure',
           src: A.journeyMap,
           alt: 'Journey map, marketer flow from goals through implementation and analysis',
+          preserveImageQuality: true,
         },
-      ],
-    },
-    {
-      title: 'Stage-wise testing opportunity',
-      paragraphs: [
-        'We discovered that a lot of issues occured while users implement a strategy. ie. While configuring a flow. Hence we identified the scope for a stage-wise testing which can quickly test each stage when the marketer configures the flow. Once the marketers finish configuring the flow, they can test the whole flow before publishing. Other insights were as follows:',
-      ],
-      blocks: [
+        {
+          type: 'proseBlock',
+          text: 'Other insights were as follows:',
+        },
         {
           type: 'cardRow',
           cards: [
@@ -162,16 +151,15 @@ export const testingFlows: CaseStudyDetail = {
     },
     {
       title: 'How might we solve these?',
-      paragraphs: [
-        'We came up with how might we statements inorder to solve the above issues:',
-      ],
+      paragraphs: [],
       blocks: [
         {
           type: 'cardRow',
+          hideTitles: true,
           cards: [
             {
               title: 'Entry volume',
-              body: 'How might we help the marketers to visualise the volume of users entering a stage, so that they are aware of the effect of logic on entry of users?',
+              body: 'How might we help marketers visualise the volume of users entering a stage, so that they are aware of the effect of logic on entry of users?',
             },
             {
               title: 'Logical mistakes',
@@ -179,15 +167,15 @@ export const testingFlows: CaseStudyDetail = {
             },
             {
               title: 'Unexpected behaviour',
-              body: 'In what ways might we help the marketers to understand the reason for an unexpected behavior, so that they can make changes (after publishing)?',
+              body: 'In what ways might we help marketers understand the reason for an unexpected behavior, so that they can make changes (after publishing)?',
             },
             {
               title: 'Target logic',
-              body: 'How might we help the marketers to visualise the logic for the corresponding target that they have in mind',
+              body: 'How might we help marketers visualise the logic for the corresponding target that they have in mind',
             },
             {
               title: 'Choosing logic',
-              body: 'In what ways can we help the marketers to choose the best logic among all the logics?',
+              body: 'In what ways can we help marketers choose the best logic among all the logics?',
             },
           ],
         },
@@ -196,13 +184,15 @@ export const testingFlows: CaseStudyDetail = {
     {
       title: 'Competitor Analysis',
       paragraphs: [
-        'Since this was a concept that was first of its kind in the industry, we didn’t had anything much to look at. Hence we looked at analogies on how similar problems are addressed in other industries. We looked at testing experiences of electrical circuits where the circuit has multiple elements and the testing is done for each element one by one.',
+        'Since this was a concept that was first of its kind in the industry, I didn’t have anything much to look at. Hence I looked at analogies on how similar problems are addressed in other industries. I looked at testing experiences of electrical circuits where the circuit has multiple elements and the testing is done for each element one by one.',
       ],
       blocks: [
         {
           type: 'figure',
           src: A.competitorAnalogyPhoto,
           alt: 'Electrical systems analogy, complex circuits tested element by element',
+          /** Show bottom 40% of image height (crop away top 60%) */
+          cropTopPercent: 60,
         },
         {
           type: 'table',
@@ -217,7 +207,12 @@ export const testingFlows: CaseStudyDetail = {
           ],
           rows: [
             [
-              'Easy EDA',
+              {
+                kind: 'toolThumb',
+                label: 'Easy EDA',
+                src: A.competitorEasyEda,
+                alt: 'Easy EDA, schematic layout with inventory and properties panels',
+              },
               '3 Panel layout, Flow in centre, left panel for adding elements from inventory, right panel for editing characteristics of selected elements',
               'Manual Only',
               'Tests single stage at a time. The errors of the tested stage has to be corrected for knowing the errors in further stages.',
@@ -225,7 +220,12 @@ export const testingFlows: CaseStudyDetail = {
               'Reports issues in detail as well as shows ways of fixing them',
             ],
             [
-              'MATLAB',
+              {
+                kind: 'toolThumb',
+                label: 'MATLAB',
+                src: A.competitorMatlab,
+                alt: 'MATLAB, block diagram testing windows',
+              },
               'Separate windows for Flows, adding elements and test results. Users have to arrange the windows according to their needs',
               'Manual Only',
               'Tests single stage at a time. The errors of the tested stage has to be corrected for knowing the errors in further stages.',
@@ -233,7 +233,12 @@ export const testingFlows: CaseStudyDetail = {
               'Data not available for error scenario',
             ],
             [
-              'Microsoft Flows',
+              {
+                kind: 'toolThumb',
+                label: 'Microsoft Flows',
+                src: A.competitorMicrosoftFlows,
+                alt: 'Microsoft Power Automate, flow run and test UI',
+              },
               '3 Panel layout, Flow in centre, left panel for dashboard menu, right panel for test results',
               'Manual + Automated (based on data from previous test runs)',
               'Tests single stage at a time. Data not available (supports testing of multiple users or not)',
@@ -241,15 +246,6 @@ export const testingFlows: CaseStudyDetail = {
               'Reports issues in detail as well as shows ways of fixing them, Provides link to help docs',
             ],
           ],
-        },
-        {
-          type: 'figureRow',
-          items: [
-            { src: A.competitorEasyEda, alt: 'Easy EDA, schematic layout with inventory and properties panels' },
-            { src: A.competitorMatlab, alt: 'MATLAB, block diagram testing windows' },
-            { src: A.competitorMicrosoftFlows, alt: 'Microsoft Power Automate, flow run and test UI' },
-          ],
-          caption: 'Reference UIs that informed layout, run history, and diagnostics patterns.',
         },
       ],
     },
@@ -262,13 +258,14 @@ export const testingFlows: CaseStudyDetail = {
     {
       title: 'User Flow',
       paragraphs: [
-        'We came up with user flow for stagewise testing as well as single stage testing.',
+        'I came up with user flow for stagewise testing as well as single stage testing.',
       ],
       blocks: [
         {
           type: 'figure',
           src: A.userFlowDiagram,
           alt: 'User flow, flow creation through staging, simulation, and satisfaction loops',
+          preserveImageQuality: true,
         },
       ],
     },
@@ -276,24 +273,22 @@ export const testingFlows: CaseStudyDetail = {
       title: 'Brainstorming',
       blocks: [
         {
-          type: 'figureRow',
-          items: [
-            { src: A.brainstormA, alt: 'Brainstorm, test info and simulative configuration' },
-            { src: A.brainstormB, alt: 'Brainstorm, canvas entry conditions and audience' },
-            { src: A.brainstormC, alt: 'Brainstorm, user path timeline and condition editor' },
-            { src: A.brainstormD, alt: 'Brainstorm, stacked exploration screens' },
-          ],
+          type: 'figure',
+          src: A.brainstormCollage,
+          alt:
+            'Brainstorm collage: test info and simulative configuration, canvas entry and audience, user path timeline, and exploration screens',
           caption: 'Explorations across test setup, canvas context, and path visualisation.',
         },
       ],
     },
     {
-      title: 'How we designed the Testing experience',
+      title: 'How I designed the Testing experience',
       blocks: [
         {
           type: 'figure',
           src: A.puppetMetaphor,
           alt: 'Puppetry metaphor for marketer-controlled test users',
+          captionTone: 'prose',
           caption:
             'The testing experience is similar to this puppetry, where the test user being the puppet, and marketer being the person controlling the puppet, performs actions on behalf of the test user, and see how the user moves in the flow.',
         },
@@ -301,6 +296,7 @@ export const testingFlows: CaseStudyDetail = {
     },
     {
       title: 'The marketer adds a test user with pre-defined attributes',
+      sectionHeadingLevel: 3,
       paragraphs: [
         'The events performed are on behalf of this test user. The attributes of the test user influences testing. For eg: If the Life Time Value(LTV) of the test user is ₹1000, and the flow configuration is in such a way that it only allows users with LTV>1000, the test user won’t enter the flow.',
         'Also, the system performs a reachability check to see if the test user is reachable on all channels used in the flow during configuration.',
@@ -309,12 +305,14 @@ export const testingFlows: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.uiTestUser,
-          alt: 'UI, add test user, channels, and reachability before running tests',
+          alt:
+            'Test flow screen: search test user, onboarding steps (select user, simulate actions, observe journey), and start testing',
         },
       ],
     },
     {
       title: 'Events are then simulated on behalf of the test user',
+      sectionHeadingLevel: 3,
       paragraphs: [
         'Events can either be simulated inside system or simulated by performing actions in external devices such as mobile phones. System simulation helps in simulating events that are difficult to perform in real life, such as completing KYC, purchasing a product etc.',
         'The attributes of the test user might get modified temporarily during testing. For eg: If the Life Time Value(LTV) of the test user is ₹1000, and the flow configuration is in such a way that it only allows users with LTV>1000, the test user won’t enter the flow.',
@@ -323,12 +321,14 @@ export const testingFlows: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.uiSimulateEvents,
-          alt: 'UI, simulate events and target audience configuration on the flow canvas',
+          alt:
+            'Simulated user events modal: add events in order, simulate here or on device, event picker, and conditions defined during flow creation',
         },
       ],
     },
     {
       title: 'After simulating events, marketer tests the stage and see results',
+      sectionHeadingLevel: 3,
       paragraphs: [
         'During testing, the system performs a check to match the configured conditions with respect to simulated conditions.',
       ],
@@ -336,12 +336,14 @@ export const testingFlows: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.uiStageResults,
-          alt: 'UI, stage test results after simulated events',
+          alt:
+            'Test flow UI: flow canvas with journey nodes; User path panel on entry condition with prompt to simulate events and Yes or test without simulating events',
         },
       ],
     },
     {
       title: 'Visualising user movement',
+      sectionHeadingLevel: 3,
       paragraphs: [
         'Marketers see the path of user moving through the flow, so that they can make corrections is they don’t see the desired movement.',
       ],
@@ -349,122 +351,115 @@ export const testingFlows: CaseStudyDetail = {
         {
           type: 'figure',
           src: A.uiUserPathMovement,
-          alt: 'UI, user path playback and movement through flow stages',
+          alt:
+            'Test flow UI: flow canvas with entry condition selected; User path panel with test evaluation, timings, conditions evaluated as true, and next stage',
         },
       ],
     },
     {
       title: '12 stages with unique ways to test',
+      sectionHeadingLevel: 3,
       paragraphs: [
         'There are 12 types of stages, including Condition stages (Tested by simulating events), Actions stages (Tested by sending campaigns) and Controls (Tested by input of values). Due to completely different usecases and since it’ll become huge to show all of that, I’m not showing all the usecases here.',
       ],
     },
     {
-      title: 'Usability Testing',
+      title: 'Usability testing',
       paragraphs: [
-        'In our initial walkthroughs, users perceived the intuitiveness of the solution to be somewhat average and rated it 3 out of 5 (4 participants). We wanted to be sure that the solution is usable and intuitive, hence we conducted another round of task based usability testing after making changes on the initial design.',
+        'In my initial walkthroughs, users perceived the intuitiveness of the solution to be somewhat average and rated it 3 out of 5 (4 participants). I wanted to be sure that the solution is usable and intuitive, hence I conducted another round of task based usability testing after making changes on the initial design.',
       ],
-      blocks: [
+      subsections: [
         {
-          type: 'figure',
-          src: A.usabilityPortrait,
-          alt: 'Participant reflecting during usability sessions',
-          size: 'small',
-        },
-      ],
-    },
-    {
-      title: 'Task based testing',
-      paragraphs: [
-        'Participants were first shown a dummy flow which they had to share their understanding, and then they were asked about different ways that they would test the flow. Post the brief questionnaire, the prototype link was shared with the participants, and they were asked to perform the following tasks:',
-      ],
-      bullets: [
-        'Testing of a user flowing through an event check stage',
-        'Testing of campaign configuration as per user attributes',
-      ],
-    },
-    {
-      title: 'Results',
-      blocks: [
-        {
-          type: 'table',
-          headers: ['Task', 'Completion rate', 'Average time', 'Avg. Number of errors'],
-          rows: [
-            [
-              'Testing the journey of a user by testing events performed by the user',
-              '100%',
-              '13 minutes 39 seconds +/- 5:51',
-              '0.75',
-            ],
-            [
-              'Testing campaigns to be sent to a particular user',
-              '100%',
-              '1 minute 05 seconds',
-              '0',
-            ],
+          title: 'Task-based testing',
+          paragraphs: [
+            'Participants were first shown a dummy flow which they had to share their understanding, and then they were asked about different ways that they would test the flow. Post the brief questionnaire, the prototype link was shared with the participants, and they were asked to perform the following tasks:',
+            {
+              className: 'cs-prose--numbered',
+              text: `1. Testing of a user flowing through an event check stage
+2. Testing of campaign configuration as per user attributes`,
+            },
           ],
         },
-      ],
-    },
-    {
-      title: 'Improvements made',
-      blocks: [
         {
-          type: 'beforeAfter',
-          title:
-            'Issue 1: Users unintentionally clicking on ‘Test’ though they wanted to simulate events before testing',
-          before: {
-            src: A.improveIssue1Before,
-            alt: 'Before, simulate events vs test affordances',
-            label: 'Before testing',
-          },
-          after: {
-            src: A.improveIssue1After,
-            alt: 'After, explicit choice to simulate events or test without simulating',
-            label: 'After Improvement',
-          },
+          title: 'Results',
+          blocks: [
+            {
+              type: 'table',
+              headers: ['Task', 'Completion rate', 'Average time', 'Avg. Number of errors'],
+              rows: [
+                [
+                  'Testing the journey of a user by testing events performed by the user',
+                  '100%',
+                  '13 minutes 39 seconds +/- 5:51',
+                  '0.75',
+                ],
+                [
+                  'Testing campaigns to be sent to a particular user',
+                  '100%',
+                  '1 minute 05 seconds',
+                  '0',
+                ],
+              ],
+            },
+          ],
         },
         {
-          type: 'beforeAfter',
-          title:
-            'Issue 2: Some users found it difficulty in understanding the stage for which the condition was defined.',
-          before: {
-            src: A.improveIssue2Before,
-            alt: 'Before, current stage copy for conditions',
-            label: 'Before testing',
-          },
-          after: {
-            src: A.improveIssue2After,
-            alt: 'After, stage chip clarifying which step conditions belong to',
-            label: 'After Improvement',
-          },
+          title: 'Improvements made',
+          blocks: [
+            {
+              type: 'beforeAfter',
+              titleTone: 'prose',
+              title:
+                'Issue 1: Users unintentionally clicking on ‘Test’ though they wanted to simulate events before testing',
+              before: {
+                src: A.improveIssue1Before,
+                alt: 'Before, simulate events vs test affordances',
+                label: 'Before testing',
+              },
+              after: {
+                src: A.improveIssue1After,
+                alt: 'After, explicit choice to simulate events or test without simulating',
+                label: 'After Improvement',
+              },
+            },
+            {
+              type: 'beforeAfter',
+              titleTone: 'prose',
+              title:
+                'Issue 2: Some users found it difficulty in understanding the stage for which the condition was defined.',
+              before: {
+                src: A.improveIssue2Before,
+                alt: 'Before, current stage copy for conditions',
+                label: 'Before testing',
+              },
+              after: {
+                src: A.improveIssue2After,
+                alt: 'After, stage chip clarifying which step conditions belong to',
+                label: 'After Improvement',
+              },
+            },
+            {
+              type: 'beforeAfter',
+              titleTone: 'prose',
+              title: 'Issue 3: Users found it difficult to understand the ‘Execute this event’ field.',
+              before: {
+                src: A.improveIssue3Before,
+                alt: 'Before, execute this event label',
+                label: 'Before testing',
+              },
+              after: {
+                src: A.improveIssue3After,
+                alt: 'After, time to execute event with helper copy',
+                label: 'After Improvement',
+              },
+            },
+          ],
         },
         {
-          type: 'beforeAfter',
-          title: 'Issue 3: Users found it difficult to understand the ‘Execute this event’ field.',
-          before: {
-            src: A.improveIssue3Before,
-            alt: 'Before, execute this event label',
-            label: 'Before testing',
-          },
-          after: {
-            src: A.improveIssue3After,
-            alt: 'After, time to execute event with helper copy',
-            label: 'After Improvement',
-          },
-        },
-      ],
-    },
-    {
-      title: 'Outcomes',
-      paragraphs: [
-        'We got an overall rating of 4/5 for the redesigned experience and went ahead with development.',
-      ],
-      blocks: [
-        {
-          type: 'figure',
-          src: A.closingThanks,
-          alt: 'Thanks card, closing the case study narrative',
+          title: 'Outcome',
+          paragraphs: [
+            'I got an overall rating of 4/5 for the redesigned experience and moved forward with development.',
+          ],
         },
       ],
     },

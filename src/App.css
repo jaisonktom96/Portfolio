@@ -462,6 +462,107 @@ a.work-card {
   line-height: 1.2;
 }
 
+/* h3 section titles (sectionHeadingLevel: 3) — aligns with .cs-section-subtitle scale */
+.cs-section-title.cs-section-title--h3 {
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.cs-subsection {
+  margin-top: 2.25rem;
+}
+
+.cs-subsection:first-of-type {
+  margin-top: 1.75rem;
+}
+
+.cs-section-subtitle {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  letter-spacing: -0.02em;
+  color: var(--text-strong);
+  line-height: 1.3;
+}
+
+/* Prose left, case blocks right (opt-in via section `sectionLayout: 'proseBlocksSplit'`) */
+.cs-section-prose-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cs-section-prose-blocks__copy {
+  min-width: 0;
+}
+
+.cs-section-prose-blocks__copy .cs-prose:last-child {
+  margin-bottom: 0;
+}
+
+.cs-section-prose-blocks__blocks {
+  min-width: 0;
+  width: 100%;
+}
+
+/* Small figures use column width in split layout, not 25% of full section */
+.cs-section-prose-blocks__blocks .case-figure--small {
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  /*
+   * Section height = prose only (blocks are out of flow). Right column top/bottom = copy height
+   * so the image scales to that height with object-fit: contain.
+   */
+  .cs-section-prose-blocks {
+    position: relative;
+    --cs-prose-blocks-media-w: min(20rem, 38vw);
+    padding-right: calc(var(--cs-prose-blocks-media-w) + 2rem);
+    gap: 0;
+  }
+
+  .cs-section-prose-blocks__blocks {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: var(--cs-prose-blocks-media-w);
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .cs-section-prose-blocks__blocks .case-blocks {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    height: 100%;
+  }
+
+  .cs-section-prose-blocks__blocks .case-figure {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    height: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .cs-section-prose-blocks__blocks .case-figure-img {
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 0;
+    height: 100%;
+    object-fit: contain;
+    object-position: top right;
+  }
+}
+
 .cs-prose {
   margin: 0 0 1.25rem;
   max-width: 68ch;
@@ -472,6 +573,12 @@ a.work-card {
 
 .cs-prose:last-child {
   margin-bottom: 0;
+}
+
+/* Numbered task lines: no extra gap between lines, 16px inset from column edge */
+.cs-prose.cs-prose--numbered {
+  margin-left: 16px;
+  white-space: pre-line;
 }
 
 .cs-list {
@@ -489,6 +596,16 @@ a.work-card {
 
 .cs-list li::marker {
   color: var(--accent);
+}
+
+.cs-list--ordered {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+
+.cs-list--ordered li::marker {
+  color: var(--accent);
+  font-weight: 600;
 }
 
 /* ── Suggested work (case study bottom), compact rows ── */
@@ -665,8 +782,17 @@ a.work-card {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1.5rem; /* 24px between stacked blocks (figures, prose, card rows) */
   max-width: 100%;
+}
+
+.case-blocks > .cs-prose {
+  margin-bottom: 0;
+}
+
+/* 40px between a figure and the prose block immediately below (base row-gap is 1.5rem) */
+.case-blocks > .case-figure + .cs-prose {
+  margin-top: calc(40px - 1.5rem);
 }
 
 /* ── Figures ── */
@@ -704,11 +830,27 @@ a.work-card {
 }
 
 .case-figure-caption {
-  margin: 0.85rem 0 0;
+  max-width: 68ch;
   font-size: 0.875rem;
   line-height: 1.55;
   color: var(--muted);
-  max-width: 68ch;
+}
+
+/* Opt-in: same typography as .cs-prose (set via figure `captionTone: 'prose'`) */
+.case-figure-caption--prose {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+/* Caption above image (CaseStudyFigureBlock) */
+.case-figure > .case-figure-caption:first-child {
+  margin: 0 0 24px;
+}
+
+/* Caption below image (e.g. figureRow) */
+.case-figure > .case-figure-caption:last-child:not(:first-child) {
+  margin: 24px 0 0;
 }
 
 .case-figure-row {
@@ -758,6 +900,7 @@ a.work-card {
 .case-table td {
   padding: 0.85rem 1.25rem;
   text-align: left;
+  vertical-align: top;
   border-bottom: 1px solid var(--border);
 }
 
@@ -772,6 +915,46 @@ a.work-card {
   letter-spacing: 0.08em;
   color: var(--accent);
   background: rgba(67, 97, 238, 0.04);
+}
+
+.case-table td.case-table-cell--thumb {
+  vertical-align: top;
+  width: 8.5rem;
+  min-width: 7.5rem;
+}
+
+.case-table-tool-thumb {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  max-width: 7.5rem;
+}
+
+.case-table-tool-thumb-hit {
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  cursor: zoom-in;
+  overflow: hidden;
+  line-height: 0;
+  width: 100%;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.case-table-tool-thumb-hit:hover {
+  box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.45);
+}
+
+.case-table-tool-thumb-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  vertical-align: top;
 }
 
 /* ── Callout ── */
@@ -821,7 +1004,13 @@ a.work-card {
 .case-card-row {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 560px) {
+  .case-card-row:not(.case-card-row--metrics) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 /* Testing of Flows: survey stats row (three-up gradient metric tiles) */
@@ -1119,6 +1308,16 @@ a.work-card {
   color: var(--text-strong);
 }
 
+/* Opt-in via block `titleTone: 'prose'` — matches .cs-prose (case study body) */
+.case-before-after-title--prose {
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--text);
+  max-width: 68ch;
+}
+
 .case-before-after-row {
   display: grid;
   gap: 1.5rem;
@@ -1134,6 +1333,15 @@ a.work-card {
 .case-before-after-item {
   margin: 0;
   position: relative;
+}
+
+/* Same visual shell as .case-figure-img (border + subtle fill + clip) */
+.case-before-after-frame {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  line-height: 0;
 }
 
 .case-before-after-badge {
@@ -1163,9 +1371,7 @@ a.work-card {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  cursor: zoom-in;
+  vertical-align: top;
 }
 
 .case-link-list {
@@ -1257,6 +1463,25 @@ a.work-card {
   transform: scale(1.01);
 }
 
+/* Dense screenshots: hover scale re-rasterizes; keep static for max sharpness */
+.case-figure-img--hq.case-figure-img--clickable {
+  transition: none;
+}
+
+.case-figure-img--hq.case-figure-img--clickable:hover,
+.case-figure-img--hq.case-figure-img--clickable.case-media--grayscale:hover {
+  transform: none;
+  filter: none;
+}
+
+.case-figure-img--hq.case-figure-img--clickable.case-media--grayscale:hover {
+  filter: grayscale(1);
+}
+
+.case-figure-img--hq {
+  image-rendering: auto;
+}
+
 .lightbox-overlay {
   position: fixed;
   inset: 0;
@@ -1270,18 +1495,129 @@ a.work-card {
   cursor: zoom-out;
 }
 
+.lightbox-overlay--pan {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+  cursor: default;
+}
+
 @keyframes lightbox-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
+.lightbox-image-pane {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.lightbox-scroll {
+  --lightbox-zoom: 1;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  /* Do not flex-center the scrollport: overflow + align-items:center breaks reaching scrollTop=0 */
+  display: block;
+  padding: 3.75rem 1rem 5.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Flex centering on both axes (justify/align) breaks scrollLeft=0 when the image is wider
+   than the viewport — same class of bug as flex on the scrollport. Use margin:auto on the
+   img so it centers when smaller than the inner, without skewing overflow range. */
+.lightbox-scroll-inner {
+  display: flex;
+  min-width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+.lightbox-scroll--can-pan {
+  cursor: grab;
+  user-select: none;
+}
+
+.lightbox-scroll--can-pan .lightbox-img {
+  user-select: none;
+  pointer-events: none;
+}
+
+.lightbox-scroll--dragging {
+  cursor: grabbing !important;
+}
+
 .lightbox-img {
-  max-width: 92vw;
-  max-height: 90vh;
+  max-width: calc(92vw * var(--lightbox-zoom, 1));
+  max-height: calc(90vh * var(--lightbox-zoom, 1));
+  width: auto;
+  height: auto;
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
   cursor: default;
+  margin: auto;
+  flex-shrink: 0;
+}
+
+.lightbox-zoom-bar {
+  position: fixed;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.35rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(12, 12, 14, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+.lightbox-zoom-btn {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.lightbox-zoom-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.lightbox-zoom-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.lightbox-zoom-label {
+  min-width: 3.25rem;
+  padding: 0 0.35rem;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: 0.02em;
 }
 
 .lightbox-img.case-media--grayscale {
@@ -1289,11 +1625,14 @@ a.work-card {
 }
 
 .lightbox-close {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
+  position: fixed;
+  z-index: 102;
+  top: max(1.25rem, env(safe-area-inset-top));
+  right: max(1.5rem, env(safe-area-inset-right));
+  background: rgba(20, 20, 24, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
   color: #fff;
   font-size: 2rem;
   width: 48px;
@@ -1315,7 +1654,7 @@ a.work-card {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 101;
+  z-index: 102;
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -1354,9 +1693,9 @@ a.work-card {
 .gallery-lightbox .lightbox-counter {
   position: fixed;
   bottom: max(1.25rem, env(safe-area-inset-bottom));
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 101;
+  left: max(1rem, env(safe-area-inset-left));
+  transform: none;
+  z-index: 102;
   margin: 0;
   font-family: var(--font-sans);
   font-size: 0.8125rem;

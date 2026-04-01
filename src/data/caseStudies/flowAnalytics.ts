@@ -6,7 +6,7 @@ export const flowAnalytics: CaseStudyDetail = {
   id: 'flow-analytics',
   title: 'Flow Analytics Revamp',
   description:
-    'Redesigning Flow analytics to reduce time to insights and bring analysis users were doing outside the dashboard into the product.',
+    'How a redesign boosted CSAT by 60% (From 2.5 to 4). Pulled external user behaviors into the dashboard, drastically reducing friction and time-to-value for power users.',
   company: 'MoEngage',
   year: '2024',
   figmaDesignUrl:
@@ -29,33 +29,26 @@ export const flowAnalytics: CaseStudyDetail = {
     timeline: '2 months',
     scope:
       'End-to-end Flow Analytics experience: research, ticket mapping, ideation, and high-fidelity dashboard UX',
-    collaboration: 'Senior Product Designer, PM, and engineering partners',
+    collaboration: 'Product Designer, PM, and engineering partners',
     team: 'Myself and Product Manager',
   },
   keyMetrics: [
-    { value: '2.5/5', label: 'Internal survey rating (analytics)' },
+    { value: '4/5', label: 'CSAT (Flow Analytics), up from 2.5' },
     { value: '50+', label: 'Customer tickets analysed' },
     { value: '5', label: 'User interviews (problem validation)' },
   ],
   sections: [
     {
-      title: 'MoEngage Flow Analytics',
+      title: 'Project Overview',
       paragraphs: [
         'MoEngage Flows is a cross-platform omni-channel marketing tool (with channels like email, sms, push etc) that helps marketers provide a comprehensive customer experience for their end users and drive customer engagement. A flow is essentially a strategy with a set of communications (email, sms, push etc) that will be sent according to the behaviour/attribute of the end user.',
         'Once a flow is configured and published, campaigns start getting delivered across the devices of end users, and data starts getting populated in the analytics dashboard. We wanted to redesign the analytics experience in order to reduce the time to insights, and incorporate more functionalities that the users were already doing outside of the analytics dashboard.',
-      ],
-      blocks: [
-        {
-          type: 'figure',
-          src: A.overviewGif,
-          alt: 'Flow Analytics interface walkthrough, stats and journey performance',
-        },
       ],
     },
     {
       title: 'Kick Off',
       paragraphs: [
-        'We conducted customer calls along with the PM to understand how customers (marketers) analyse their flows. We came to know that they find limitations in current analytics and use different tools such as Excel, Google analytics, MoEngage User Paths etc to perform more analysis outside of our dashboard.',
+        'I conducted customer calls along with the PM to understand how customers (marketers) analyse their flows. We found that they find limitations in current analytics and use different tools such as Excel, Google analytics, MoEngage User Paths etc to perform more analysis outside of the dashboard.',
       ],
       blocks: [
         {
@@ -68,16 +61,24 @@ export const flowAnalytics: CaseStudyDetail = {
     {
       title: 'Problem Validation',
       paragraphs: [
-        'Customers rated the analytics as 2.5 on a scale of 5 in our internal survey. This along with 5 user interviews helped us understand the major issues and validated the need to improve the Flow analytics. We also looked at existing tickets related to flow analytics and validated the need for improvement.',
+        'Customers rated the analytics as 2.5 on a scale of 5 in an internal survey. This along with 5 user interviews helped me understand the major issues and validated the need to improve the Flow analytics. I also looked at existing tickets that the PM had shortlisted, related to flow analytics, and validated the need for improvement.',
       ],
     },
     {
       title: 'Analysing Customer Tickets and its Mapping',
       paragraphs: [
-        'We analysed 50+ customer tickets around analytics, performed an affinity mapping and mapped them to the user journey to understand the areas to solve for.',
-        'Confusion and cumbersomeness were the top emotions that users felt while analysing their flows. We hence made this as our design goals to reduce confusion, reduce cumbersomeness, and reduce the time to insights.',
+        'I analysed 50+ customer tickets around analytics, performed an affinity mapping and mapped them to the user journey to understand the areas to solve for.',
+        'Confusion and cumbersomeness were the top emotions that users felt while analysing their flows. I set these as my design goals:',
       ],
       blocks: [
+        {
+          type: 'cardRow',
+          cards: [
+            { title: 'Reduce confusion', body: '' },
+            { title: 'Reduce cumbersomeness', body: '' },
+            { title: 'Reduce the time to insights', body: '' },
+          ],
+        },
         {
           type: 'figure',
           src: A.affinityMapping,
@@ -169,7 +170,7 @@ export const flowAnalytics: CaseStudyDetail = {
     {
       title: 'How might we',
       paragraphs: [
-        'After a round of discussion with the senior designer and PM, we eliminated some issues that were not in scope, and later conducted a whiteboarding session to understand how might we solve those. The issues that were considered for the whiteboarding activity were:',
+        'After a round of discussion with the PM, we eliminated some issues that were not in scope, and later conducted a whiteboarding session to understand how I might solve those. The issues that were considered for the whiteboarding activity were:',
       ],
       blocks: [
         {
@@ -203,7 +204,7 @@ export const flowAnalytics: CaseStudyDetail = {
             { src: A.whiteboardB, alt: 'Whiteboarding session, flow and metrics sketch' },
             { src: A.whiteboardC, alt: 'Whiteboarding session, problem framing and ideas' },
           ],
-          caption: 'Whiteboarding session with Senior Product Designer and PM.',
+          caption: 'Whiteboarding session with PM',
         },
       ],
     },
@@ -231,82 +232,81 @@ export const flowAnalytics: CaseStudyDetail = {
       ],
     },
     {
-      title: 'Highlighting stages',
-      paragraphs: [
-        'Marketers can now highlight the stages based on their metrics such as CVR, CTR, Drop offs and also see the most common path that their users traverse. This helps them to identify patterns of good/poor performance.',
-      ],
-      blocks: [
+      title: 'Solution',
+      subsections: [
         {
-          type: 'figure',
-          src: A.hiFiHighlightingStages,
-          alt: 'High fidelity, highlighting stages and common paths in Flow Analytics',
+          title: 'Highlighting stages',
+          paragraphs: [
+            'Marketers can now highlight the stages based on their metrics such as CVR, CTR, Drop offs and also see the most common path that their users traverse. This helps them to identify patterns of good/poor performance.',
+          ],
+          blocks: [
+            {
+              type: 'figure',
+              src: A.hiFiHighlightingStages,
+              alt: 'High fidelity, highlighting stages and common paths in Flow Analytics',
+            },
+          ],
+        },
+        {
+          title: 'Flow performance',
+          paragraphs: [
+            'The marketers see the performance of the flow. They also have an option to compare the performance with past performance. They have an option to view these in line charts and table as well.',
+          ],
+          blocks: [
+            {
+              type: 'figure',
+              src: A.hiFiFlowPerformance,
+              alt: 'High fidelity, flow performance charts and comparison',
+            },
+          ],
+        },
+        {
+          title: 'Campaign performance',
+          paragraphs: [
+            'The marketers can compare the performance of different channels. They can also visualise the past performance.',
+          ],
+          blocks: [
+            {
+              type: 'figure',
+              src: A.hiFiCampaignPerformance,
+              alt: 'High fidelity, campaign performance across channels',
+            },
+          ],
+        },
+        {
+          title: 'Retention Analysis',
+          paragraphs: [
+            'If the marketing department spends a lot to acquire users who are likely to leave, their customer lifetime value (LTV), might be lower than their acquisition cost. The app will fail If the company continues to spend more on acquisitions than the LTV of customers, and hence it was important for marketers to answer the question “How many of our customers return to the product?”',
+          ],
+          blocks: [
+            {
+              type: 'figure',
+              src: A.hiFiRetention,
+              alt: 'High fidelity, retention analysis and cohort-style retention view',
+            },
+          ],
+        },
+        {
+          title: 'Cohort Analysis',
+          paragraphs: [
+            'Marketers can create cohorts and analyse the Flow to understand the performance of various cohorts with respect to flow metrics. This helps Marketers arrive at conclusions like ‘Users of age range 29-52 convert quickly when compared to the rest of the users.’',
+            'Marketers also have an option to retarget their users by creating new segments directly by clicking on the charts.',
+          ],
+          blocks: [
+            {
+              type: 'figure',
+              src: A.hiFiCohort,
+              alt: 'High fidelity, cohort analysis and segment breakdown',
+            },
+          ],
         },
       ],
     },
     {
-      title: 'Flow performance',
+      title: 'Impact',
       paragraphs: [
-        'The marketers see the performance of the flow. They also have an option to compare the performance with past performance. They have an option to view these in line charts and table as well.',
-      ],
-      blocks: [
-        {
-          type: 'figure',
-          src: A.hiFiFlowPerformance,
-          alt: 'High fidelity, flow performance charts and comparison',
-        },
-      ],
-    },
-    {
-      title: 'Campaign performance',
-      paragraphs: [
-        'The marketers can compare the performance of different channels. They can also visualise the past performance.',
-      ],
-      blocks: [
-        {
-          type: 'figure',
-          src: A.hiFiCampaignPerformance,
-          alt: 'High fidelity, campaign performance across channels',
-        },
-      ],
-    },
-    {
-      title: 'Retention Analysis',
-      paragraphs: [
-        'If the marketing department spends a lot to acquire users who are likely to leave, their customer lifetime value (LTV), might be lower than their acquisition cost. The app will fail If the company continues to spend more on acquisitions than the LTV of customers, and hence it was important for marketers to answer the question “How many of our customers return to the product?”',
-      ],
-      blocks: [
-        {
-          type: 'figure',
-          src: A.hiFiRetention,
-          alt: 'High fidelity, retention analysis and cohort-style retention view',
-        },
-      ],
-    },
-    {
-      title: 'Cohort Analysis',
-      paragraphs: [
-        'Marketers can create cohorts and analyse the Flow to understand the performance of various cohorts with respect to flow metrics. This helps Marketers arrive at conclusions like ‘Users of age range 29-52 convert quickly when compared to the rest of the users.’',
-        'Marketers also have an option to retarget their users by creating new segments directly by clicking on the charts.',
-      ],
-      blocks: [
-        {
-          type: 'figure',
-          src: A.hiFiCohort,
-          alt: 'High fidelity, cohort analysis and segment breakdown',
-        },
-      ],
-    },
-    {
-      title: 'Usability Testing',
-      paragraphs: [
-        'The designs were tested with 3 marketers. The designs were presented over screensharing (Google Meet), and the participants were asked to interpret the data. All the participants found it easy to understand and found the new features extremely valuable.',
-      ],
-      blocks: [
-        {
-          type: 'figure',
-          src: A.usabilityClosing,
-          alt: 'Closing visual, thanks note on desk after usability sessions',
-        },
+        'CSAT for Flow Analytics improved from 2.5 to 4 (out of 5).',
+        'That improvement correlates directly with how the design helped marketers streamline their workflow for analysing flows: clearer journeys, fewer workarounds outside the dashboard, and faster paths to the metrics that matter.',
       ],
     },
   ],

@@ -1,13 +1,12 @@
 /**
  * Figma MCP asset URLs for frame 2607:2048 (Flow Analytics Revamp case study).
- * These URLs expire after ~7 days, re-export from Figma MCP if images break.
+ * Hero and affinity mapping are static under public/; other URLs expire after ~7 days — re-export from Figma MCP if images break.
  * File: https://www.figma.com/design/5BXKUo563G7chsvPVxTpxy/Portfolio?node-id=2607-2048
  */
 export const flowAnalyticsAssets = {
-  heroDashboard: 'https://www.figma.com/api/mcp/asset/180a1625-72a2-4bd7-9fa0-0d9df07bab06',
-  overviewGif: 'https://www.figma.com/api/mcp/asset/1886d322-6053-4971-9ddb-05818c2adeac',
+  heroDashboard: '/case-studies/flow-analytics/hero-dashboard.png',
   kickOffPhoto: 'https://www.figma.com/api/mcp/asset/bf79c911-b9d0-4493-a77b-f1221efee395',
-  affinityMapping: 'https://www.figma.com/api/mcp/asset/c3093f60-e796-4420-b10f-a8481c7fdcc0',
+  affinityMapping: '/case-studies/flow-analytics/userjourney_flowanalytics.png',
   flowPerformanceDashboard: 'https://www.figma.com/api/mcp/asset/85ccd880-9d24-4b31-8b41-9a7e6f4b9b04',
   externalAnalysisPhoto: 'https://www.figma.com/api/mcp/asset/ced3553f-1c76-4b22-b335-8d6ba446a9a7',
   whiteboardA: 'https://www.figma.com/api/mcp/asset/c0e164c8-bfda-4634-b3e5-2516afd34698',
@@ -21,5 +20,4 @@ export const flowAnalyticsAssets = {
   hiFiCampaignPerformance: 'https://www.figma.com/api/mcp/asset/06bfea82-b811-4d59-bad9-49f8522f5191',
   hiFiRetention: 'https://www.figma.com/api/mcp/asset/dd75149d-22d4-467c-b139-984b488cba08',
   hiFiCohort: 'https://www.figma.com/api/mcp/asset/63429615-494b-4f02-b9e2-1011948869a1',
-  usabilityClosing: 'https://www.figma.com/api/mcp/asset/a3d5955d-a880-4ca0-b0b9-530c5df26666',
 } as const

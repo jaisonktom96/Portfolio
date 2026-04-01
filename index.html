@@ -43,9 +43,29 @@
         pointer-events: none;
       "
     >
-      PCP · portfolio-cursor-project · v2026-03-29-landing-ts
+      PCP · portfolio-cursor-project · …
     </div>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/portfolio-entry.tsx"></script>
+    <!--
+      Last in document + !important: wins over cached / HMR-injected CSS from Vite.
+      Original design was 52px; +50% = 78px. Edit here if you change thumb size again.
+    -->
+    <style id="outside-work-thumb-critical">
+      .site.theme-figma button.figma-outside-work-thumb {
+        width: 78px !important;
+        height: 78px !important;
+        min-width: 78px !important;
+        min-height: 78px !important;
+        flex-shrink: 0 !important;
+        box-sizing: border-box !important;
+      }
+      .site.theme-figma button.figma-outside-work-thumb img {
+        max-width: none !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+      }
+    </style>
   </body>
 </html>

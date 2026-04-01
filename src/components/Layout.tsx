@@ -17,11 +17,13 @@ export function Layout() {
           <span className="dev-build-banner__label">Local dev</span>
           <span className="dev-build-banner__rev">{CONTENT_REVISION}</span>
           <span className="dev-build-banner__hint">
-            Home loads <code className="dev-build-banner__code">LandingPage.tsx</code> +{' '}
-            <code className="dev-build-banner__code">MinimalistHero</code> (black bg, yellow circle, white type).
-            The old Saturn hero was removed from the repo. If you still see it, the browser is
-            serving a stale bundle, run <code className="dev-build-banner__code">npm run dev:clean</code>{' '}
-            and reload. Footer revision must match this banner.
+            Start the app with <code className="dev-build-banner__code">npm run dev</code> in this project
+            folder, then open the URL Vite prints (usually{' '}
+            <code className="dev-build-banner__code">http://localhost:4000</code>).
+            Browser error <code className="dev-build-banner__code">-102</code> means nothing is listening —
+            the dev server is not running. View Source (⌘⌥U):{' '}
+            <code className="dev-build-banner__code">meta portfolio-disk-revision</code> should match the
+            terminal <code className="dev-build-banner__code">[vite] Disk CONTENT_REVISION</code> line.
           </span>
         </div>
       ) : null}

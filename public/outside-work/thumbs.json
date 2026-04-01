@@ -1,20 +1,20 @@
 {
-  "revision": "2026-03-31-communities-thumbs-restored",
+  "revision": "2026-03-31-testing-flows-competitor-analogy-crop",
   "thumbSets": [
     {
-      "title": "Organise events and run communities",
+      "title": "Organise events & run communities",
       "images": [
         {
-          "src": "/outside-work/design-fundays-initiative.png",
-          "alt": "Design FunDays initiative: offline and online community events."
+          "src": "/outside-work/design-competition-rooftop-workshop.png",
+          "alt": "In-person design session on a rooftop patio: presenters at a whiteboard with participants at tables."
         },
         {
-          "src": "/outside-work/designers-who-claude-about.png",
-          "alt": "Designers who Claude: Claude and Figma workflow community."
+          "src": "/outside-work/design-competition-remote-session.png",
+          "alt": "Remote design session on a video call with participants in a grid."
         },
         {
-          "src": "/outside-work/claude-figma-mcp-session.png",
-          "alt": "Session on Claude Code, Figma MCP, and getting started."
+          "src": "/outside-work/image-f54bcd4d-4f7b-47f6-8812-d6fa752149ff.png",
+          "alt": "Workshop graphic, Claude and Figma MCP session"
         }
       ]
     },
@@ -22,30 +22,33 @@
       "title": "Photography",
       "images": [
         {
-          "src": "/outside-work/image-f54bcd4d-4f7b-47f6-8812-d6fa752149ff.png",
-          "alt": "Workshop graphic, Claude and Figma MCP session"
-        }
-      ]
-    },
-    {
-      "title": "Music",
-      "images": [
-        {
-          "src": "/outside-work/image-f54bcd4d-4f7b-47f6-8812-d6fa752149ff.png",
-          "alt": "Workshop graphic, Claude and Figma MCP session"
+          "src": "/outside-work/photography-church-dusk.png",
+          "alt": "White Gothic church at dusk, illuminated shrine and warm light against a dark blue sky."
         },
         {
-          "src": "/outside-work/image-8b5b97c0-41dd-46a0-bee0-f4ea5690523f.png",
-          "alt": "Dark portfolio UI with testimonial cards"
+          "src": "/outside-work/photography-temple-storm.png",
+          "alt": "Ornate stone Hindu temple carvings against heavy storm clouds, low angle."
+        },
+        {
+          "src": "/outside-work/photography-hike-path.png",
+          "alt": "Hiker on a stone path through tall dry grass toward rocky hills under a pale sky."
         }
       ]
     },
     {
-      "title": "Travel and ride",
+      "title": "Travel",
       "images": [
         {
-          "src": "/outside-work/travel-and-ride.svg",
-          "alt": "Stylized horizon and road"
+          "src": "/outside-work/travel-hairpin-road.png",
+          "alt": "Mountain hairpin road winding downhill with motorcycles on the curves."
+        },
+        {
+          "src": "/outside-work/travel-motorcycle-plateau.png",
+          "alt": "Motorcycle on a rocky plateau, misty hills and rock formations behind."
+        },
+        {
+          "src": "/outside-work/travel-backwater-nets.png",
+          "alt": "Traditional fishing nets and a small shack on calm backwater."
         }
       ]
     }

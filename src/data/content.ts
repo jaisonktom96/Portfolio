@@ -23,7 +23,7 @@ export { caseStudies }
 export const CONTACT_EMAIL = 'jaisonktom@gmail.com'
 
 /** Bump when case study copy changes materially (helps verify the loaded bundle in devtools). */
-export const CONTENT_REVISION = '2026-03-31-communities-thumbs-restored'
+export const CONTENT_REVISION = '2026-04-01-futurestar-figma-2607-2210'
 
 /** Card list on home, same order as case studies */
 export const projects: Project[] = caseStudies.map(
@@ -115,21 +115,21 @@ const ow = (filename: string) => `/outside-work/${filename}` as const
 /** Home, interests beyond day-to-day product work */
 export const outsideWork: OutsideWorkItem[] = [
   {
-    title: 'Organise events and run communities',
+    title: 'Organise events & run communities',
     description:
-      'I help run two community-led groups for designers. Design FunDays (250+) focuses on bringing people together through offline and online events. Designers who Claude is a 100+ member group for peers who want to explore Claude and Figma together. I also host sessions on Claude Code, Figma MCP, and related topics.',
+      'I run two communities for designers. Design FunDays (250+ designers) focuses on bringing designers together through offline and online events. Designers who Claude is a 100+ member group for peers who want to explore Claude and Figma together. I also host sessions on Claude Code, Figma MCP, and related topics.',
     images: [
       {
-        src: ow('design-fundays-initiative.png'),
-        alt: 'Design FunDays initiative: offline and online community events.',
+        src: ow('design-competition-rooftop-workshop.png'),
+        alt: 'In-person design session on a rooftop patio: presenters at a whiteboard with participants at tables.',
       },
       {
-        src: ow('designers-who-claude-about.png'),
-        alt: 'Designers who Claude: Claude and Figma workflow community.',
+        src: ow('design-competition-remote-session.png'),
+        alt: 'Remote design session on a video call with participants in a grid.',
       },
       {
-        src: ow('claude-figma-mcp-session.png'),
-        alt: 'Session on Claude Code, Figma MCP, and getting started.',
+        src: ow('image-f54bcd4d-4f7b-47f6-8812-d6fa752149ff.png'),
+        alt: 'Workshop graphic, Claude and Figma MCP session',
       },
     ],
   },
@@ -139,34 +139,35 @@ export const outsideWork: OutsideWorkItem[] = [
       'Off-screen I reach for a camera, light, composition, and patience. It sharpens the same instincts I use in product: frame what matters, cut what doesn’t, and know when to wait for the moment.',
     images: [
       {
-        src: ow('image-f54bcd4d-4f7b-47f6-8812-d6fa752149ff.png'),
-        alt: 'Workshop graphic, Claude and Figma MCP session',
+        src: ow('photography-church-dusk.png'),
+        alt: 'White Gothic church at dusk, illuminated shrine and warm light against a dark blue sky.',
+      },
+      {
+        src: ow('photography-temple-storm.png'),
+        alt: 'Ornate stone Hindu temple carvings against heavy storm clouds, low angle.',
+      },
+      {
+        src: ow('photography-hike-path.png'),
+        alt: 'Hiker on a stone path through tall dry grass toward rocky hills under a pale sky.',
       },
     ],
   },
   {
-    title: 'Music',
-    description:
-      'Playing guitar is my reset: patterns, rhythm, and repetition without a roadmap. It is a reminder that craft is mostly showing up, small sessions that compound into something fluid over time.',
-    images: [
-      {
-        src: ow('image-f54bcd4d-4f7b-47f6-8812-d6fa752149ff.png'),
-        alt: 'Workshop graphic, Claude and Figma MCP session',
-      },
-      {
-        src: ow('image-8b5b97c0-41dd-46a0-bee0-f4ea5690523f.png'),
-        alt: 'Dark portfolio UI with testimonial cards',
-      },
-    ],
-  },
-  {
-    title: 'Travel and ride',
+    title: 'Travel',
     description:
       'Travel and long rides pull me away from the screen: new routes, unfamiliar roads, and the quiet focus that comes from moving through space. Whether it is a planned trip or a weekend ride, it is a reminder that direction matters as much as pace, the same instinct I try to bring to product work.',
     images: [
       {
-        src: ow('travel-and-ride.svg'),
-        alt: 'Stylized horizon and road',
+        src: ow('travel-hairpin-road.png'),
+        alt: 'Mountain hairpin road winding downhill with motorcycles on the curves.',
+      },
+      {
+        src: ow('travel-motorcycle-plateau.png'),
+        alt: 'Motorcycle on a rocky plateau, misty hills and rock formations behind.',
+      },
+      {
+        src: ow('travel-backwater-nets.png'),
+        alt: 'Traditional fishing nets and a small shack on calm backwater.',
       },
     ],
   },
