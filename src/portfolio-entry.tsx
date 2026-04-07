@@ -7,9 +7,10 @@ import App from './App.tsx'
 
 if (import.meta.env.DEV) {
   console.info(
-    '[portfolio] dev bundle, minimalist hero landing, revision:',
+    '[portfolio] CONTENT_REVISION (must match blue banner + footer):',
     CONTENT_REVISION,
-    '(LandingPage.tsx, if revision mismatches or you see the old Figma Saturn hero, run npm run dev:clean)',
+    '— If the banner shows an older string, restart: npm run dev (or rm -rf node_modules/.vite && npm run dev).',
+    'Using vite preview? Re-run npm run build first.',
   )
 }
 

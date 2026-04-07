@@ -12,14 +12,15 @@ export const magicdiary: CaseStudyDetail = {
   figmaDesignUrl:
     'https://www.figma.com/design/5BXKUo563G7chsvPVxTpxy/Portfolio?node-id=2607-1321&m=dev',
   metaLayout: 'strip3',
+  /* Order = left → right in hero row: device mockup, then isometric / list UI */
   heroArt: [
-    {
-      src: A.heroIsometric,
-      alt: 'MagicDiary hero illustration, property search and site visits',
-    },
     {
       src: A.heroDevice,
       alt: 'MagicDiary on a phone inside the Magicbricks experience',
+    },
+    {
+      src: A.heroIsometric,
+      alt: 'MagicDiary hero illustration, property search and site visits',
     },
   ],
   summary:
