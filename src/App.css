@@ -300,6 +300,10 @@ a.work-card {
   vertical-align: middle;
 }
 
+.cs-hero-wide-skeleton.image-skeleton-wrap--natural {
+  min-height: 14rem;
+}
+
 /* ── Phone frame (shared hero + solution) ── */
 
 .cs-phone-frame {
@@ -699,6 +703,11 @@ a.work-card {
   object-position: top;
 }
 
+.cs-suggest-card-thumb .image-skeleton-wrap--block-fill .image-skeleton-img--block-fill,
+.cs-suggest-card-thumb .image-skeleton-wrap--block-fill .image-skeleton {
+  z-index: 0;
+}
+
 .cs-suggest-card-body {
   flex: 1;
   min-width: 0;
@@ -797,6 +806,96 @@ a.work-card {
 
 /* ── Figures ── */
 
+/* Lazy image shimmer (see ImageWithSkeleton) */
+.image-skeleton-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.image-skeleton-wrap--natural {
+  min-height: 11rem;
+}
+
+.image-skeleton-wrap--cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.image-skeleton-wrap--block-fill {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.image-skeleton {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.09) 42%,
+    rgba(255, 255, 255, 0.04) 86%
+  );
+  background-size: 200% 100%;
+  animation: image-skeleton-shimmer 1.1s ease-in-out infinite;
+}
+
+.image-skeleton--hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease;
+}
+
+.image-skeleton-img--pending {
+  opacity: 0;
+}
+
+.image-skeleton-img--loaded {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.image-skeleton-img--fit-cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-skeleton-img--block-fill {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+@keyframes image-skeleton-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-skeleton {
+    animation: none;
+    background: rgba(255, 255, 255, 0.06);
+  }
+}
+
 .case-figure {
   margin: 0;
   max-width: 100%;
@@ -811,6 +910,7 @@ a.work-card {
 }
 
 .case-figure--tile {
+  position: relative;
   max-width: none;
   overflow: hidden;
 }
@@ -957,6 +1057,11 @@ a.work-card {
   vertical-align: top;
 }
 
+.case-table-tool-thumb-skeleton.image-skeleton-wrap--natural {
+  min-height: 2.75rem;
+  line-height: 0;
+}
+
 /* ── Callout ── */
 
 .case-callout {
@@ -1081,6 +1186,21 @@ a.work-card {
   border-radius: 10px;
   margin-bottom: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.case-card-tile .image-skeleton-wrap--block-fill {
+  height: 120px;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.case-card-tile .image-skeleton-wrap--block-fill .case-card-tile-img {
+  height: 100%;
+  margin: 0;
+  border: none;
+  border-radius: 0;
 }
 
 .case-card-tile-title {
@@ -1240,6 +1360,32 @@ a.work-card {
   object-fit: cover;
   object-position: top center;
   display: block;
+}
+
+.case-persona-img-wrap {
+  position: relative;
+}
+
+.case-persona-img-wrap.image-skeleton-wrap--natural {
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+}
+
+.case-persona-img-wrap .image-skeleton {
+  position: absolute;
+  inset: 0;
+}
+
+.case-persona-img-wrap .case-persona-img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: unset;
+  min-height: 0;
+  object-fit: cover;
+  object-position: top center;
 }
 
 .case-persona-caption {
@@ -1533,10 +1679,49 @@ a.work-card {
    than the viewport — same class of bug as flex on the scrollport. Use margin:auto on the
    img so it centers when smaller than the inner, without skewing overflow range. */
 .lightbox-scroll-inner {
+  position: relative;
   display: flex;
   min-width: 100%;
   min-height: 100%;
   box-sizing: border-box;
+}
+
+.lightbox-img-skeleton {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(400px, 80vw);
+  height: min(280px, 42vh);
+  border-radius: 12px;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.12) 45%,
+    rgba(255, 255, 255, 0.06) 90%
+  );
+  background-size: 200% 100%;
+  animation: image-skeleton-shimmer 1.1s ease-in-out infinite;
+}
+
+.lightbox-img--loading {
+  opacity: 0;
+}
+
+.lightbox-img--loaded {
+  opacity: 1;
+  transition: opacity 0.35s ease;
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-img-skeleton {
+    animation: none;
+    background: rgba(255, 255, 255, 0.08);
+  }
 }
 
 .lightbox-scroll--can-pan {

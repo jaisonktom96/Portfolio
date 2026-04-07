@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
+import { Star } from 'lucide-react'
 import { AwardsSection } from '@/components/AwardsSection'
 import { GalleryLightbox } from '@/components/GalleryLightbox'
+import { ImageWithSkeleton } from '@/components/ImageWithSkeleton'
 import { MinimalistHero } from '@/components/ui/minimalist-hero'
 import { CONTENT_REVISION, outsideWork, projects, testimonials } from '../data/content'
-import { figmaStarIcon, projectCardImages } from '../data/figmaAssets'
+import { projectCardImages } from '../data/figmaAssets'
+import { withAssetRevision } from '../lib/utils'
 
 /** Portrait, background-removed version saved to public/case-studies/hero-portrait.png */
 const HERO_PORTRAIT = '/case-studies/hero-portrait.png'
@@ -56,7 +59,7 @@ export function LandingPage() {
             target: '_blank',
           },
         ]}
-        imageSrc={HERO_PORTRAIT}
+        imageSrc={withAssetRevision(HERO_PORTRAIT, CONTENT_REVISION)}
         imageAlt="Jaison Thomas, profile portrait in a dark turtleneck."
         overlayText={{
           headline: 'Simplify',
@@ -70,8 +73,7 @@ export function LandingPage() {
           </h2>
 
           {projects.map((p, i) => {
-            const shots = projectCardImages[p.id]
-            const preview = shots?.[0]
+            const preview = projectCardImages[p.id]
             const metaParts = [p.company, p.year, p.tag].filter(Boolean)
             return (
               <MotionLink
@@ -122,7 +124,13 @@ export function LandingPage() {
                           : { scale: 1.03, transition: { duration: 0.35, ease: workCardEase } }
                       }
                     >
-                      <img src={preview} alt="" loading="lazy" />
+                      <ImageWithSkeleton
+                        fit="blockFill"
+                        wrapperClassName="figma-work-preview-skeleton"
+                        src={withAssetRevision(preview, CONTENT_REVISION)}
+                        alt=""
+                        loading="lazy"
+                      />
                     </motion.div>
                   ) : null}
                 </div>
@@ -147,12 +155,13 @@ export function LandingPage() {
                     <li key={t.name} className="figma-t-card">
                       <div className="figma-t-stars" aria-hidden="true">
                         {Array.from({ length: 5 }).map((_, i) => (
-                          <img
+                          <Star
                             key={i}
-                            src={figmaStarIcon}
-                            alt=""
-                            width={16}
-                            height={16}
+                            className="figma-t-star-icon"
+                            size={16}
+                            strokeWidth={1.75}
+                            fill="currentColor"
+                            aria-hidden
                           />
                         ))}
                       </div>
@@ -169,12 +178,13 @@ export function LandingPage() {
                     <li key={`dup-${t.name}`} className="figma-t-card">
                       <div className="figma-t-stars" aria-hidden="true">
                         {Array.from({ length: 5 }).map((_, i) => (
-                          <img
+                          <Star
                             key={i}
-                            src={figmaStarIcon}
-                            alt=""
-                            width={16}
-                            height={16}
+                            className="figma-t-star-icon"
+                            size={16}
+                            strokeWidth={1.75}
+                            fill="currentColor"
+                            aria-hidden
                           />
                         ))}
                       </div>
@@ -232,7 +242,9 @@ export function LandingPage() {
                             }
                             aria-label={`View image ${j + 1} of ${thumbImages.length}`}
                           >
-                            <img
+                            <ImageWithSkeleton
+                              fit="blockFill"
+                              wrapperClassName="figma-outside-work-thumb-skeleton"
                               src={`${img.src}${img.src.includes('?') ? '&' : '?'}v=${encodeURIComponent(thumbCacheKey)}`}
                               alt=""
                             />

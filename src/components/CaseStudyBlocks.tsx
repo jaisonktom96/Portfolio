@@ -6,8 +6,15 @@ import {
   type ReactNode,
 } from 'react'
 import type { CaseStudyBlock, CaseStudyTableCell } from '../data/types'
+import { CONTENT_REVISION } from '../data/content'
 import { magicDiaryAssets } from '../data/figma/magicDiaryAssets'
+import { withAssetRevision } from '../lib/utils'
 import { ImageLightbox } from './ImageLightbox'
+import { ImageWithSkeleton } from './ImageWithSkeleton'
+
+function assetUrl(src: string) {
+  return withAssetRevision(src, CONTENT_REVISION)
+}
 
 const statIconSrc: Record<'user' | 'city' | 'site', string> = {
   user: magicDiaryAssets.iconUser,
@@ -84,6 +91,7 @@ function CaseStudyFigureBlock({
     /* Placeholder ratio until natural dimensions load (avoids clip-path empty top gap). */
     const aspect = cropAspect ?? '3 / 2'
     const wrapStyle: CSSProperties = {
+      position: 'relative',
       width: '100%',
       overflow: 'hidden',
       borderRadius: r,
@@ -106,16 +114,19 @@ function CaseStudyFigureBlock({
           <figcaption className={captionClass}>{block.caption}</figcaption>
         ) : null}
         <div className="case-figure-crop" style={wrapStyle}>
-          <img
-            ref={imgRef}
-            src={block.src}
+          <ImageWithSkeleton
+            fit="cover"
+            imgRef={imgRef}
+            src={assetUrl(block.src)}
             alt={block.alt}
             className={figureImgClass(block.grayscale, block.preserveImageQuality)}
             style={imgStyle}
             loading="lazy"
             decoding="async"
             onLoad={(e) => applyCropAspect(e.currentTarget)}
-            onClick={() => onImageClick({ src: block.src, alt: block.alt, grayscale: block.grayscale })}
+            onClick={() =>
+              onImageClick({ src: assetUrl(block.src), alt: block.alt, grayscale: block.grayscale })
+            }
           />
         </div>
       </figure>
@@ -128,14 +139,16 @@ function CaseStudyFigureBlock({
       {block.caption ? (
         <figcaption className={captionClass}>{block.caption}</figcaption>
       ) : null}
-      <img
-        src={block.src}
+      <ImageWithSkeleton
+        src={assetUrl(block.src)}
         alt={block.alt}
         className={figureImgClass(block.grayscale, block.preserveImageQuality)}
         style={Object.keys(plainStyle).length ? plainStyle : undefined}
         loading="lazy"
         decoding="async"
-        onClick={() => onImageClick({ src: block.src, alt: block.alt, grayscale: block.grayscale })}
+        onClick={() =>
+          onImageClick({ src: assetUrl(block.src), alt: block.alt, grayscale: block.grayscale })
+        }
       />
     </figure>
   )
@@ -155,16 +168,17 @@ function renderTableCellContent(
           className="case-table-tool-thumb-hit"
           onClick={() =>
             onImageClick({
-              src: cell.src,
+              src: assetUrl(cell.src),
               alt: cell.alt,
               grayscale: cell.grayscale,
             })
           }
           aria-label={`Open full size: ${cell.label}`}
         >
-          <img
-            src={cell.src}
+          <ImageWithSkeleton
+            src={assetUrl(cell.src)}
             alt=""
+            wrapperClassName="case-table-tool-thumb-skeleton"
             className={`case-table-tool-thumb-img${cell.grayscale ? ' case-media--grayscale' : ''}`}
             loading="lazy"
             decoding="async"
@@ -186,14 +200,19 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
           <div className="case-figure-row">
             {block.items.map((item) => (
               <div key={item.src} className="case-figure--tile">
-                <img
-                  src={item.src}
+                <ImageWithSkeleton
+                  fit="cover"
+                  src={assetUrl(item.src)}
                   alt={item.alt}
                   className={figureImgClass(item.grayscale)}
                   loading="lazy"
                   decoding="async"
                   onClick={() =>
-                    onImageClick({ src: item.src, alt: item.alt, grayscale: item.grayscale })
+                    onImageClick({
+                      src: assetUrl(item.src),
+                      alt: item.alt,
+                      grayscale: item.grayscale,
+                    })
                   }
                 />
               </div>
@@ -274,15 +293,16 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
               className={`case-card-tile${block.variant === 'metrics' ? ' case-card-tile--metrics' : ''}`}
             >
               {c.imageSrc ? (
-                <img
-                  src={c.imageSrc}
+                <ImageWithSkeleton
+                  fit="blockFill"
+                  src={assetUrl(c.imageSrc)}
                   alt={c.imageAlt ?? c.title}
                   className={`case-card-tile-img case-figure-img--clickable${c.grayscale ? ' case-media--grayscale' : ''}`}
                   loading="lazy"
                   decoding="async"
                   onClick={() =>
                     onImageClick({
-                      src: c.imageSrc!,
+                      src: assetUrl(c.imageSrc!),
                       alt: c.imageAlt ?? c.title,
                       grayscale: c.grayscale,
                     })
@@ -306,7 +326,14 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
                 {c.stats.map((s) => (
                   <li key={s.text}>
                     {s.icon ? (
-                      <img src={statIconSrc[s.icon]} alt="" className="case-research-stat-icon" width={34} height={26} />
+                      <ImageWithSkeleton
+                        src={assetUrl(statIconSrc[s.icon])}
+                        alt=""
+                        className="case-research-stat-icon"
+                        width={34}
+                        height={26}
+                        showSkeleton={false}
+                      />
                     ) : null}
                     <span className="case-research-stat-value">{s.text}</span>
                   </li>
@@ -339,13 +366,16 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
         <div className="case-persona-pair">
           {block.personas.map((p) => (
             <figure key={p.name} className="case-persona">
-              <img
-                src={p.imageSrc}
+              <ImageWithSkeleton
+                wrapperClassName="case-persona-img-wrap"
+                src={assetUrl(p.imageSrc)}
                 alt={p.alt}
                 className={`case-persona-img case-figure-img--clickable${p.grayscale ? ' case-media--grayscale' : ''}`}
                 loading="lazy"
                 decoding="async"
-                onClick={() => onImageClick({ src: p.imageSrc, alt: p.alt, grayscale: p.grayscale })}
+                onClick={() =>
+                  onImageClick({ src: assetUrl(p.imageSrc), alt: p.alt, grayscale: p.grayscale })
+                }
               />
               <figcaption className="case-persona-caption">{p.name}</figcaption>
             </figure>
@@ -372,15 +402,15 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
                 {block.before.label ?? 'Before'}
               </span>
               <div className="case-before-after-frame">
-                <img
-                  src={block.before.src}
+                <ImageWithSkeleton
+                  src={assetUrl(block.before.src)}
                   alt={block.before.alt}
                   className={`case-before-after-img case-figure-img--clickable${block.before.grayscale ? ' case-media--grayscale' : ''}`}
                   loading="lazy"
                   decoding="async"
                   onClick={() =>
                     onImageClick({
-                      src: block.before.src,
+                      src: assetUrl(block.before.src),
                       alt: block.before.alt,
                       grayscale: block.before.grayscale,
                     })
@@ -393,15 +423,15 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
                 {block.after.label ?? 'After'}
               </span>
               <div className="case-before-after-frame">
-                <img
-                  src={block.after.src}
+                <ImageWithSkeleton
+                  src={assetUrl(block.after.src)}
                   alt={block.after.alt}
                   className={`case-before-after-img case-figure-img--clickable${block.after.grayscale ? ' case-media--grayscale' : ''}`}
                   loading="lazy"
                   decoding="async"
                   onClick={() =>
                     onImageClick({
-                      src: block.after.src,
+                      src: assetUrl(block.after.src),
                       alt: block.after.alt,
                       grayscale: block.after.grayscale,
                     })
@@ -420,8 +450,9 @@ function CaseStudyBlockView({ block, onImageClick }: BlockProps) {
           <div className="case-solution-feature-phones">
             {block.images.map((im) => (
               <div key={im.src} className="cs-phone-frame">
-                <img
-                  src={im.src}
+                <ImageWithSkeleton
+                  fit="cover"
+                  src={assetUrl(im.src)}
                   alt={im.alt}
                   className={`cs-phone-frame-img${im.grayscale ? ' case-media--grayscale' : ''}`}
                   loading="lazy"

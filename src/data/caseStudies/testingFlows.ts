@@ -13,13 +13,6 @@ export const testingFlows: CaseStudyDetail = {
   figmaDesignUrl:
     'https://www.figma.com/design/5BXKUo563G7chsvPVxTpxy/Portfolio?node-id=2607-1785&m=dev',
   metaLayout: 'strip3',
-  heroArtLayout: 'wide',
-  heroArt: [
-    {
-      src: A.heroFlowUi,
-      alt: 'MoEngage Flows canvas, event check branch and staged journey sidebar',
-    },
-  ],
   summary:
     'MoEngage Flows lets marketers orchestrate omnichannel journeys. Marketers need to validate logic before publish, but manual self-testing breaks down for heavy events (KYC, purchase). I led research synthesis, problem validation, and UI for in-product testing: test users, simulated events, stage-by-stage checks, and readable results so teams could ship journeys with confidence.',
   context: [],

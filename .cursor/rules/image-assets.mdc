@@ -1,0 +1,16 @@
+---
+description: Persist all image replacements under public/ and wire them into the app
+alwaysApply: true
+---
+
+# Case study and portfolio images
+
+When the user asks to **replace**, **update**, **export**, or **swap** any image (from Figma, a file they provide, or a URL):
+
+1. **Store the bytes in the repo** under `public/` — typically `public/case-studies/<case-study-folder>/` with a stable filename (kebab-case `.png`). Do not leave the app pointing only at expiring Figma `api/mcp/asset` URLs or remote hotlinks as the long-term source.
+2. **Point code at the local path** — update the right entry in `src/data/figma/*Assets.ts` and/or `src/data/figmaAssets.ts` (and `LandingPage` / case study data if the path is inline). Prefer replacing an existing file in place so imports stay stable.
+3. **Cache bust** — bump `CONTENT_REVISION` in `src/data/content.ts` so `?v=` on asset URLs refreshes in browsers.
+4. **Track in git** — `git add` the new or changed files under `public/` (and any TS edits). Remind the user to commit so the asset is not lost.
+5. **Encoding** — if a download is JPEG data saved as `.png`, re-encode to real PNG (e.g. macOS `sips -s format png`) so browsers decode reliably.
+
+If the user only pastes an image into chat, save it under an appropriate `public/case-studies/...` path and wire it up the same way.

@@ -2,8 +2,10 @@ import { Fragment, useEffect, useMemo } from 'react'
 import { createPortal } from 'react-dom'
 import { Navigate, useParams } from 'react-router-dom'
 import { CaseStudyBlocks } from '../components/CaseStudyBlocks'
+import { ImageWithSkeleton } from '../components/ImageWithSkeleton'
 import { SuggestedWorkCards } from '../components/SuggestedWorkCards'
 import { CONTENT_REVISION, getCaseStudyBySlug } from '../data/content'
+import { withAssetRevision } from '../lib/utils'
 import type { CaseStudySubsection } from '../data/types'
 import {
   useScrollProgress,
@@ -208,18 +210,20 @@ function CaseStudyContent({ study }: { study: NonNullable<ReturnType<typeof getC
                   {study.heroArt.map((art) =>
                     study.heroArtLayout === 'wide' ? (
                       <figure key={art.src} className="cs-hero-wide">
-                        <img
-                          src={art.src}
+                        <ImageWithSkeleton
+                          src={withAssetRevision(art.src, CONTENT_REVISION)}
                           alt={art.alt}
                           className="cs-hero-wide-img"
                           loading="eager"
                           decoding="async"
+                          wrapperClassName="cs-hero-wide-skeleton"
                         />
                       </figure>
                     ) : (
                       <div key={art.src} className="cs-phone-frame cs-phone-frame--hero">
-                        <img
-                          src={art.src}
+                        <ImageWithSkeleton
+                          fit="cover"
+                          src={withAssetRevision(art.src, CONTENT_REVISION)}
                           alt={art.alt}
                           className="cs-phone-frame-img"
                           loading="eager"

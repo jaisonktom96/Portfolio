@@ -28,11 +28,18 @@ type DragState = {
 export function LightboxImagePane({ src, alt, grayscale }: Props) {
   const [zoomIndex, setZoomIndex] = useState(0)
   const [canPan, setCanPan] = useState(false)
+  const [imgLoaded, setImgLoaded] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
   const dragRef = useRef<DragState | null>(null)
 
   useEffect(() => {
     setZoomIndex(0)
+    setImgLoaded(false)
+  }, [src])
+
+  useLayoutEffect(() => {
+    const img = scrollRef.current?.querySelector<HTMLImageElement>('img.lightbox-img')
+    if (img?.complete && img.naturalWidth > 0) setImgLoaded(true)
   }, [src])
 
   const updateCanPan = useCallback(() => {
@@ -184,11 +191,13 @@ export function LightboxImagePane({ src, alt, grayscale }: Props) {
         role="presentation"
       >
         <div className="lightbox-scroll-inner">
+          {!imgLoaded ? <span className="lightbox-img-skeleton" aria-hidden /> : null}
           <img
-            className={`lightbox-img${grayscale ? ' case-media--grayscale' : ''}`}
+            className={`lightbox-img${grayscale ? ' case-media--grayscale' : ''}${imgLoaded ? ' lightbox-img--loaded' : ' lightbox-img--loading'}`}
             src={src}
             alt={alt}
             draggable={false}
+            onLoad={() => setImgLoaded(true)}
           />
         </div>
       </div>

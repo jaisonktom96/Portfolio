@@ -1,7 +1,9 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { projects } from '../data/content'
+import { ImageWithSkeleton } from './ImageWithSkeleton'
+import { CONTENT_REVISION, projects } from '../data/content'
 import { projectCardImages } from '../data/figmaAssets'
+import { withAssetRevision } from '../lib/utils'
 
 const MotionLink = motion.create(Link)
 
@@ -20,8 +22,7 @@ export function SuggestedWorkCards({ excludeId }: { excludeId: string }) {
       </h2>
       <div className="cs-more-work-cards">
         {other.map((p, i) => {
-          const shots = projectCardImages[p.id]
-          const preview = shots?.[0]
+          const preview = projectCardImages[p.id]
           const metaParts = [p.company, p.year, p.tag].filter(Boolean)
           return (
             <MotionLink
@@ -53,7 +54,12 @@ export function SuggestedWorkCards({ excludeId }: { excludeId: string }) {
             >
               {preview ? (
                 <div className="cs-suggest-card-thumb">
-                  <img src={preview} alt="" loading="lazy" />
+                  <ImageWithSkeleton
+                    fit="blockFill"
+                    src={withAssetRevision(preview, CONTENT_REVISION)}
+                    alt=""
+                    loading="lazy"
+                  />
                 </div>
               ) : (
                 <div className="cs-suggest-card-thumb cs-suggest-card-thumb--empty" aria-hidden />

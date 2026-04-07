@@ -23,7 +23,7 @@ export { caseStudies }
 export const CONTACT_EMAIL = 'jaisonktom@gmail.com'
 
 /** Bump when case study copy changes materially (helps verify the loaded bundle in devtools). */
-export const CONTENT_REVISION = '2026-04-01-futurestar-figma-2607-2210'
+export const CONTENT_REVISION = '2026-04-07-testing-of-flows-no-hero-art'
 
 /** Card list on home, same order as case studies */
 export const projects: Project[] = caseStudies.map(
